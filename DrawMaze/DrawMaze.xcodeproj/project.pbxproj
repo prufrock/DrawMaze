@@ -23,6 +23,9 @@
 		632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34FF29078CEA0050F354 /* DrawMaze_iOSTests.swift */; };
 		632C350A29078CEB0050F354 /* DrawMaze_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */; };
 		632C350C29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */; };
+		632C351829078D590050F354 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351729078D590050F354 /* AppCore.swift */; };
+		632C351929078D590050F354 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351729078D590050F354 /* AppCore.swift */; };
+		632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351B29078EAB0050F354 /* AppCoreTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,8 @@
 		632C350529078CEA0050F354 /* DrawMaze iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DrawMaze iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITests.swift; sourceTree = "<group>"; };
 		632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		632C351729078D590050F354 /* AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
+		632C351B29078EAB0050F354 /* AppCoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +137,7 @@
 		632C34AB29078BE50050F354 = {
 			isa = PBXGroup;
 			children = (
+				632C351629078D0B0050F354 /* DrawMaze Shared */,
 				632C34B829078C280050F354 /* DrawMaze macOS */,
 				632C34CA29078C290050F354 /* DrawMaze macOSTests */,
 				632C34D429078C290050F354 /* DrawMaze macOSUITests */,
@@ -170,6 +176,7 @@
 		632C34CA29078C290050F354 /* DrawMaze macOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				632C351A29078E700050F354 /* Shared */,
 				632C34CB29078C290050F354 /* DrawMaze_macOSTests.swift */,
 			);
 			path = "DrawMaze macOSTests";
@@ -213,6 +220,22 @@
 				632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */,
 			);
 			path = "DrawMaze iOSUITests";
+			sourceTree = "<group>";
+		};
+		632C351629078D0B0050F354 /* DrawMaze Shared */ = {
+			isa = PBXGroup;
+			children = (
+				632C351729078D590050F354 /* AppCore.swift */,
+			);
+			path = "DrawMaze Shared";
+			sourceTree = "<group>";
+		};
+		632C351A29078E700050F354 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				632C351B29078EAB0050F354 /* AppCoreTests.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632C351829078D590050F354 /* AppCore.swift in Sources */,
 				632C34BC29078C280050F354 /* ViewController.swift in Sources */,
 				632C34BA29078C280050F354 /* AppDelegate.swift in Sources */,
 			);
@@ -445,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */,
 				632C34CC29078C290050F354 /* DrawMaze_macOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +489,7 @@
 			files = (
 				632C34ED29078CE90050F354 /* ViewController.swift in Sources */,
 				632C34E929078CE90050F354 /* AppDelegate.swift in Sources */,
+				632C351929078D590050F354 /* AppCore.swift in Sources */,
 				632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
