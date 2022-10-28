@@ -7,11 +7,52 @@
 
 import Foundation
 
-struct AppCore {
+
+protocol AppCore {
+    func launch()
+
+    func terminate()
+}
+
+class AppCoreGcd: AppCore {
+    private let appCore: AppCore
+    private let queue: DispatchQueue
+
+    init(appCore: AppCore, queue: DispatchQueue) {
+        self.appCore = appCore
+        self.queue = queue
+    }
+
+    func launch() {
+        queue.async {
+            self.appCore.launch()
+        }
+    }
+
+    /**
+     * For now terminate is not async since it should happen immediately.
+     * Might need to look into making launch cancelable.
+     */
+    func terminate() {
+        appCore.terminate()
+    }
+}
+
+class AppCoreStateful: AppCore {
+    private let dispatchQueue: DispatchQueue
+
     var state: AppCoreState {
         didSet {
             print("State -> \(state)")
         }
+    }
+
+
+    init(state: AppCoreState) {
+        self.state = state
+
+        // Use a serial queue because that should limit access to state.
+        dispatchQueue = DispatchQueue(label: "background")
     }
 
     var name: String {
@@ -20,12 +61,14 @@ struct AppCore {
         }
     }
 
-    mutating func launch() {
-        state = state.launch()
-        state.transition()
+   func launch() {
+       dispatchQueue.async {
+           self.state = self.state.launch()
+           self.state.transition()
+       }
     }
 
-    mutating func terminate() {
+    func terminate() {
         state = state.terminate()
     }
 }
@@ -45,13 +88,13 @@ protocol AppCoreState {
     func transition()
 }
 
-extension AppCore {
+extension AppCoreStateful {
     struct NeverLoaded: AppCoreState {
         let name = "NeverLoaded"
         var controller: AppCoreController
 
         func launch() -> AppCoreState {
-            AppCore.Loading(controller: controller)
+            AppCoreStateful.Loading(controller: controller)
         }
 
        func terminate() -> AppCoreState {
@@ -73,7 +116,7 @@ extension AppCore {
 
         func terminate() -> AppCoreState {
             // Stop loading and shutdown.
-            AppCore.Terminated(controller: controller)
+            AppCoreStateful.Terminated(controller: controller)
         }
 
         func transition() {
@@ -85,17 +128,9 @@ extension AppCore {
 
         private func load() {
 
-            let queue = DispatchQueue(
-                label: "drawmaze",
-                attributes: [.concurrent]
-            )
-
             for i in 0..<controller.descriptors.count {
-                queue.async {
-                    sleep(3)
-                    print("loading descriptors: \(controller.descriptors[i])")
-                    mainSemaphore.signal()
-                }
+                sleep(3)
+                print("loading descriptors: \(controller.descriptors[i])")
             }
         }
     }
@@ -110,7 +145,7 @@ extension AppCore {
 
         func terminate() -> AppCoreState {
             // Shutdown code here.
-            AppCore.Terminated(controller: controller)
+            AppCoreStateful.Terminated(controller: controller)
         }
 
         func transition() {
@@ -130,7 +165,7 @@ extension AppCore {
         var controller: AppCoreController
 
         func launch() -> AppCoreState {
-            AppCore.Loading(controller: controller)
+            AppCoreStateful.Loading(controller: controller)
         }
 
         func terminate() -> AppCoreState {

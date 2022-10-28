@@ -9,11 +9,13 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var core: AppCore = AppCore(state: AppCore.NeverLoaded(controller: AppCoreController()))
+    var core: AppCore? 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        core.launch()
+        let coreCore = AppCoreStateful(state: AppCoreStateful.NeverLoaded(controller: AppCoreController()))
+        core = AppCoreGcd(appCore: coreCore, queue: DispatchQueue(label: "background"))
+        core?.launch()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -21,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Does it need to be torn down when this function returns?
         // Then it might need to go directly to "Terminated"
         print("applicationWillTerminate")
-        core.terminate()
+        core?.terminate()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
