@@ -7,11 +7,12 @@
 
 import Foundation
 
-
 protocol AppCore {
     func launch()
 
     func terminate()
+
+    func activate()
 }
 
 class AppCoreGcd: AppCore {
@@ -29,6 +30,12 @@ class AppCoreGcd: AppCore {
         }
     }
 
+    func activate() {
+        queue.async {
+            self.appCore.activate()
+        }
+    }
+
     /**
      * For now terminate is not async since it should happen immediately.
      * Might need to look into making launch cancelable.
@@ -39,20 +46,15 @@ class AppCoreGcd: AppCore {
 }
 
 class AppCoreStateful: AppCore {
-    private let dispatchQueue: DispatchQueue
-
     var state: AppCoreState {
         didSet {
-            print("State -> \(state)")
+            print("State -> \(state.name)")
         }
     }
 
 
     init(state: AppCoreState) {
         self.state = state
-
-        // Use a serial queue because that should limit access to state.
-        dispatchQueue = DispatchQueue(label: "background")
     }
 
     var name: String {
@@ -62,19 +64,38 @@ class AppCoreStateful: AppCore {
     }
 
    func launch() {
-       dispatchQueue.async {
-           self.state = self.state.launch()
-           self.state.transition()
-       }
+       state = state.launch()
+       transition()
+    }
+
+    func activate() {
+        state = state.activate()
+        transition()
     }
 
     func terminate() {
         state = state.terminate()
     }
+
+    private func transition() {
+        var nextState: AppCoreState? = nil
+        repeat {
+            nextState = state.transition()
+            if nextState != nil {
+                state = nextState!
+            }
+        } while (nextState != nil)
+    }
 }
 
-struct AppCoreController {
-    var descriptors = [0,1,2];
+class AppCoreController {
+    var appCore: AppCore?
+    private var serviceList: [String] = []
+
+    func addService(_ element: String) {
+        serviceList.append(element)
+        print("loaded service \(element)")
+    }
 }
 
 protocol AppCoreState {
@@ -85,7 +106,9 @@ protocol AppCoreState {
 
     func terminate() -> AppCoreState
 
-    func transition()
+    func activate() -> AppCoreState
+
+    mutating func transition() -> AppCoreState?
 }
 
 extension AppCoreStateful {
@@ -97,12 +120,16 @@ extension AppCoreStateful {
             AppCoreStateful.Loading(controller: controller)
         }
 
+        func activate() -> AppCoreState {
+            self
+        }
+
        func terminate() -> AppCoreState {
             self
         }
 
-        func transition() {
-
+        mutating func transition() -> AppCoreState? {
+            nil
         }
     }
 
@@ -114,24 +141,32 @@ extension AppCoreStateful {
             self
         }
 
+        func activate() -> AppCoreState {
+            AppCoreStateful.Active(controller: controller)
+        }
+
         func terminate() -> AppCoreState {
             // Stop loading and shutdown.
             AppCoreStateful.Terminated(controller: controller)
         }
 
-        func transition() {
+        mutating func transition() -> AppCoreState? {
             load()
         }
 
         // Is it strange that the value of the semaphore changes but it's a *let*?
         let mainSemaphore = DispatchSemaphore(value: 0)
 
-        private func load() {
+        mutating private func load() -> AppCoreState {
+            let services = ["render", "sound", "http"];
 
-            for i in 0..<controller.descriptors.count {
-                sleep(3)
-                print("loading descriptors: \(controller.descriptors[i])")
+            for i in 0..<services.count {
+                if(!Thread.isMainThread) {
+                    sleep(1)
+                }
+                controller.addService(services[i])
             }
+            return AppCoreStateful.Active(controller: controller)
         }
     }
 
@@ -143,13 +178,19 @@ extension AppCoreStateful {
             self
         }
 
+        func activate() -> AppCoreState {
+            self
+        }
+
         func terminate() -> AppCoreState {
             // Shutdown code here.
             AppCoreStateful.Terminated(controller: controller)
         }
 
-        func transition() {
-
+        func transition() -> AppCoreState? {
+            // start the party
+            print("activated!")
+            return nil
         }
     }
 
@@ -172,8 +213,12 @@ extension AppCoreStateful {
             self
         }
 
-        func transition() {
+        func activate() -> AppCoreState {
+            self
+        }
 
+        func transition() -> AppCoreState? {
+            nil
         }
     }
 }
