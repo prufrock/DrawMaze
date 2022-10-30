@@ -15,33 +15,65 @@ protocol AppCore {
     func activate()
 }
 
+/**
+ A wrapper around AppCore that allows it run on separate thread managed by Grand Central Dispatch.
+ */
 class AppCoreGcd: AppCore {
     private let appCore: AppCore
     private let queue: DispatchQueue
+    private var currentTask: DispatchWorkItem?
 
+    /**
+     - Parameters:
+       - appCore: The AppCore requests forward to.
+       - queue: Should be a serial queue to ensure access to variables is thread safe.
+     */
     init(appCore: AppCore, queue: DispatchQueue) {
         self.appCore = appCore
         self.queue = queue
     }
 
     func launch() {
-        queue.async {
+        dispatch {
             self.appCore.launch()
         }
     }
 
     func activate() {
-        queue.async {
+        dispatch {
             self.appCore.activate()
         }
     }
 
     /**
-     * For now terminate is not async since it should happen immediately.
-     * Might need to look into making launch cancelable.
+     * For now `terminate()` is not async since it should happen immediately.
      */
     func terminate() {
+        // It's time to terminate so if anything is running shut it down!
+        if let runningTask = currentTask {
+            print("cancelling task")
+            runningTask.cancel()
+        }
+        // Terminate on the main thread because when the app closes it can *close* now.
         appCore.terminate()
+    }
+
+    /**
+     The annotations came from those on DispatchWorkItem. I'm not sure sure what `@convention` means but it works...
+     - Parameter block:
+     */
+    private func dispatch(block: @escaping @convention(block) () -> Void) {
+        // Replace with scope function if added later
+        currentTask = {
+            let work = DispatchWorkItem(block: block)
+
+            work.notify(queue: queue) {
+                self.currentTask = nil
+            }
+
+            queue.async(execute: work)
+            return work
+        }()
     }
 }
 
@@ -162,7 +194,7 @@ extension AppCoreStateful {
 
             for i in 0..<services.count {
                 if(!Thread.isMainThread) {
-                    sleep(1)
+                    sleep(3)
                 }
                 controller.addService(services[i])
             }

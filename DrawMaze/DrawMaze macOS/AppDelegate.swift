@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         let coreCore = AppCoreStateful(state: AppCoreStateful.NeverLoaded(controller: AppCoreController()))
-        core = AppCoreGcd(appCore: coreCore, queue: DispatchQueue(label: "background"))
+        core = AppCoreGcd(appCore: coreCore, queue: DispatchQueue(label: "com.dkanen.background"))
         core?.launch()
     }
 
