@@ -51,7 +51,7 @@ class AppCoreGcd: AppCore {
     func terminate() {
         // It's time to terminate so if anything is running shut it down!
         if let runningTask = currentTask {
-            print("cancelling task")
+            print("canceling task")
             runningTask.cancel()
         }
         // Terminate on the main thread because when the app closes it can *close* now.
@@ -109,6 +109,10 @@ class AppCoreStateful: AppCore {
         state = state.terminate()
     }
 
+    /**
+     Transition is a trampoline that prevents threads from re-entering AppCoreStateful and
+     has a bonus of keeping the stack shallow.
+     */
     private func transition() {
         var nextState: AppCoreState? = nil
         repeat {
@@ -185,9 +189,6 @@ extension AppCoreStateful {
         mutating func transition() -> AppCoreState? {
             load()
         }
-
-        // Is it strange that the value of the semaphore changes but it's a *let*?
-        let mainSemaphore = DispatchSemaphore(value: 0)
 
         mutating private func load() -> AppCoreState {
             let services = ["render", "sound", "http"];

@@ -20,8 +20,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-        // Does it need to be torn down when this function returns?
-        // Then it might need to go directly to "Terminated"
         print("applicationWillTerminate")
         core?.terminate()
     }
