@@ -144,7 +144,7 @@ protocol AppCoreState {
 
     func activate() -> AppCoreState
 
-    mutating func transition() -> AppCoreState?
+    func transition() -> AppCoreState?
 }
 
 extension AppCoreStateful {
@@ -164,7 +164,7 @@ extension AppCoreStateful {
             self
         }
 
-        mutating func transition() -> AppCoreState? {
+        func transition() -> AppCoreState? {
             nil
         }
     }
@@ -186,16 +186,16 @@ extension AppCoreStateful {
             AppCoreStateful.Terminated(controller: controller)
         }
 
-        mutating func transition() -> AppCoreState? {
+        func transition() -> AppCoreState? {
             load()
         }
 
-        mutating private func load() -> AppCoreState {
+        private func load() -> AppCoreState {
             let services = ["render", "sound", "http"];
 
             for i in 0..<services.count {
                 if(!Thread.isMainThread) {
-                    sleep(3)
+                    sleep(1)
                 }
                 controller.addService(services[i])
             }
