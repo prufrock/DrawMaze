@@ -13,6 +13,8 @@ protocol AppCore {
     func terminate()
 
     func activate()
+
+    func initialize()
 }
 
 /**
@@ -56,6 +58,10 @@ class AppCoreGcd: AppCore {
         }
         // Terminate on the main thread because when the app closes it can *close* now.
         appCore.terminate()
+    }
+
+    func initialize() {
+        appCore.initialize()
     }
 
     /**
@@ -109,6 +115,11 @@ class AppCoreStateful: AppCore {
         state = state.terminate()
     }
 
+    func initialize() {
+        state = state.initialize()
+        transition()
+    }
+
     /**
      Transition is a trampoline that prevents threads from re-entering AppCoreStateful and
      has a bonus of keeping the stack shallow.
@@ -128,9 +139,27 @@ class AppCoreController {
     var appCore: AppCore?
     private var serviceList: [String] = []
 
+    let filename: URL
+
+    init() {
+        // find a better home for this
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        filename = paths[0].appendingPathComponent("AppCore.txt")
+    }
+
     func addService(_ element: String) {
         serviceList.append(element)
         print("loaded service \(element)")
+    }
+
+    func save() {
+        try! "Terminated".write(to: filename, atomically: true, encoding: String.Encoding.utf8)
+        print("wrote to \(filename)")
+    }
+
+    func restore() -> Bool {
+        let manager = FileManager()
+        return manager.fileExists(atPath: filename.path)
     }
 }
 
@@ -145,6 +174,8 @@ protocol AppCoreState {
     func activate() -> AppCoreState
 
     func transition() -> AppCoreState?
+
+    func initialize() -> AppCoreState
 }
 
 extension AppCoreStateful {
@@ -167,6 +198,15 @@ extension AppCoreStateful {
         func transition() -> AppCoreState? {
             nil
         }
+
+        func initialize() -> AppCoreState {
+            // if a saved file exists load it and change state to Terminated
+            if controller.restore() {
+                return AppCoreStateful.Terminated(controller: controller)
+            }
+            // if there isn't a file continue in NeverLoaded
+            return self
+        }
     }
 
     struct Loading: AppCoreState {
@@ -188,6 +228,10 @@ extension AppCoreStateful {
 
         func transition() -> AppCoreState? {
             load()
+        }
+
+        func initialize() -> AppCoreState {
+            self
         }
 
         private func load() -> AppCoreState {
@@ -217,13 +261,19 @@ extension AppCoreStateful {
 
         func terminate() -> AppCoreState {
             // Shutdown code here.
-            AppCoreStateful.Terminated(controller: controller)
+            print("shutting down")
+            controller.save()
+            return AppCoreStateful.Terminated(controller: controller)
         }
 
         func transition() -> AppCoreState? {
             // start the party
             print("activated!")
             return nil
+        }
+
+        func initialize() -> AppCoreState {
+            self
         }
     }
 
@@ -252,6 +302,10 @@ extension AppCoreStateful {
 
         func transition() -> AppCoreState? {
             nil
+        }
+
+        func initialize() -> AppCoreState {
+            self
         }
     }
 }

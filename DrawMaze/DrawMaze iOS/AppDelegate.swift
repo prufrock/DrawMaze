@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Insert code here to initialize your application
         let coreCore = AppCoreStateful(state: AppCoreStateful.NeverLoaded(controller: AppCoreController()))
         core = AppCoreGcd(appCore: coreCore, queue: DispatchQueue(label: "com.dkanen.background"))
+        core?.initialize()
         core?.launch()
         return true
     }
