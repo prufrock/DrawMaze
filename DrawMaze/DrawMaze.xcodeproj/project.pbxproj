@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AF0E20CA40B23B27021F0D9 /* AppCoreStateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */; };
+		5AF0E23EBC1014CD3610C8A2 /* AppCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */; };
+		5AF0E3DA3B46BA227C59B009 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */; };
+		5AF0E51F53C1024445096C08 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2F9C6FC1356325B8FEA /* AppCore.swift */; };
+		5AF0E6E9DF8CA271B207123B /* AppCoreGcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */; };
+		5AF0E7D835C7DA637FBEBBE6 /* AppCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */; };
+		5AF0E9B474EE41674124A912 /* NeverLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E75882DEABA00A41921E /* NeverLoaded.swift */; };
+		5AF0E9D75DECD94C65F3296B /* AppCoreGcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */; };
+		5AF0EC579D8CDDEAA8AC41DF /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */; };
+		5AF0ECD03E58D1ED3A36F21F /* NeverLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E75882DEABA00A41921E /* NeverLoaded.swift */; };
+		5AF0ED10C8113F8FE0831461 /* Active.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E16DA6ED1AE23010AD89 /* Active.swift */; };
+		5AF0ED34887D551BC097726A /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2F9C6FC1356325B8FEA /* AppCore.swift */; };
+		5AF0EE85F86EE8200EB6AF41 /* Active.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E16DA6ED1AE23010AD89 /* Active.swift */; };
+		5AF0EF00EFA857340E949249 /* AppCoreStateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */; };
+		5AF0EF674628D88378C88D55 /* Terminated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */; };
+		5AF0EFEEF8A364415C79B192 /* Terminated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
 		632C34BC29078C280050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34BB29078C280050F354 /* ViewController.swift */; };
 		632C34BE29078C290050F354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 632C34BD29078C290050F354 /* Assets.xcassets */; };
@@ -23,8 +39,6 @@
 		632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34FF29078CEA0050F354 /* DrawMaze_iOSTests.swift */; };
 		632C350A29078CEB0050F354 /* DrawMaze_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */; };
 		632C350C29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */; };
-		632C351829078D590050F354 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351729078D590050F354 /* AppCore.swift */; };
-		632C351929078D590050F354 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351729078D590050F354 /* AppCore.swift */; };
 		632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351B29078EAB0050F354 /* AppCoreTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +74,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5AF0E16DA6ED1AE23010AD89 /* Active.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Active.swift; sourceTree = "<group>"; };
+		5AF0E2F9C6FC1356325B8FEA /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
+		5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		5AF0E75882DEABA00A41921E /* NeverLoaded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeverLoaded.swift; sourceTree = "<group>"; };
+		5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreGcd.swift; sourceTree = "<group>"; };
+		5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreController.swift; sourceTree = "<group>"; };
+		5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreStateful.swift; sourceTree = "<group>"; };
+		5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminated.swift; sourceTree = "<group>"; };
 		632C34B629078C280050F354 /* DrawMaze macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34B929078C280050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C34BB29078C280050F354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +106,6 @@
 		632C350529078CEA0050F354 /* DrawMaze iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DrawMaze iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITests.swift; sourceTree = "<group>"; };
 		632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		632C351729078D590050F354 /* AppCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
 		632C351B29078EAB0050F354 /* AppCoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +155,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AF0E587E50F666DEF97B9A0 /* AppCoreStateful */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */,
+				5AF0E75882DEABA00A41921E /* NeverLoaded.swift */,
+				5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */,
+				5AF0E16DA6ED1AE23010AD89 /* Active.swift */,
+				5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */,
+			);
+			path = AppCoreStateful;
+			sourceTree = "<group>";
+		};
+		5AF0E98DFD6CF847F8EDCA02 /* AppCore */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0E2F9C6FC1356325B8FEA /* AppCore.swift */,
+				5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */,
+				5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */,
+				5AF0E587E50F666DEF97B9A0 /* AppCoreStateful */,
+			);
+			path = AppCore;
+			sourceTree = "<group>";
+		};
 		632C34AB29078BE50050F354 = {
 			isa = PBXGroup;
 			children = (
@@ -225,7 +269,7 @@
 		632C351629078D0B0050F354 /* DrawMaze Shared */ = {
 			isa = PBXGroup;
 			children = (
-				632C351729078D590050F354 /* AppCore.swift */,
+				5AF0E98DFD6CF847F8EDCA02 /* AppCore */,
 			);
 			path = "DrawMaze Shared";
 			sourceTree = "<group>";
@@ -459,9 +503,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				632C351829078D590050F354 /* AppCore.swift in Sources */,
 				632C34BC29078C280050F354 /* ViewController.swift in Sources */,
 				632C34BA29078C280050F354 /* AppDelegate.swift in Sources */,
+				5AF0E51F53C1024445096C08 /* AppCore.swift in Sources */,
+				5AF0E9D75DECD94C65F3296B /* AppCoreGcd.swift in Sources */,
+				5AF0E23EBC1014CD3610C8A2 /* AppCoreController.swift in Sources */,
+				5AF0E20CA40B23B27021F0D9 /* AppCoreStateful.swift in Sources */,
+				5AF0ECD03E58D1ED3A36F21F /* NeverLoaded.swift in Sources */,
+				5AF0E3DA3B46BA227C59B009 /* Loading.swift in Sources */,
+				5AF0EE85F86EE8200EB6AF41 /* Active.swift in Sources */,
+				5AF0EFEEF8A364415C79B192 /* Terminated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,8 +540,15 @@
 			files = (
 				632C34ED29078CE90050F354 /* ViewController.swift in Sources */,
 				632C34E929078CE90050F354 /* AppDelegate.swift in Sources */,
-				632C351929078D590050F354 /* AppCore.swift in Sources */,
 				632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */,
+				5AF0ED34887D551BC097726A /* AppCore.swift in Sources */,
+				5AF0E6E9DF8CA271B207123B /* AppCoreGcd.swift in Sources */,
+				5AF0E7D835C7DA637FBEBBE6 /* AppCoreController.swift in Sources */,
+				5AF0EF00EFA857340E949249 /* AppCoreStateful.swift in Sources */,
+				5AF0E9B474EE41674124A912 /* NeverLoaded.swift in Sources */,
+				5AF0EC579D8CDDEAA8AC41DF /* Loading.swift in Sources */,
+				5AF0ED10C8113F8FE0831461 /* Active.swift in Sources */,
+				5AF0EF674628D88378C88D55 /* Terminated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
