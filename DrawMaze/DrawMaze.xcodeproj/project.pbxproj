@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AF0E00D11F5EC244AF8A6F0 /* AppCoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E69A2A7A08B9651E0BBA /* AppCoreState.swift */; };
 		5AF0E20CA40B23B27021F0D9 /* AppCoreStateful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */; };
 		5AF0E23EBC1014CD3610C8A2 /* AppCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */; };
 		5AF0E3DA3B46BA227C59B009 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */; };
+		5AF0E456CD4CFD47F739667C /* Backgrounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E889BEEA590C4DA0A1D7 /* Backgrounded.swift */; };
 		5AF0E51F53C1024445096C08 /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2F9C6FC1356325B8FEA /* AppCore.swift */; };
 		5AF0E6E9DF8CA271B207123B /* AppCoreGcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */; };
+		5AF0E75250FD316CEDDD962A /* AppCoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E69A2A7A08B9651E0BBA /* AppCoreState.swift */; };
 		5AF0E7D835C7DA637FBEBBE6 /* AppCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */; };
 		5AF0E9B474EE41674124A912 /* NeverLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E75882DEABA00A41921E /* NeverLoaded.swift */; };
 		5AF0E9D75DECD94C65F3296B /* AppCoreGcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */; };
+		5AF0EB97C78EF5153F6D53BB /* Backgrounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E889BEEA590C4DA0A1D7 /* Backgrounded.swift */; };
 		5AF0EC579D8CDDEAA8AC41DF /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */; };
 		5AF0ECD03E58D1ED3A36F21F /* NeverLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E75882DEABA00A41921E /* NeverLoaded.swift */; };
 		5AF0ED10C8113F8FE0831461 /* Active.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E16DA6ED1AE23010AD89 /* Active.swift */; };
@@ -77,8 +81,10 @@
 		5AF0E16DA6ED1AE23010AD89 /* Active.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Active.swift; sourceTree = "<group>"; };
 		5AF0E2F9C6FC1356325B8FEA /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
 		5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		5AF0E69A2A7A08B9651E0BBA /* AppCoreState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreState.swift; sourceTree = "<group>"; };
 		5AF0E75882DEABA00A41921E /* NeverLoaded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeverLoaded.swift; sourceTree = "<group>"; };
 		5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreGcd.swift; sourceTree = "<group>"; };
+		5AF0E889BEEA590C4DA0A1D7 /* Backgrounded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backgrounded.swift; sourceTree = "<group>"; };
 		5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreController.swift; sourceTree = "<group>"; };
 		5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreStateful.swift; sourceTree = "<group>"; };
 		5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminated.swift; sourceTree = "<group>"; };
@@ -163,6 +169,8 @@
 				5AF0E32F35F6C5ACCBCDCE00 /* Loading.swift */,
 				5AF0E16DA6ED1AE23010AD89 /* Active.swift */,
 				5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */,
+				5AF0E889BEEA590C4DA0A1D7 /* Backgrounded.swift */,
+				5AF0E69A2A7A08B9651E0BBA /* AppCoreState.swift */,
 			);
 			path = AppCoreStateful;
 			sourceTree = "<group>";
@@ -513,6 +521,8 @@
 				5AF0E3DA3B46BA227C59B009 /* Loading.swift in Sources */,
 				5AF0EE85F86EE8200EB6AF41 /* Active.swift in Sources */,
 				5AF0EFEEF8A364415C79B192 /* Terminated.swift in Sources */,
+				5AF0EB97C78EF5153F6D53BB /* Backgrounded.swift in Sources */,
+				5AF0E00D11F5EC244AF8A6F0 /* AppCoreState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +559,8 @@
 				5AF0EC579D8CDDEAA8AC41DF /* Loading.swift in Sources */,
 				5AF0ED10C8113F8FE0831461 /* Active.swift in Sources */,
 				5AF0EF674628D88378C88D55 /* Terminated.swift in Sources */,
+				5AF0E456CD4CFD47F739667C /* Backgrounded.swift in Sources */,
+				5AF0E75250FD316CEDDD962A /* AppCoreState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

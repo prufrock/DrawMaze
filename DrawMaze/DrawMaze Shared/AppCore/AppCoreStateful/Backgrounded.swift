@@ -5,15 +5,11 @@
 import Foundation
 
 extension AppCoreStateful {
-    struct NeverLoaded: AppCoreState {
-        let name = "NeverLoaded"
+    struct Backgrounded: AppCoreState {
+        let name = "Backgrounded"
         var controller: AppCoreController
 
         func launch() -> AppCoreState {
-            AppCoreStateful.Loading(controller: controller)
-        }
-
-        func activate() -> AppCoreState {
             self
         }
 
@@ -25,17 +21,16 @@ extension AppCoreStateful {
             self
         }
 
+        func activate() -> AppCoreState {
+            self
+        }
+
         func transition() -> AppCoreState? {
             nil
         }
 
         func initialize() -> AppCoreState {
-            // if a saved file exists load it and change state to Terminated
-            if controller.restore() {
-                return AppCoreStateful.Terminated(controller: controller)
-            }
-            // if there isn't a file continue in NeverLoaded
-            return self
+            self
         }
     }
 }

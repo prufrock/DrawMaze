@@ -11,15 +11,14 @@ class AppCoreStateful: AppCore {
         }
     }
 
-
-    init(state: AppCoreState) {
-        self.state = state
-    }
-
     var name: String {
         get {
             state.name
         }
+    }
+
+    init(state: AppCoreState) {
+        self.state = state
     }
 
     func launch() {
@@ -29,6 +28,11 @@ class AppCoreStateful: AppCore {
 
     func activate() {
         state = state.activate()
+        transition()
+    }
+
+    func enterBackground() {
+        state = state.enterBackground()
         transition()
     }
 

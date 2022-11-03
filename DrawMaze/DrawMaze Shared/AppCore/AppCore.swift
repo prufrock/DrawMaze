@@ -15,22 +15,6 @@ protocol AppCore {
     func activate()
 
     func initialize()
+
+    func enterBackground()
 }
-
-
-protocol AppCoreState {
-    var name: String { get }
-    var controller: AppCoreController { get }
-
-    func launch() -> AppCoreState
-
-    func terminate() -> AppCoreState
-
-    func activate() -> AppCoreState
-
-    func transition() -> AppCoreState?
-
-    func initialize() -> AppCoreState
-}
-
-

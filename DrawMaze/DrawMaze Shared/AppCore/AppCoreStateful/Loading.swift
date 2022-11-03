@@ -30,12 +30,18 @@ extension AppCoreStateful {
             self
         }
 
+        func enterBackground() -> AppCoreState {
+            //TODO: When reactivating need to start loading again.
+            controller.save()
+            return AppCoreStateful.Backgrounded(controller: controller)
+        }
+
         private func load() -> AppCoreState {
             let services = ["render", "sound", "http"];
 
             for i in 0..<services.count {
                 if (!Thread.isMainThread) {
-                    sleep(1)
+                    sleep(10)
                 }
                 controller.addService(services[i])
             }

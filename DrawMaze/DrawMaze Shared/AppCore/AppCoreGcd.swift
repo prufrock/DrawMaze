@@ -35,6 +35,13 @@ class AppCoreGcd: AppCore {
     }
 
     /**
+     * There's limited time to get into the background so do it on the main thread.
+     */
+    func enterBackground() {
+        appCore.enterBackground()
+    }
+
+    /**
      * For now `terminate()` is not async since it should happen immediately.
      */
     func terminate() {

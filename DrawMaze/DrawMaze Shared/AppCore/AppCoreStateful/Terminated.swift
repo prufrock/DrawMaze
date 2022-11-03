@@ -20,11 +20,15 @@ extension AppCoreStateful {
             AppCoreStateful.Loading(controller: controller)
         }
 
-        func terminate() -> AppCoreState {
+        func activate() -> AppCoreState {
             self
         }
 
-        func activate() -> AppCoreState {
+        func enterBackground() -> AppCoreState {
+            fatalError("enterBackground() has not been implemented")
+        }
+
+        func terminate() -> AppCoreState {
             self
         }
 
