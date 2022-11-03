@@ -29,6 +29,8 @@ class AppCoreGcd: AppCore {
     }
 
     func activate() {
+        // Start processing work on the queue again
+        queue.activate()
         dispatch {
             self.appCore.activate()
         }
@@ -38,6 +40,13 @@ class AppCoreGcd: AppCore {
      * There's limited time to get into the background so do it on the main thread.
      */
     func enterBackground() {
+        // Stop anything that's running when entering the background
+        if let runningTask = currentTask {
+            print("canceling task")
+            runningTask.cancel()
+        }
+        // stop processing work on the queue
+        queue.suspend()
         appCore.enterBackground()
     }
 
@@ -50,12 +59,18 @@ class AppCoreGcd: AppCore {
             print("canceling task")
             runningTask.cancel()
         }
+        // stop processing work on the queue
+        queue.suspend()
         // Terminate on the main thread because when the app closes it can *close* now.
         appCore.terminate()
     }
 
     func initialize() {
         appCore.initialize()
+    }
+
+    func setWorkItem(workItem: DispatchWorkItem?) {
+        appCore.setWorkItem(workItem: workItem)
     }
 
     /**
@@ -67,8 +82,11 @@ class AppCoreGcd: AppCore {
         currentTask = {
             let work = DispatchWorkItem(block: block)
 
+            self.setWorkItem(workItem: work)
+
             work.notify(queue: queue) {
                 self.currentTask = nil
+                self.setWorkItem(workItem: nil)
             }
 
             queue.async(execute: work)

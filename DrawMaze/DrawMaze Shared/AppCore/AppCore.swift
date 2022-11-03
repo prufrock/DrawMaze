@@ -17,4 +17,11 @@ protocol AppCore {
     func initialize()
 
     func enterBackground()
+
+    /**
+      Looking for a way to cancel a DispatchWorkItem in flight. Pretty much just for Loading
+     right now.
+     - Parameter workItem: Needs to be nullable so it can be reset when not in use.
+     */
+    func setWorkItem(workItem: DispatchWorkItem?)
 }

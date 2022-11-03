@@ -45,6 +45,10 @@ class AppCoreStateful: AppCore {
         transition()
     }
 
+    func setWorkItem(workItem: DispatchWorkItem?) {
+        state.controller.workItem = workItem
+    }
+
     /**
      Transition is a trampoline that prevents threads from re-entering AppCoreStateful and
      has a bonus of keeping the stack shallow.

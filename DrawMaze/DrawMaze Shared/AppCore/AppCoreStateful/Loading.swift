@@ -33,15 +33,30 @@ extension AppCoreStateful {
         func enterBackground() -> AppCoreState {
             //TODO: When reactivating need to start loading again.
             controller.save()
-            return AppCoreStateful.Backgrounded(controller: controller)
+            return AppCoreStateful.BackgroundedNotLoaded(controller: controller)
         }
 
         private func load() -> AppCoreState {
             let services = ["render", "sound", "http"];
 
             for i in 0..<services.count {
+                if (controller.hasService(services[i])) {
+                    print("already loaded \(services[i])")
+                    continue
+                }
+
+                // What if loading services was added to the queue?
+                if let workItem = controller.workItem {
+                    print("checking work item")
+                    if (workItem.isCancelled) {
+                        print("!stop loading!")
+                        controller.workItem = nil
+                        // stop loading services if the work item has been cancelled
+                        break
+                    }
+                }
                 if (!Thread.isMainThread) {
-                    sleep(10)
+                    sleep(5)
                 }
                 controller.addService(services[i])
             }

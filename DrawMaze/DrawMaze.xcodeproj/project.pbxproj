@@ -16,6 +16,8 @@
 		5AF0E6E9DF8CA271B207123B /* AppCoreGcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */; };
 		5AF0E75250FD316CEDDD962A /* AppCoreState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E69A2A7A08B9651E0BBA /* AppCoreState.swift */; };
 		5AF0E7D835C7DA637FBEBBE6 /* AppCoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */; };
+		5AF0E8C98F7AA1D27F97D0CE /* BackgroundedNotLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDCADCBBB9E21C03FF22 /* BackgroundedNotLoaded.swift */; };
+		5AF0E8EAFE4B37ACD9D711D4 /* BackgroundedNotLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDCADCBBB9E21C03FF22 /* BackgroundedNotLoaded.swift */; };
 		5AF0E9B474EE41674124A912 /* NeverLoaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E75882DEABA00A41921E /* NeverLoaded.swift */; };
 		5AF0E9D75DECD94C65F3296B /* AppCoreGcd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7CB288218B3139883B3 /* AppCoreGcd.swift */; };
 		5AF0EB97C78EF5153F6D53BB /* Backgrounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E889BEEA590C4DA0A1D7 /* Backgrounded.swift */; };
@@ -88,6 +90,7 @@
 		5AF0EBED0D47FE6146A2953C /* AppCoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreController.swift; sourceTree = "<group>"; };
 		5AF0EBFF91DF8C3737C71732 /* AppCoreStateful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreStateful.swift; sourceTree = "<group>"; };
 		5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Terminated.swift; sourceTree = "<group>"; };
+		5AF0EDCADCBBB9E21C03FF22 /* BackgroundedNotLoaded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundedNotLoaded.swift; sourceTree = "<group>"; };
 		632C34B629078C280050F354 /* DrawMaze macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34B929078C280050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C34BB29078C280050F354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +174,7 @@
 				5AF0ED6A2E114F0227BC0A98 /* Terminated.swift */,
 				5AF0E889BEEA590C4DA0A1D7 /* Backgrounded.swift */,
 				5AF0E69A2A7A08B9651E0BBA /* AppCoreState.swift */,
+				5AF0EDCADCBBB9E21C03FF22 /* BackgroundedNotLoaded.swift */,
 			);
 			path = AppCoreStateful;
 			sourceTree = "<group>";
@@ -523,6 +527,7 @@
 				5AF0EFEEF8A364415C79B192 /* Terminated.swift in Sources */,
 				5AF0EB97C78EF5153F6D53BB /* Backgrounded.swift in Sources */,
 				5AF0E00D11F5EC244AF8A6F0 /* AppCoreState.swift in Sources */,
+				5AF0E8C98F7AA1D27F97D0CE /* BackgroundedNotLoaded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +566,7 @@
 				5AF0EF674628D88378C88D55 /* Terminated.swift in Sources */,
 				5AF0E456CD4CFD47F739667C /* Backgrounded.swift in Sources */,
 				5AF0E75250FD316CEDDD962A /* AppCoreState.swift in Sources */,
+				5AF0E8EAFE4B37ACD9D711D4 /* BackgroundedNotLoaded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
