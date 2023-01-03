@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
+		5AF0E6C4C8C316458A49FB45 /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
+		5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
+		5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
+		5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
+		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
 		632C34BC29078C280050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34BB29078C280050F354 /* ViewController.swift */; };
 		632C34BE29078C290050F354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 632C34BD29078C290050F354 /* Assets.xcassets */; };
@@ -58,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
+		5AF0EE29190E895016D01D73 /* AppCoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreContext.swift; sourceTree = "<group>"; };
+		5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
 		632C34B629078C280050F354 /* DrawMaze macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34B929078C280050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C34BB29078C280050F354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +140,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AF0E0ABBD30D9150664443F /* AppCore */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */,
+				5AF0EE29190E895016D01D73 /* AppCoreContext.swift */,
+				5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */,
+			);
+			path = AppCore;
+			sourceTree = "<group>";
+		};
 		632C34AB29078BE50050F354 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +241,7 @@
 		632C351629078D0B0050F354 /* DrawMaze Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5AF0E0ABBD30D9150664443F /* AppCore */,
 			);
 			path = "DrawMaze Shared";
 			sourceTree = "<group>";
@@ -457,6 +477,9 @@
 			files = (
 				632C34BC29078C280050F354 /* ViewController.swift in Sources */,
 				632C34BA29078C280050F354 /* AppDelegate.swift in Sources */,
+				5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */,
+				5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */,
+				5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +508,9 @@
 				632C34ED29078CE90050F354 /* ViewController.swift in Sources */,
 				632C34E929078CE90050F354 /* AppDelegate.swift in Sources */,
 				632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */,
+				5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */,
+				5AF0E6C4C8C316458A49FB45 /* AppCoreContext.swift in Sources */,
+				5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

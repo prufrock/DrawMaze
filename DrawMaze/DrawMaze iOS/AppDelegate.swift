@@ -9,9 +9,12 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var core: AppCore?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Insert code here to initialize your application
+        let config = AppCoreConfig()
+        core = AppCore(config)
         return true
     }
 
