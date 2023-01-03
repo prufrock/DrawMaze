@@ -277,9 +277,17 @@
 		632C351A29078E700050F354 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				632C351B29078EAB0050F354 /* AppCoreTests.swift */,
+				6370FB972964E64700D8CB35 /* AppCore */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		6370FB972964E64700D8CB35 /* AppCore */ = {
+			isa = PBXGroup;
+			children = (
+				632C351B29078EAB0050F354 /* AppCoreTests.swift */,
+			);
+			path = AppCore;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

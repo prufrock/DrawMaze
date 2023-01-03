@@ -14,6 +14,12 @@ import Foundation
 public class AppCore {
     private var context: AppCoreContext
 
+    public var config: AppCoreConfig {
+        get {
+            context.config
+        }
+    }
+
     public init(_ config: AppCoreConfig) {
         context = AppCoreContext(config: config)
     }
