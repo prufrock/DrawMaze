@@ -5,14 +5,25 @@
 import Foundation
 
 /**
- The AppCore manages the state of the application.
+ The AppCore serves the global state for the application to avoid singletons(if possible):
+ - manages the state of the application
+ - provides access to services
 
  - Skipping the state machine for now.
  */
-class AppCore {
+public class AppCore {
     private var context: AppCoreContext
 
-    init(_ config: AppCoreConfig) {
+    public init(_ config: AppCoreConfig) {
         context = AppCoreContext(config: config)
     }
+
+    /**
+     I'm hoping I can provide a sync and async facade over the commands services want to execute.
+     */
+    public func sync(_ command: ServiceCommand) {
+        context.sync(command)
+    }
 }
+
+public protocol ServiceCommand {}

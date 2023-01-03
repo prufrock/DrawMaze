@@ -13,7 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Insert code here to initialize your application
-        let config = AppCoreConfig()
+        let config = AppCoreConfig(
+            services: AppCoreConfig.Services(
+                renderService: AppCoreConfig.Services.RenderService(
+                    clearColor: (0.3, 0.0, 0.3, 1.0)
+                )
+            )
+        )
         core = AppCore(config)
         return true
     }

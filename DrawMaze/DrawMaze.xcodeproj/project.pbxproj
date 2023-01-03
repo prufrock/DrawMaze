@@ -8,9 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
+		5AF0E320D78052928C5E0C48 /* RenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0148075573804D82175 /* RenderService.swift */; };
+		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
 		5AF0E6C4C8C316458A49FB45 /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
+		5AF0E7DC4FB39F532F4462E6 /* RenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0148075573804D82175 /* RenderService.swift */; };
+		5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
+		5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
 		5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
 		5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
+		5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
 		5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
@@ -22,7 +28,7 @@
 		632C34D829078C290050F354 /* DrawMaze_macOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34D729078C290050F354 /* DrawMaze_macOSUITestsLaunchTests.swift */; };
 		632C34E929078CE90050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34E829078CE90050F354 /* AppDelegate.swift */; };
 		632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34EA29078CE90050F354 /* SceneDelegate.swift */; };
-		632C34ED29078CE90050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34EC29078CE90050F354 /* ViewController.swift */; };
+		632C34ED29078CE90050F354 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34EC29078CE90050F354 /* GameViewController.swift */; };
 		632C34F029078CE90050F354 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632C34EE29078CE90050F354 /* Main.storyboard */; };
 		632C34F229078CEA0050F354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 632C34F129078CEA0050F354 /* Assets.xcassets */; };
 		632C34F529078CEA0050F354 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 632C34F329078CEA0050F354 /* LaunchScreen.storyboard */; };
@@ -64,9 +70,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5AF0E0148075573804D82175 /* RenderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderService.swift; sourceTree = "<group>"; };
+		5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDRRenderer.swift; sourceTree = "<group>"; };
 		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
 		5AF0EE29190E895016D01D73 /* AppCoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreContext.swift; sourceTree = "<group>"; };
 		5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
+		5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreServiceFactory.swift; sourceTree = "<group>"; };
 		632C34B629078C280050F354 /* DrawMaze macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34B929078C280050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C34BB29078C280050F354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +90,7 @@
 		632C34E629078CE90050F354 /* DrawMaze iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34E829078CE90050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C34EA29078CE90050F354 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		632C34EC29078CE90050F354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		632C34EC29078CE90050F354 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		632C34EF29078CE90050F354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		632C34F129078CEA0050F354 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		632C34F429078CEA0050F354 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -146,8 +155,25 @@
 				5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */,
 				5AF0EE29190E895016D01D73 /* AppCoreContext.swift */,
 				5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */,
+				5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */,
 			);
 			path = AppCore;
+			sourceTree = "<group>";
+		};
+		5AF0E8368A8C924178230ABF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0E0148075573804D82175 /* RenderService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5AF0EF95555E4C553B65E146 /* Render */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */,
+			);
+			path = Render;
 			sourceTree = "<group>";
 		};
 		632C34AB29078BE50050F354 = {
@@ -212,7 +238,7 @@
 			children = (
 				632C34E829078CE90050F354 /* AppDelegate.swift */,
 				632C34EA29078CE90050F354 /* SceneDelegate.swift */,
-				632C34EC29078CE90050F354 /* ViewController.swift */,
+				632C34EC29078CE90050F354 /* GameViewController.swift */,
 				632C34EE29078CE90050F354 /* Main.storyboard */,
 				632C34F129078CEA0050F354 /* Assets.xcassets */,
 				632C34F329078CEA0050F354 /* LaunchScreen.storyboard */,
@@ -242,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				5AF0E0ABBD30D9150664443F /* AppCore */,
+				5AF0EF95555E4C553B65E146 /* Render */,
+				5AF0E8368A8C924178230ABF /* Services */,
 			);
 			path = "DrawMaze Shared";
 			sourceTree = "<group>";
@@ -480,6 +508,9 @@
 				5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */,
 				5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */,
 				5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */,
+				5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */,
+				5AF0E320D78052928C5E0C48 /* RenderService.swift in Sources */,
+				5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,12 +536,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				632C34ED29078CE90050F354 /* ViewController.swift in Sources */,
+				632C34ED29078CE90050F354 /* GameViewController.swift in Sources */,
 				632C34E929078CE90050F354 /* AppDelegate.swift in Sources */,
 				632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */,
 				5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */,
 				5AF0E6C4C8C316458A49FB45 /* AppCoreContext.swift in Sources */,
 				5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */,
+				5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */,
+				5AF0E7DC4FB39F532F4462E6 /* RenderService.swift in Sources */,
+				5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

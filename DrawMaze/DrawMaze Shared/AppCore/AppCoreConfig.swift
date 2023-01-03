@@ -4,5 +4,15 @@
 
 import Foundation
 
-class AppCoreConfig {
+public struct AppCoreConfig {
+
+    public let services: Services
+
+    public struct Services {
+        public let renderService: AppCoreConfig.Services.RenderService
+
+        public struct RenderService {
+            public let clearColor: (Double, Double, Double, Double)
+        }
+    }
 }
