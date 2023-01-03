@@ -28,6 +28,10 @@ extension AppCoreStateful {
             fatalError("enterBackground() has not been implemented")
         }
 
+        func enterForeground() -> AppCoreState {
+            fatalError("enterForeground() not implemented")
+        }
+
         func terminate() -> AppCoreState {
             self
         }

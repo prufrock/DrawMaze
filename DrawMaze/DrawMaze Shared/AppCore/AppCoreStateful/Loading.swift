@@ -36,6 +36,10 @@ extension AppCoreStateful {
             return AppCoreStateful.BackgroundedNotLoaded(controller: controller)
         }
 
+        func enterForeground() -> AppCoreState {
+            self
+        }
+
         private func load() -> AppCoreState {
             let services = ["render", "sound", "http"];
 
@@ -47,18 +51,21 @@ extension AppCoreStateful {
 
                 // What if loading services was added to the queue?
                 if let workItem = controller.workItem {
-                    print("checking work item")
                     if (workItem.isCancelled) {
                         print("!stop loading!")
                         controller.workItem = nil
                         // stop loading services if the work item has been cancelled
-                        break
+                        return AppCoreStateful.NoChange(controller: controller)
                     }
                 }
                 if (!Thread.isMainThread) {
                     sleep(5)
                 }
                 controller.addService(services[i])
+            }
+
+            if controller.serviceCount != services.count {
+                return AppCoreStateful.NoChange(controller: controller)
             }
             return AppCoreStateful.Active(controller: controller)
         }

@@ -17,6 +17,11 @@ extension AppCoreStateful {
             fatalError("enterBackground() has not been implemented")
         }
 
+        func enterForeground() -> AppCoreState {
+            _ = controller.restore()
+            return  AppCoreStateful.Active(controller: controller)
+        }
+
         func terminate() -> AppCoreState {
             self
         }

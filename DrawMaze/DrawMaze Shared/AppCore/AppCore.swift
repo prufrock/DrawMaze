@@ -24,4 +24,6 @@ protocol AppCore {
      - Parameter workItem: Needs to be nullable so it can be reset when not in use.
      */
     func setWorkItem(workItem: DispatchWorkItem?)
+
+    func enterForeground()
 }

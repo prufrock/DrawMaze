@@ -30,7 +30,7 @@ class AppCoreGcd: AppCore {
 
     func activate() {
         // Start processing work on the queue again
-        queue.activate()
+//        queue.activate()
         dispatch {
             self.appCore.activate()
         }
@@ -46,8 +46,16 @@ class AppCoreGcd: AppCore {
             runningTask.cancel()
         }
         // stop processing work on the queue
-        queue.suspend()
+//        queue.suspend()
         appCore.enterBackground()
+    }
+
+    func enterForeground() {
+        // start processing work on the queue again
+//        queue.activate()
+        dispatch {
+            self.appCore.enterForeground()
+        }
     }
 
     /**
@@ -60,7 +68,7 @@ class AppCoreGcd: AppCore {
             runningTask.cancel()
         }
         // stop processing work on the queue
-        queue.suspend()
+//        queue.suspend()
         // Terminate on the main thread because when the app closes it can *close* now.
         appCore.terminate()
     }

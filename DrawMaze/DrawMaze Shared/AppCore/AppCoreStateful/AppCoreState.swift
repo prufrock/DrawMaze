@@ -5,6 +5,7 @@
 import Foundation
 
 protocol AppCoreState {
+    // TODO: just use the type
     var name: String { get }
     var controller: AppCoreController { get }
 
@@ -19,4 +20,6 @@ protocol AppCoreState {
     func initialize() -> AppCoreState
 
     func enterBackground() -> AppCoreState
+
+    func enterForeground() -> AppCoreState
 }

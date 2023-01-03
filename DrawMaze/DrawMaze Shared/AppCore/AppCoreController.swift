@@ -13,6 +13,10 @@ class AppCoreController {
 
     let filename: URL
 
+    var serviceCount: Int {
+        get { serviceList.count }
+    }
+
     init() {
         // find a better home for this
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

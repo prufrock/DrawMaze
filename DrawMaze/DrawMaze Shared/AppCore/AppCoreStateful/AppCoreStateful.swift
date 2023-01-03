@@ -22,27 +22,27 @@ class AppCoreStateful: AppCore {
     }
 
     func launch() {
-        state = state.launch()
-        transition()
+        transition(state.launch())
     }
 
     func activate() {
-        state = state.activate()
-        transition()
+        transition(state.activate())
     }
 
     func enterBackground() {
-        state = state.enterBackground()
-        transition()
+        transition(state.enterBackground())
+    }
+
+    func enterForeground() {
+        transition(state.enterForeground())
     }
 
     func terminate() {
-        state = state.terminate()
+        transition(state.terminate())
     }
 
     func initialize() {
-        state = state.initialize()
-        transition()
+        transition(state.initialize())
     }
 
     func setWorkItem(workItem: DispatchWorkItem?) {
@@ -53,11 +53,17 @@ class AppCoreStateful: AppCore {
      Transition is a trampoline that prevents threads from re-entering AppCoreStateful and
      has a bonus of keeping the stack shallow.
      */
-    private func transition() {
+    private func transition(_ newState: AppCoreState) {
+        // Don't change states or transition if the new state is the same as the old.
+        guard newState.name == "NoChange" || state.name != newState.name else {
+            return
+        }
+        state = newState
         var nextState: AppCoreState? = nil
         repeat {
             nextState = state.transition()
-            if nextState != nil {
+            // nil may be better than no change
+            if nextState != nil && nextState?.name != "NoChange" {
                 state = nextState!
             }
         } while (nextState != nil)

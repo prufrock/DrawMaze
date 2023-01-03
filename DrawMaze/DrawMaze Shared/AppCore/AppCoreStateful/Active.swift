@@ -29,6 +29,10 @@ extension AppCoreStateful {
             return AppCoreStateful.Backgrounded(controller: controller)
         }
 
+        func enterForeground() -> AppCoreState {
+            self
+        }
+
         func transition() -> AppCoreState? {
             // start the party
             print("activated!")
