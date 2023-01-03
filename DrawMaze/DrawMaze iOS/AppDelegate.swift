@@ -9,21 +9,15 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    var core: AppCore?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Insert code here to initialize your application
-        let coreCore = AppCoreStateful(state: AppCoreStateful.NeverLoaded(controller: AppCoreController()))
-        core = AppCoreGcd(appCore: coreCore, queue: DispatchQueue(label: "com.dkanen.background"))
-        core?.initialize()
-        core?.launch()
         return true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Insert code here to tear down your application
         print("applicationWillTerminate")
-        core?.terminate()
     }
 
     func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
