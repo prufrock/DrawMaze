@@ -8,7 +8,7 @@ import MetalKit
 public class RenderService {
     private let config: AppCoreConfig.Services.RenderService
 
-    init(_ config: AppCoreConfig.Services.RenderService) {
+    public init(_ config: AppCoreConfig.Services.RenderService) {
         self.config = config
     }
 

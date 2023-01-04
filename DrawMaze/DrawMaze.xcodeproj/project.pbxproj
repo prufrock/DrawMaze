@@ -36,6 +36,13 @@
 		632C350A29078CEB0050F354 /* DrawMaze_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */; };
 		632C350C29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */; };
 		632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351B29078EAB0050F354 /* AppCoreTests.swift */; };
+		634DC4BB296530A4004083ED /* FloatExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BA296530A4004083ED /* FloatExts.swift */; };
+		634DC4BC296530A4004083ED /* FloatExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BA296530A4004083ED /* FloatExts.swift */; };
+		634DC4BE2965315E004083ED /* Float2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BD2965315E004083ED /* Float2Exts.swift */; };
+		634DC4BF2965315E004083ED /* Float2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BD2965315E004083ED /* Float2Exts.swift */; };
+		634DC4C12965323A004083ED /* Float3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4C02965323A004083ED /* Float3Exts.swift */; };
+		634DC4C22965323A004083ED /* Float3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4C02965323A004083ED /* Float3Exts.swift */; };
+		637607A6296532FD0078DF20 /* FloatExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A5296532FD0078DF20 /* FloatExtTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +108,10 @@
 		632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITests.swift; sourceTree = "<group>"; };
 		632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		632C351B29078EAB0050F354 /* AppCoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreTests.swift; sourceTree = "<group>"; };
+		634DC4BA296530A4004083ED /* FloatExts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExts.swift; sourceTree = "<group>"; };
+		634DC4BD2965315E004083ED /* Float2Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2Exts.swift; sourceTree = "<group>"; };
+		634DC4C02965323A004083ED /* Float3Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3Exts.swift; sourceTree = "<group>"; };
+		637607A5296532FD0078DF20 /* FloatExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +278,7 @@
 		632C351629078D0B0050F354 /* DrawMaze Shared */ = {
 			isa = PBXGroup;
 			children = (
+				634DC4B929653080004083ED /* Math */,
 				5AF0E0ABBD30D9150664443F /* AppCore */,
 				5AF0EF95555E4C553B65E146 /* Render */,
 				5AF0E8368A8C924178230ABF /* Services */,
@@ -277,9 +289,20 @@
 		632C351A29078E700050F354 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				637607A4296532D40078DF20 /* Math */,
 				6370FB972964E64700D8CB35 /* AppCore */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		634DC4B929653080004083ED /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				634DC4BA296530A4004083ED /* FloatExts.swift */,
+				634DC4BD2965315E004083ED /* Float2Exts.swift */,
+				634DC4C02965323A004083ED /* Float3Exts.swift */,
+			);
+			path = Math;
 			sourceTree = "<group>";
 		};
 		6370FB972964E64700D8CB35 /* AppCore */ = {
@@ -288,6 +311,14 @@
 				632C351B29078EAB0050F354 /* AppCoreTests.swift */,
 			);
 			path = AppCore;
+			sourceTree = "<group>";
+		};
+		637607A4296532D40078DF20 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				637607A5296532FD0078DF20 /* FloatExtTests.swift */,
+			);
+			path = Math;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -407,7 +438,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					632C34B529078C280050F354 = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -516,8 +547,11 @@
 				5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */,
 				5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */,
 				5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */,
+				634DC4BE2965315E004083ED /* Float2Exts.swift in Sources */,
 				5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */,
 				5AF0E320D78052928C5E0C48 /* RenderService.swift in Sources */,
+				634DC4C12965323A004083ED /* Float3Exts.swift in Sources */,
+				634DC4BB296530A4004083ED /* FloatExts.swift in Sources */,
 				5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637607A6296532FD0078DF20 /* FloatExtTests.swift in Sources */,
 				632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */,
 				632C34CC29078C290050F354 /* DrawMaze_macOSTests.swift in Sources */,
 			);
@@ -544,12 +579,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634DC4BC296530A4004083ED /* FloatExts.swift in Sources */,
 				632C34ED29078CE90050F354 /* GameViewController.swift in Sources */,
 				632C34E929078CE90050F354 /* AppDelegate.swift in Sources */,
+				634DC4BF2965315E004083ED /* Float2Exts.swift in Sources */,
 				632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */,
 				5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */,
 				5AF0E6C4C8C316458A49FB45 /* AppCoreContext.swift in Sources */,
 				5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */,
+				634DC4C22965323A004083ED /* Float3Exts.swift in Sources */,
 				5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */,
 				5AF0E7DC4FB39F532F4462E6 /* RenderService.swift in Sources */,
 				5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */,
@@ -629,12 +667,68 @@
 		632C34B029078BE50050F354 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
 		632C34B129078BE50050F354 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 			};
 			name = Release;
 		};
@@ -673,10 +767,13 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "DrawMaze macOS/DrawMaze_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = VUGNZY6N5J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -754,10 +851,13 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = "DrawMaze macOS/DrawMaze_macOS.entitlements";
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VUGNZY6N5J;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -830,6 +930,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = VUGNZY6N5J;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -902,6 +1003,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VUGNZY6N5J;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -966,6 +1068,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = VUGNZY6N5J;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1037,6 +1140,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = VUGNZY6N5J;
 				ENABLE_NS_ASSERTIONS = NO;

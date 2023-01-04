@@ -28,8 +28,8 @@ extension GameViewController {
         metalView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         metalView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
         metalView.contentMode = .scaleAspectFit
-        metalView.backgroundColor = .blue
-        metalView.delegate = self // implements MTKViewDelegate in GameViewController+MTKViewDelegate.swift
+        metalView.backgroundColor = .black
+        metalView.delegate = self
     }
 }
 
