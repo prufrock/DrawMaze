@@ -7,8 +7,8 @@
 
 import Foundation
 
-extension Float {
-    func toRadians() -> Float {
-        self * (.pi / 180)
+extension Double {
+    var f: Float {
+        Float(self)
     }
 }
