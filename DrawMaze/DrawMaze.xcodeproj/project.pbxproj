@@ -35,14 +35,14 @@
 		632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34FF29078CEA0050F354 /* DrawMaze_iOSTests.swift */; };
 		632C350A29078CEB0050F354 /* DrawMaze_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */; };
 		632C350C29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */; };
-		632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351B29078EAB0050F354 /* AppCoreTests.swift */; };
 		634DC4BB296530A4004083ED /* FloatExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BA296530A4004083ED /* FloatExts.swift */; };
 		634DC4BC296530A4004083ED /* FloatExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BA296530A4004083ED /* FloatExts.swift */; };
 		634DC4BE2965315E004083ED /* Float2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BD2965315E004083ED /* Float2Exts.swift */; };
 		634DC4BF2965315E004083ED /* Float2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BD2965315E004083ED /* Float2Exts.swift */; };
 		634DC4C12965323A004083ED /* Float3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4C02965323A004083ED /* Float3Exts.swift */; };
 		634DC4C22965323A004083ED /* Float3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4C02965323A004083ED /* Float3Exts.swift */; };
-		637607A6296532FD0078DF20 /* FloatExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A5296532FD0078DF20 /* FloatExtTests.swift */; };
+		635E89E429667976007F1ABE /* FloatExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A5296532FD0078DF20 /* FloatExtTests.swift */; };
+		635E89E52966797D007F1ABE /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351B29078EAB0050F354 /* AppCoreTests.swift */; };
 		637607A8296536990078DF20 /* DoubleExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A7296536990078DF20 /* DoubleExts.swift */; };
 		637607A9296536990078DF20 /* DoubleExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A7296536990078DF20 /* DoubleExts.swift */; };
 		637607AB296536C80078DF20 /* IntExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607AA296536C80078DF20 /* IntExts.swift */; };
@@ -235,7 +235,6 @@
 		632C34CA29078C290050F354 /* DrawMaze macOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				632C351A29078E700050F354 /* Shared */,
 				632C34CB29078C290050F354 /* DrawMaze_macOSTests.swift */,
 			);
 			path = "DrawMaze macOSTests";
@@ -267,6 +266,7 @@
 		632C34FE29078CEA0050F354 /* DrawMaze iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				632C351A29078E700050F354 /* Shared */,
 				632C34FF29078CEA0050F354 /* DrawMaze_iOSTests.swift */,
 			);
 			path = "DrawMaze iOSTests";
@@ -298,7 +298,8 @@
 				637607A4296532D40078DF20 /* Math */,
 				6370FB972964E64700D8CB35 /* AppCore */,
 			);
-			path = Shared;
+			name = Shared;
+			path = "../DrawMaze macOSTests/Shared";
 			sourceTree = "<group>";
 		};
 		634DC4B929653080004083ED /* Math */ = {
@@ -570,8 +571,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637607A6296532FD0078DF20 /* FloatExtTests.swift in Sources */,
-				632C351C29078EAB0050F354 /* AppCoreTests.swift in Sources */,
 				632C34CC29078C290050F354 /* DrawMaze_macOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,7 +609,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				635E89E429667976007F1ABE /* FloatExtTests.swift in Sources */,
 				632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */,
+				635E89E52966797D007F1ABE /* AppCoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

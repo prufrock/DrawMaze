@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import DrawMaze_macOS
+@testable import DrawMaze_iOS
 
 final class AppCoreTests: XCTestCase {
 
