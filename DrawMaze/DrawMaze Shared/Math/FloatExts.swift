@@ -8,6 +8,12 @@
 import Foundation
 
 extension Float {
+    func roundDown() -> Int {
+        var value = self
+        value.round(.down)
+        return Int(value)
+    }
+
     func toRadians() -> Float {
         self * (.pi / 180)
     }

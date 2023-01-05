@@ -8,16 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
+		5AF0E2C084E35BF56CD69009 /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
 		5AF0E320D78052928C5E0C48 /* RenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0148075573804D82175 /* RenderService.swift */; };
+		5AF0E3277FD90C3C0EFCCAE9 /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
 		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
+		5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
 		5AF0E6C4C8C316458A49FB45 /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
 		5AF0E7DC4FB39F532F4462E6 /* RenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0148075573804D82175 /* RenderService.swift */; };
 		5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
+		5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
+		5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
+		5AF0EB87B0584495A996C48A /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
 		5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
 		5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
 		5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
+		5AF0EE8B51FB093F2FB5F2A3 /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
 		5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
 		5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
+		5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
 		632C34BC29078C280050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34BB29078C280050F354 /* ViewController.swift */; };
@@ -82,7 +90,11 @@
 
 /* Begin PBXFileReference section */
 		5AF0E0148075573804D82175 /* RenderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderService.swift; sourceTree = "<group>"; };
+		5AF0E07D7C69584B1216D62E /* Float4Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4Exts.swift; sourceTree = "<group>"; };
 		5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDRRenderer.swift; sourceTree = "<group>"; };
+		5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2x2Exts.swift; sourceTree = "<group>"; };
+		5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4x4Exts.swift; sourceTree = "<group>"; };
+		5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3x3Exts.swift; sourceTree = "<group>"; };
 		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
 		5AF0EE29190E895016D01D73 /* AppCoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreContext.swift; sourceTree = "<group>"; };
 		5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
@@ -310,6 +322,10 @@
 				634DC4BD2965315E004083ED /* Float2Exts.swift */,
 				634DC4C02965323A004083ED /* Float3Exts.swift */,
 				637607AA296536C80078DF20 /* IntExts.swift */,
+				5AF0E07D7C69584B1216D62E /* Float4Exts.swift */,
+				5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */,
+				5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */,
+				5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -564,6 +580,10 @@
 				634DC4C12965323A004083ED /* Float3Exts.swift in Sources */,
 				634DC4BB296530A4004083ED /* FloatExts.swift in Sources */,
 				5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */,
+				5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */,
+				5AF0E3277FD90C3C0EFCCAE9 /* Float4x4Exts.swift in Sources */,
+				5AF0E2C084E35BF56CD69009 /* Float3x3Exts.swift in Sources */,
+				5AF0EE8B51FB093F2FB5F2A3 /* Float2x2Exts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +622,10 @@
 				5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */,
 				5AF0E7DC4FB39F532F4462E6 /* RenderService.swift in Sources */,
 				5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */,
+				5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */,
+				5AF0EB87B0584495A996C48A /* Float4x4Exts.swift in Sources */,
+				5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */,
+				5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
