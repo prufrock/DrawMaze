@@ -21,4 +21,6 @@ public class RenderService {
 
 public struct RenderCommand: ServiceCommand {
     let metalView: MTKView
+    let screenDimensions: ScreenDimensions
+    let game: Game
 }

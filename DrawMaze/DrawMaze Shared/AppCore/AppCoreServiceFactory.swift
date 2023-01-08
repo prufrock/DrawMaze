@@ -17,4 +17,8 @@ class AppCoreServiceFactory {
     public func createRenderService() -> RenderService {
         RenderService(config.renderService)
     }
+
+    public func createFileService() -> FileService {
+        FileService(config.fileService)
+    }
 }

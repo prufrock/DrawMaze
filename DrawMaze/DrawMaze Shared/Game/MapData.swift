@@ -6,7 +6,5 @@ import Foundation
 
 struct MapData: Decodable {
     let tiles: [Tile]
-    let things: [Thing]?
-    let hud: [Tile]
     let width: Int
 }
