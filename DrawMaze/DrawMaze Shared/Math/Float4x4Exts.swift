@@ -30,8 +30,8 @@ public extension Float4x4 {
         )
     }
 
-    static func scale(x: Float, y: Float, z: Float) -> Self {
-        Self(
+    static func scale(x: Float, y: Float, z: Float) -> Float4x4 {
+        Float4x4(
             [x, 0, 0, 0],
             [0, y, 0, 0],
             [0, 0, z, 0],
@@ -78,7 +78,7 @@ public extension Float4x4 {
         )
     }
 
-    static func perspectiveProjection(fov: Float, aspect: Float, nearPlane: Float, farPlane: Float) -> Self {
+    static func perspectiveProjection(fov: Float, aspect: Float, nearPlane: Float, farPlane: Float) -> Float4x4 {
         let zoom = 1 / tan(fov / 2) // objects get smaller as fov increases
 
         // Figure out the individual values
@@ -94,7 +94,7 @@ public extension Float4x4 {
         let W = Float4(0, 0, w, 0)
 
         // Create the projection from the columns
-        return Self(X, Y, Z, W)
+        return Float4x4(X, Y, Z, W)
     }
 
     func upperLeft() -> Float3x3 {

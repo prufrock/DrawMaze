@@ -73,6 +73,8 @@
 		632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34FF29078CEA0050F354 /* DrawMaze_iOSTests.swift */; };
 		632C350A29078CEB0050F354 /* DrawMaze_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */; };
 		632C350C29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */; };
+		634673E3296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634673E2296D1EDE00A77CFB /* ScopeFunctions.swift */; };
+		634673E4296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634673E2296D1EDE00A77CFB /* ScopeFunctions.swift */; };
 		634DC4BB296530A4004083ED /* FloatExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BA296530A4004083ED /* FloatExts.swift */; };
 		634DC4BC296530A4004083ED /* FloatExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BA296530A4004083ED /* FloatExts.swift */; };
 		634DC4BE2965315E004083ED /* Float2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BD2965315E004083ED /* Float2Exts.swift */; };
@@ -85,6 +87,8 @@
 		637607A9296536990078DF20 /* DoubleExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A7296536990078DF20 /* DoubleExts.swift */; };
 		637607AB296536C80078DF20 /* IntExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607AA296536C80078DF20 /* IntExts.swift */; };
 		637607AC296536C80078DF20 /* IntExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607AA296536C80078DF20 /* IntExts.swift */; };
+		63DDDA90296D192D0013605A /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63DDDA8F296D192D0013605A /* Shaders.metal */; };
+		63DDDA91296D192D0013605A /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 63DDDA8F296D192D0013605A /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,12 +173,14 @@
 		632C350929078CEB0050F354 /* DrawMaze_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITests.swift; sourceTree = "<group>"; };
 		632C350B29078CEB0050F354 /* DrawMaze_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawMaze_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		632C351B29078EAB0050F354 /* AppCoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreTests.swift; sourceTree = "<group>"; };
+		634673E2296D1EDE00A77CFB /* ScopeFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScopeFunctions.swift; sourceTree = "<group>"; };
 		634DC4BA296530A4004083ED /* FloatExts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExts.swift; sourceTree = "<group>"; };
 		634DC4BD2965315E004083ED /* Float2Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2Exts.swift; sourceTree = "<group>"; };
 		634DC4C02965323A004083ED /* Float3Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3Exts.swift; sourceTree = "<group>"; };
 		637607A5296532FD0078DF20 /* FloatExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtTests.swift; sourceTree = "<group>"; };
 		637607A7296536990078DF20 /* DoubleExts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExts.swift; sourceTree = "<group>"; };
 		637607AA296536C80078DF20 /* IntExts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExts.swift; sourceTree = "<group>"; };
+		63DDDA8F296D192D0013605A /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,12 +376,14 @@
 		632C351629078D0B0050F354 /* DrawMaze Shared */ = {
 			isa = PBXGroup;
 			children = (
-				634DC4B929653080004083ED /* Math */,
+				5AF0E901810EBDBC9055998B /* levels.json */,
 				5AF0E0ABBD30D9150664443F /* AppCore */,
+				5AF0E2CE0ED4664F7EC4723C /* Game */,
+				634DC4B929653080004083ED /* Math */,
 				5AF0EF95555E4C553B65E146 /* Render */,
 				5AF0E8368A8C924178230ABF /* Services */,
-				5AF0E2CE0ED4664F7EC4723C /* Game */,
-				5AF0E901810EBDBC9055998B /* levels.json */,
+				63DDDA8E296D18C30013605A /* Shaders */,
+				634673E2296D1EDE00A77CFB /* ScopeFunctions.swift */,
 			);
 			path = "DrawMaze Shared";
 			sourceTree = "<group>";
@@ -420,6 +428,14 @@
 				637607A5296532FD0078DF20 /* FloatExtTests.swift */,
 			);
 			path = Math;
+			sourceTree = "<group>";
+		};
+		63DDDA8E296D18C30013605A /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				63DDDA8F296D192D0013605A /* Shaders.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -671,10 +687,12 @@
 				5AF0E3DA30273901735F1A92 /* Tile.swift in Sources */,
 				5AF0EFFD83C29E9AE7FA126A /* TileMap.swift in Sources */,
 				5AF0ED006E8E93F6C94590B6 /* World.swift in Sources */,
+				634673E3296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */,
 				5AF0E2DB089CC406A1DDCE49 /* FileService.swift in Sources */,
 				5AF0E348EE50019AFD4C3976 /* Actor.swift in Sources */,
 				5AF0E2021FFF1A23F257CE8E /* Model.swift in Sources */,
 				5AF0E8AF11535468DC073109 /* Wall.swift in Sources */,
+				63DDDA90296D192D0013605A /* Shaders.metal in Sources */,
 				5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +722,7 @@
 				632C34ED29078CE90050F354 /* GameViewController.swift in Sources */,
 				632C34E929078CE90050F354 /* AppDelegate.swift in Sources */,
 				634DC4BF2965315E004083ED /* Float2Exts.swift in Sources */,
+				63DDDA91296D192D0013605A /* Shaders.metal in Sources */,
 				632C34EB29078CE90050F354 /* SceneDelegate.swift in Sources */,
 				637607A9296536990078DF20 /* DoubleExts.swift in Sources */,
 				5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */,
@@ -729,6 +748,7 @@
 				5AF0E6EE0F387AAFD9795719 /* World.swift in Sources */,
 				5AF0E7BA6C30A760EA6B1C93 /* FileService.swift in Sources */,
 				5AF0E65AAF3BC27461677878 /* Actor.swift in Sources */,
+				634673E4296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */,
 				5AF0E41E83CC02786B007E55 /* Model.swift in Sources */,
 				5AF0EC85D570462A6D8C880B /* Wall.swift in Sources */,
 				5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */,

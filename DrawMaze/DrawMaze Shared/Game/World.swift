@@ -19,6 +19,10 @@ struct World {
 
     var walls: [Wall]
 
+    var camera: Camera?
+    var overHeadCamera: Camera?
+    var floatingCamera: Camera?
+
     init(map:  TileMap) {
         self.map = map
         walls = []
@@ -29,6 +33,10 @@ struct World {
      Set the world back to how it all began...
      */
     private mutating func reset() {
+        overHeadCamera = CameraOverhead(position: Float2(0.0, 0.0), model: .square)
+        floatingCamera = CameraFloating(position: Float2(0.0, 0.0), model: .square)
+        camera = overHeadCamera
+
         for y in 0..<map.height {
             for x in 0..<map.width {
                 let position = Float2(x: Float(x) + 0.5, y: Float(y) + 0.5) // in the center of the tile

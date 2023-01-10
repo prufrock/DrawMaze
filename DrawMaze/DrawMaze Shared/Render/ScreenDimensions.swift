@@ -7,9 +7,12 @@ import Foundation
 struct ScreenDimensions {
     let width: Float
     let height: Float
+    let aspect: Float
+
 
     init(width: Double, height: Double) {
         self.width = width.f
         self.height = height.f
+        aspect = self.width / self.height
     }
 }

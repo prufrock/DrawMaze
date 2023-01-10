@@ -11,13 +11,13 @@ import MetalKit
  - Just the bare minimum to get the clear color set on the screen.
  */
 class RNDRRenderer {
-    private let view: MTKView
     private let device: MTLDevice
     private let commandQueue: MTLCommandQueue
     private let config: AppCoreConfig.Services.RenderService
+    private let depthStencilState: MTLDepthStencilState
+    private let vertexPipeline: MTLRenderPipelineState
 
-    public init(_ view: MTKView, config: AppCoreConfig.Services.RenderService) {
-        self.view = view
+    public init(config: AppCoreConfig.Services.RenderService) {
         self.config = config
 
         guard let newDevice = MTLCreateSystemDefaultDevice() else {
@@ -25,21 +25,54 @@ class RNDRRenderer {
                        I looked in the computer and didn't find a device...sorry =/
                        """)
         }
-        view.device = newDevice
-        view.clearColor = MTLClearColor(red: config.clearColor.0, green: config.clearColor.1, blue: config.clearColor.2, alpha: config.clearColor.3)
 
         device = newDevice
 
         guard let newCommandQueue = device.makeCommandQueue() else {
             fatalError("""
-                       What?! No command queue. Come on, what's the deal!
+                       What?! No comand queue. Come on!
                        """)
         }
 
         commandQueue = newCommandQueue
+
+        guard let depthStencilState = device.makeDepthStencilState(descriptor: MTLDepthStencilDescriptor().apply {
+            $0.depthCompareFunction = .less
+            $0.isDepthWriteEnabled = true
+        }) else {
+            fatalError("""
+                       Agh?! The depth stencil state didn't work.
+                       """)
+        }
+
+        self.depthStencilState = depthStencilState
+
+        guard let library = device.makeDefaultLibrary() else {
+            fatalError("""
+                       What in the what?! The library couldn't be loaded.
+                       """)
+        }
+
+        vertexPipeline = try! device.makeRenderPipelineState(descriptor: MTLRenderPipelineDescriptor().apply {
+            $0.vertexFunction = library.makeFunction(name: "vertex_main")
+            $0.fragmentFunction = library.makeFunction(name: "fragment_main")
+            $0.colorAttachments[0].pixelFormat = .bgra8Unorm
+            $0.depthAttachmentPixelFormat = .depth32Float
+            $0.vertexDescriptor = MTLVertexDescriptor().apply {
+                // .position
+                $0.attributes[0].format = MTLVertexFormat.float3
+                $0.attributes[0].bufferIndex = 0
+                $0.attributes[0].offset = 0
+                $0.layouts[0].stride = MemoryLayout<Float3>.stride
+            }
+        })
     }
 
-    public func render() {
+    public func render(game: Game, to view: MTKView, with screen: ScreenDimensions) {
+        view.device = device
+        view.clearColor = MTLClearColor(red: config.clearColor.0, green: config.clearColor.1, blue: config.clearColor.2, alpha: config.clearColor.3)
+        view.depthStencilPixelFormat = .depth32Float
+
         guard let commandBuffer = commandQueue.makeCommandBuffer() else {
             fatalError("""
                        Ugh, no command buffer. They must be fresh out!
@@ -52,6 +85,45 @@ class RNDRRenderer {
                        """)
         }
 
+        let actors = game.world.actors
+
+        for actor in actors {
+            let model: Model
+            switch actor.model {
+            case .dot:
+                model = Dot()
+            case .square:
+                model = Square()
+            case .wfSquare:
+                model = WireframeSquare()
+            }
+
+            let viewToClip = Float4x4.identity()
+            let clipToNdc = Float4x4.identity()
+            let ndcToScreen = Float4x4.identity()
+
+
+            var finalTransform: Float4x4
+            finalTransform = ndcToScreen
+                * clipToNdc
+                * viewToClip
+                * game.world.camera!.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                * actor.uprightToWorld
+                * actor.modelToUpright
+
+            let buffer = device.makeBuffer(bytes: model.v, length: MemoryLayout<Float3>.stride * model.v.count, options: [])
+
+            encoder.setRenderPipelineState(vertexPipeline)
+            encoder.setDepthStencilState(depthStencilState)
+            encoder.setVertexBuffer(buffer, offset: 0, index: 0)
+            encoder.setVertexBytes(&finalTransform, length: MemoryLayout<Float4x4>.stride, index: 1)
+
+            var fragmentColor = actor.color
+
+            encoder.setFragmentBuffer(buffer, offset: 0, index: 0)
+            encoder.setFragmentBytes(&fragmentColor, length: MemoryLayout<Float3>.stride, index: 0)
+            encoder.drawPrimitives(type: model.primitiveType, vertexStart: 0, vertexCount: model.v.count)
+        }
         encoder.endEncoding()
 
         guard let drawable = view.currentDrawable else {

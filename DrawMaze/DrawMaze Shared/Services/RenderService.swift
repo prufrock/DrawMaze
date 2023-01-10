@@ -14,8 +14,12 @@ public class RenderService {
 
     public func sync(_ command: RenderCommand) {
         // Not sure about creating this on every render request. Where does renderer cache stuff at then?
-        let renderer = RNDRRenderer(command.metalView, config: config)
-        renderer.render()
+        let renderer = RNDRRenderer(config: config)
+        renderer.render(
+            game: command.game,
+            to: command.metalView,
+            with: command.screenDimensions
+        )
     }
 }
 
