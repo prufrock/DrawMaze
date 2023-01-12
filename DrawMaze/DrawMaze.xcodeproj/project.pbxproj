@@ -47,12 +47,14 @@
 		5AF0EC85D570462A6D8C880B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2B2BDE7613818C19ABC /* Wall.swift */; };
 		5AF0EC9B4F44FB10BF01F2DA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9B50947438189318EBF /* Camera.swift */; };
 		5AF0ED006E8E93F6C94590B6 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7C2A61D7A72D0C55A87 /* World.swift */; };
+		5AF0ED5F81332194B0EA9D9F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF00BE815E18E912B1D4 /* Button.swift */; };
 		5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
 		5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
 		5AF0EE54B43D6A078E5D64A1 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
 		5AF0EE63292B366278F58456 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EAB90CCB3D98C995C0EC /* Rect.swift */; };
 		5AF0EE8B51FB093F2FB5F2A3 /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
 		5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
+		5AF0EEBB62D00E5CFC4AA877 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF00BE815E18E912B1D4 /* Button.swift */; };
 		5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
 		5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
@@ -148,6 +150,7 @@
 		5AF0EDE885A998F8DD7DE175 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
 		5AF0EE29190E895016D01D73 /* AppCoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreContext.swift; sourceTree = "<group>"; };
+		5AF0EF00BE815E18E912B1D4 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCore.swift; sourceTree = "<group>"; };
 		5AF0EF41E46C82A6B15E4808 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreServiceFactory.swift; sourceTree = "<group>"; };
@@ -266,6 +269,7 @@
 				5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */,
 				5AF0E2B2BDE7613818C19ABC /* Wall.swift */,
 				5AF0E810589299D491809FB1 /* TouchLocation.swift */,
+				5AF0EF00BE815E18E912B1D4 /* Button.swift */,
 			);
 			path = Actor;
 			sourceTree = "<group>";
@@ -699,6 +703,7 @@
 				63DDDA90296D192D0013605A /* Shaders.metal in Sources */,
 				5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */,
 				5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */,
+				5AF0EEBB62D00E5CFC4AA877 /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +763,7 @@
 				5AF0EC85D570462A6D8C880B /* Wall.swift in Sources */,
 				5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */,
 				5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */,
+				5AF0ED5F81332194B0EA9D9F /* Button.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

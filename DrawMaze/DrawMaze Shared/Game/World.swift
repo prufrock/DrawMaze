@@ -11,10 +11,11 @@ struct World {
         get {
             var list: [Actor] = []
 
-            list.append(contentsOf: walls)
             if let clicked = clickLocation {
                 list.append(clicked)
             }
+            list.append(contentsOf: buttons)
+            list.append(contentsOf: walls)
 
             return list
         }
@@ -28,10 +29,18 @@ struct World {
     var hudCamera = HudCamera(model: .square)
 
     var clickLocation: TouchLocation?
+    
+    var buttons: [Button] = []
 
     init(map:  TileMap) {
         self.map = map
         walls = []
+        buttons = [
+            Button(position: F2(0.0, 0.0), model: .square, color: F3(0, 0.2, 0)),
+            Button(position: F2(1.0, 1.0), model: .square, color: F3(0, 0.2, 0)),
+            Button(position: F2(1.0, 0.0), model: .square, color: F3(0, 0.2, 0)),
+            Button(position: F2(0.0, 1.0), model: .square, color: F3(0, 0.2, 0))
+        ]
         reset()
     }
 
@@ -75,6 +84,32 @@ struct World {
                 var newLocation = location
                 newLocation.position = worldPosition!
                 return newLocation
+            }
+
+            // This is *real* ugly but it ensures that an overlapping click only picks a single button by selecting
+            // the first one with the largest intersection with the click location.
+            if let location = clickLocation {
+                var largestIntersection: Float2?
+                var largestIntersectedButtonIndex: Int?
+                for i in (0 ..< buttons.count) {
+                    if let intersection = location.intersection(with: buttons[i]),
+                       intersection.length > largestIntersection?.length ?? 0 {
+                        var button = buttons[i]
+                        button.color = Float3(0.0, 0.5, 1.0)
+                        buttons[i] = button
+                        largestIntersection = intersection
+                        largestIntersectedButtonIndex = i
+                    } else {
+                        var button = buttons[i]
+                        button.color = Float3(0.0, 0.5, 1.0)
+                        buttons[i] = button
+                    }
+                }
+                if let chosenIndex = largestIntersectedButtonIndex {
+                    var button = buttons[chosenIndex]
+                    button.color = Float3(1.0, 0.5, 1.0)
+                    buttons[chosenIndex] = button
+                }
             }
         }
     }
