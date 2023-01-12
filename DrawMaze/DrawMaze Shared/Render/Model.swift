@@ -34,6 +34,6 @@ struct WireframeSquare: Model {
     let primitiveType: MTLPrimitiveType = .line
 }
 
-enum BasicModels {
+public enum BasicModels {
     case dot, square, wfSquare
 }

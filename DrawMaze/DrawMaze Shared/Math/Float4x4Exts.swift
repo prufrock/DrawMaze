@@ -8,12 +8,12 @@ import simd
 public typealias Float4x4 = simd_float4x4
 
 public extension Float4x4 {
-    static func identity() -> Self {
+    static func identity() -> Float4x4 {
         matrix_identity_float4x4
     }
 
-    static func translate(x: Float, y: Float, z: Float) -> Self {
-        Self(
+    static func translate(x: Float, y: Float, z: Float) -> Float4x4 {
+        Float4x4(
             [1, 0, 0, 0],
             [0, 1, 0, 0],
             [0, 0, 1, 0],
@@ -21,8 +21,8 @@ public extension Float4x4 {
         )
     }
 
-    static func translate(_ f2: F2) -> Self {
-        Self(
+    static func translate(_ f2: F2) -> Float4x4 {
+        Float4x4(
             [1, 0, 0, 0],
             [0, 1, 0, 0],
             [0, 0, 1, 0],
@@ -39,20 +39,20 @@ public extension Float4x4 {
         )
     }
 
-    static func scaleX(_ x: Float) -> Self {
+    static func scaleX(_ x: Float) -> Float4x4 {
         scale(x: x, y: 1, z: 1)
     }
 
-    static func scaleY(_ y: Float) -> Self {
+    static func scaleY(_ y: Float) -> Float4x4 {
         scale(x: 1, y: y, z: 1)
     }
 
-    static func scaleZ(_ z: Float) -> Self {
+    static func scaleZ(_ z: Float) -> Float4x4 {
         scale(x: 1, y: 1, z: z)
     }
 
-    static func rotateX(_ angle: Float) -> Self {
-        Self(
+    static func rotateX(_ angle: Float) -> Float4x4 {
+        Float4x4(
             [1,           0,          0, 0],
             [0,  cos(angle), sin(angle), 0],
             [0, -sin(angle), cos(angle), 0],
@@ -60,8 +60,8 @@ public extension Float4x4 {
         )
     }
 
-    static func rotateY(_ angle: Float) -> Self {
-        Self(
+    static func rotateY(_ angle: Float) -> Float4x4 {
+        Float4x4(
             [cos(angle), 0, -sin(angle), 0],
             [         0, 1,           0, 0],
             [sin(angle), 0,  cos(angle), 0],
@@ -69,8 +69,8 @@ public extension Float4x4 {
         )
     }
 
-    static func rotateZ(_ angle: Float) -> Self {
-        Self(
+    static func rotateZ(_ angle: Float) -> Float4x4 {
+        Float4x4(
             [ cos(angle), sin(angle), 0, 0],
             [-sin(angle), cos(angle), 0, 0],
             [          0,          0, 1, 0],

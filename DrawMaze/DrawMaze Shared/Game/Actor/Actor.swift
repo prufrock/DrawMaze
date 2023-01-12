@@ -4,7 +4,7 @@
 
 import Foundation
 
-protocol Actor {
+public protocol Actor {
     var position: F2 {get set}
 
     // Give the model more meta information.

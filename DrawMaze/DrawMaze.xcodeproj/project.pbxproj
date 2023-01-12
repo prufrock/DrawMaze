@@ -41,6 +41,7 @@
 		5AF0E8DBD467FEC9D060B796 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AF0E901810EBDBC9055998B /* levels.json */; };
 		5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
 		5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
+		5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
 		5AF0EB87B0584495A996C48A /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
 		5AF0EC85D570462A6D8C880B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2B2BDE7613818C19ABC /* Wall.swift */; };
@@ -56,6 +57,7 @@
 		5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
+		5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EFFD83C29E9AE7FA126A /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
 		632C34BC29078C280050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34BB29078C280050F354 /* ViewController.swift */; };
@@ -135,6 +137,7 @@
 		5AF0E7C2A61D7A72D0C55A87 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMap.swift; sourceTree = "<group>"; };
 		5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		5AF0E810589299D491809FB1 /* TouchLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchLocation.swift; sourceTree = "<group>"; };
 		5AF0E8AC85199D1D06D70D61 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		5AF0E901810EBDBC9055998B /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3x3Exts.swift; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 				5AF0E9B50947438189318EBF /* Camera.swift */,
 				5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */,
 				5AF0E2B2BDE7613818C19ABC /* Wall.swift */,
+				5AF0E810589299D491809FB1 /* TouchLocation.swift */,
 			);
 			path = Actor;
 			sourceTree = "<group>";
@@ -694,6 +698,7 @@
 				5AF0E8AF11535468DC073109 /* Wall.swift in Sources */,
 				63DDDA90296D192D0013605A /* Shaders.metal in Sources */,
 				5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */,
+				5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +757,7 @@
 				5AF0E41E83CC02786B007E55 /* Model.swift in Sources */,
 				5AF0EC85D570462A6D8C880B /* Wall.swift in Sources */,
 				5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */,
+				5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
