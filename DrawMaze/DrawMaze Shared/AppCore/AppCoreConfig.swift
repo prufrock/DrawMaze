@@ -8,6 +8,20 @@ public struct AppCoreConfig {
 
     public let services: Services
 
+    public let game: Game
+
+    // Need to be careful about the difference between configuration and levels.
+    public struct Game {
+        // The level to start the game at.
+        public let firstLevelIndex: Int = 0
+
+        public let world: World
+
+        public struct World {
+
+        }
+    }
+
     public struct Services {
         public let renderService: AppCoreConfig.Services.RenderService
         public let fileService: AppCoreConfig.Services.FileService

@@ -4,7 +4,12 @@
 
 import Foundation
 
+/**
+ - Going to see if I can get by with just the config from AppCore for now.
+ */
 struct World {
+    private let config: AppCoreConfig.Game.World
+
     private(set) var map: TileMap
 
     var actors: [Actor] {
@@ -34,7 +39,8 @@ struct World {
     
     var buttons: [Button] = []
 
-    init(map:  TileMap) {
+    init(config: AppCoreConfig.Game.World, map:  TileMap) {
+        self.config = config
         self.map = map
         walls = []
         buttons = [
@@ -102,8 +108,6 @@ struct World {
     }
 
     private mutating func pickButtonId(at location: TouchLocation) -> Int {
-        // This is *real* ugly but it ensures that an overlapping click only picks a single button by selecting
-        // the first one with the largest intersection with the click location.
         var largestIntersectedButtonIndex: Int = -1
         var largestIntersection: Float2?
         for i in (0 ..< buttons.count) {

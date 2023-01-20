@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fileService: AppCoreConfig.Services.FileService(
                     levelsFile: AppCoreConfig.Services.FileService.FileDescriptor(name: "levels", ext: "json")
                 )
+            ),
+            game: AppCoreConfig.Game(
+                world: AppCoreConfig.Game.World()
             )
         )
         core = AppCore(config)

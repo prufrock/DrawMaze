@@ -26,13 +26,16 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let appCore = appDelegate.core else {
+            fatalError("What in the zebra stripes?! The AppCore should be available by now!")
+        }
         // Do any additional setup after loading the view.
         // This is a little bit of a mess but I do like the general idea of going through a the AppCore.
         var levels: [TileMap] = []
-        appDelegate.core!.sync(LoadLevelFileCommand { maps in
+        appCore.sync(LoadLevelFileCommand { maps in
             levels = maps
         })
-        game = Game(levels: levels)
+        game = Game(config: appCore.config.game, levels: levels)
         setupMetalView()
 
         // attach the UITapGestureRecognizer to turn the screen into a button
@@ -79,7 +82,7 @@ extension GameViewController: MTKViewDelegate {
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
         for _ in 0 ..< Int(worldSteps) {
             game.update(timeStep: timeStep / worldSteps, input: input)
-            // the world advances faster than draw calls are made so to ensure "isTouched is only applied once it gets set to false. Especially helpful when going from the title screen into the game.
+            // the world advances faster than draw calls are made so to ensure "isTouched" is only applied once it gets set to false. Especially helpful when going from the title screen into the game.
             input.isTouched = false
         }
         lastFrameTime = time
@@ -104,7 +107,6 @@ extension GameViewController {
 }
 
 extension GameViewController: UIGestureRecognizerDelegate {
-
     // Allow for more than on gesture recognizer to do its thing at the same time.
     public func gestureRecognizer(
         _ gestureRecognizer: UIGestureRecognizer,
