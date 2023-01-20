@@ -11,6 +11,12 @@ struct Button: Actor {
 
     var color: Float3 = Float3(0.0, 0.5, 1.0)
 
+    init(centeredIn: F2, model: BasicModels = .square, color: Float3) {
+        self.position = centeredIn + F2(0.5, 0.5)
+        self.model = model
+        self.color = color
+    }
+
     var modelToUpright:Float4x4 {
         get {
             Float4x4.identity()

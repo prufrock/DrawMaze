@@ -26,29 +26,37 @@ struct World {
         }
     }
 
-    var walls: [Wall]
+    private var walls: [Wall]
 
-    var camera: Camera?
-    var overHeadCamera: Camera?
-    var floatingCamera: Camera?
-    var hudCamera = HudCamera(model: .square)
+    public var camera: Camera?
+    private var overHeadCamera: Camera?
+    private var floatingCamera: Camera?
+    private var hudCamera = HudCamera(model: .square)
 
-    var touchLocation: TouchLocation?
+    private var touchLocation: TouchLocation?
 
-    var selectedButtonId: Int = -1
+    private var selectedButtonId: Int = -1
     
-    var buttons: [Button] = []
+    private var buttons: [Button] = []
+
+    // The UI used to create a maze. I expect this eventually needs to get more complicated but going with it for now.
+    private var drawMazeUI: [Button] = []
 
     init(config: AppCoreConfig.Game.World, map:  TileMap) {
         self.config = config
         self.map = map
         walls = []
-        buttons = [
-            Button(position: F2(0.0, 0.0), model: .square, color: F3(0, 0.2, 0)),
-            Button(position: F2(1.0, 1.0), model: .square, color: F3(0, 0.2, 0)),
-            Button(position: F2(1.0, 0.0), model: .square, color: F3(0, 0.2, 0)),
-            Button(position: F2(0.0, 1.0), model: .square, color: F3(0, 0.2, 0))
+        drawMazeUI = [
         ]
+        // 10 across
+        // 20 down
+        for i in 0...200 {
+            let x = i % 10
+            let y = i / 10
+            drawMazeUI.append(Button(centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
+
+        }
+        buttons = drawMazeUI
         reset()
     }
 
@@ -97,7 +105,7 @@ struct World {
         for i in (0 ..< buttons.count) {
             if i == selectedButtonId {
                 var button = buttons[i]
-                button.color = Float3(0.0, 0.0, 1.0)
+                button.color = Float3(0.0, 0.6, 0.0)
                 buttons[i] = button
             } else {
                 var button = buttons[i]

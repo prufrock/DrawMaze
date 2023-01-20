@@ -92,7 +92,7 @@ extension GameViewController: MTKViewDelegate {
             metalView: metalView,
             screenDimensions: screenDimensions,
             game: game
-            ))
+        ))
     }
 }
 
@@ -107,7 +107,7 @@ extension GameViewController {
 }
 
 extension GameViewController: UIGestureRecognizerDelegate {
-    // Allow for more than on gesture recognizer to do its thing at the same time.
+    // Allow for more than one gesture recognizer to do its thing at the same time.
     public func gestureRecognizer(
         _ gestureRecognizer: UIGestureRecognizer,
         shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
