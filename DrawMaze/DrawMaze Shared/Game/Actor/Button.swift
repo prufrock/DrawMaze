@@ -5,17 +5,16 @@
 import simd
 
 struct Button: Actor {
+    var id: String
     var radius: Float = 0.5
     var position: F2 = F2(0.0, 0.0)
     var model: BasicModels
 
     var color: Float3 = Float3(0.0, 0.5, 1.0)
+    private var notToggledColor: Float3 = Float3(0.0, 0.5, 1.0)
+    private var toggledColor: Float3 = Float3(0.0, 0.6, 0.0)
 
-    init(centeredIn: F2, model: BasicModels = .square, color: Float3) {
-        self.position = centeredIn + F2(0.5, 0.5)
-        self.model = model
-        self.color = color
-    }
+    private var toggleState: Button.State
 
     var modelToUpright:Float4x4 {
         get {
@@ -28,5 +27,47 @@ struct Button: Actor {
             Float4x4.translate(x: position.x, y: position.y, z: 0.0) *
                 Float4x4.scale(x: radius, y: radius, z: radius)
         }
+    }
+
+    init(
+        id: String,
+        centeredIn: F2,
+        model: BasicModels = .square,
+        color: Float3,
+        toggleState: Button.State = .NotToggled
+    ) {
+        self.id = id
+        self.position = centeredIn + F2(0.5, 0.5)
+        self.model = model
+        self.color = color
+        self.notToggledColor = color
+        self.toggleState = toggleState
+    }
+
+    mutating func update(input: GameInput) {
+        if (id == input.selectedButtonId) {
+            color = Float3(0.0, 0.6, 0.0)
+        }
+        switch toggleState {
+
+        case .NotToggled:
+            if (selected(input)) {
+                toggleState = .Toggled
+                self.color = toggledColor
+            }
+        case .Toggled:
+            if (selected(input)) {
+                toggleState = .NotToggled
+                self.color = notToggledColor
+            }
+        }
+    }
+
+    private func selected(_ input: GameInput) -> Bool {
+        id == input.selectedButtonId
+    }
+
+    public enum State {
+        case NotToggled, Toggled
     }
 }

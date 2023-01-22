@@ -53,11 +53,11 @@ struct World {
         let gridWidth = 9
         let gridHeight = 9
         let horizontalStart = 7
-        let totalbuttons = 81
-        for i in 0..<totalbuttons { // one less than total cuz grid starts at 0,0
+        let totalButtons = 81
+        for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = horizontalStart + (i / gridHeight)
-            drawMazeUI.append(Button(centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
+            drawMazeUI.append(Button(id: String(i), centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
 
         }
         buttons = drawMazeUI
@@ -95,6 +95,8 @@ struct World {
        - input: The actionable changes in the game from the ViewController.
      */
     mutating func update(timeStep: Float, input: Input) {
+        var gameInput = GameInput(externalInput: input, selectedButtonId: nil)
+
         if (input.isTouched) {
             let position = input.touchCoordinates
                     .toNdcSpace(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
@@ -102,20 +104,14 @@ struct World {
             let location = TouchLocation(position: position, model: .square)
             touchLocation = location
 
-            selectedButtonId = pickButtonId(at: location)
+            gameInput.selectedButtonId = buttons[pickButtonId(at: location)].id
         }
 
         // Update buttons
         for i in (0 ..< buttons.count) {
-            if i == selectedButtonId {
-                var button = buttons[i]
-                button.color = Float3(0.0, 0.6, 0.0)
-                buttons[i] = button
-            } else {
-                var button = buttons[i]
-                button.color = Float3(0.5, 0.5, 1.0)
-                buttons[i] = button
-            }
+            var button = buttons[i]
+            button.update(input: gameInput)
+            buttons[i] = button
         }
     }
 
