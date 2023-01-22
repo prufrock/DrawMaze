@@ -47,12 +47,16 @@ struct World {
         self.map = map
         walls = []
         drawMazeUI = [
+            //Button(centeredIn: F2(0.f, 9.f), model: .square, color: F3(0, 0.2, 0))
         ]
-        // 10 across
-        // 20 down
-        for i in 0...200 {
-            let x = i % 10
-            let y = i / 10
+        // whole iphone 14 screen is 10 across and 10 down
+        let gridWidth = 9
+        let gridHeight = 9
+        let horizontalStart = 7
+        let totalbuttons = 81
+        for i in 0..<totalbuttons { // one less than total cuz grid starts at 0,0
+            let x = i % gridWidth
+            let y = horizontalStart + (i / gridHeight)
             drawMazeUI.append(Button(centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
 
         }
