@@ -69,7 +69,7 @@ struct World {
     private mutating func reset() {
         overHeadCamera = CameraOverhead(position: Float2(0.0, 0.0), model: .square) // world
         floatingCamera = CameraFloating(position: Float2(0.0, 0.0), model: .square) // world
-        camera = hudCamera
+        camera = overHeadCamera
 
         for y in 0..<map.height {
             for x in 0..<map.width {
@@ -103,7 +103,10 @@ struct World {
             let location = TouchLocation(position: position, model: .square)
             touchLocation = location
 
-            gameInput.selectedButtonId = buttons[pickButtonId(at: location)].id
+            let button = pickButton(at: location)
+            if let selected = button {
+                gameInput.selectedButtonId = selected.id
+            }
         }
 
         // Update buttons
@@ -114,17 +117,17 @@ struct World {
         }
     }
 
-    private mutating func pickButtonId(at location: TouchLocation) -> Int {
-        var largestIntersectedButtonIndex: Int = -1
+    private func pickButton(at location: TouchLocation) -> Button? {
+        var largestIntersectedButtonButton: Button? = nil
         var largestIntersection: Float2?
-        for i in (0 ..< buttons.count) {
-            if let intersection = location.intersection(with: buttons[i]),
+        buttons.forEach { button in
+            if let intersection = location.intersection(with: button),
                intersection.length > largestIntersection?.length ?? 0 {
                 largestIntersection = intersection
-                largestIntersectedButtonIndex = i
+                largestIntersectedButtonButton = button
             }
         }
 
-        return largestIntersectedButtonIndex
+        return largestIntersectedButtonButton
     }
 }
