@@ -81,6 +81,7 @@ extension GameViewController: MTKViewDelegate {
 
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
         for _ in 0 ..< Int(worldSteps) {
+            input.timeStep = timeStep / worldSteps
             game.update(timeStep: timeStep / worldSteps, input: input)
             // the world advances faster than draw calls are made so to ensure "isTouched" is only applied once it gets set to false. Especially helpful when going from the title screen into the game.
             input.isTouched = false

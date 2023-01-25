@@ -47,9 +47,9 @@ struct World {
         self.map = map
         walls = []
         drawMazeUI = [
-            //Button(centeredIn: F2(0.f, 9.f), model: .square, color: F3(0, 0.2, 0))
+            TapButton(id: "play", centeredIn: F2(7.f, 17.f), model: .square, color: F3(0, 0.2, 0))
         ]
-        // whole iphone 14 screen is 10 across and 10 down
+        // whole iphone 14 screen is 10 across and 20 down
         let gridWidth = 9
         let gridHeight = 9
         let horizontalStart = 7
@@ -57,8 +57,7 @@ struct World {
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = horizontalStart + (i / gridHeight)
-            drawMazeUI.append(Button(id: String(i), centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
-
+            drawMazeUI.append(ToggleButton(id: String(i), centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
         }
         buttons = drawMazeUI
         reset()
