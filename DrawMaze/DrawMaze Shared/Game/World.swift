@@ -31,7 +31,7 @@ struct World {
     public var camera: Camera?
     private var overHeadCamera: Camera?
     private var floatingCamera: Camera?
-    private var hudCamera = HudCamera(model: .square)
+    public var hudCamera = HudCamera(model: .square)
 
     private var touchLocation: TouchLocation?
 
@@ -41,13 +41,19 @@ struct World {
 
     // The UI used to create a maze. I expect this eventually needs to get more complicated but going with it for now.
     private var drawMazeUI: [Button] = []
+    private var playMazeUI: [Button] = []
+    private var playButton: Button
 
     init(config: AppCoreConfig.Game.World, map:  TileMap) {
         self.config = config
         self.map = map
         walls = []
+        playButton = TapButton(id: "play", centeredIn: F2(7.f, 17.f), model: .square, color: F3(0, 0.2, 0))
         drawMazeUI = [
-            TapButton(id: "play", centeredIn: F2(7.f, 17.f), model: .square, color: F3(0, 0.2, 0))
+            playButton
+        ]
+        playMazeUI = [
+            playButton
         ]
         // whole iphone 14 screen is 10 across and 20 down
         let gridWidth = 9
@@ -99,7 +105,7 @@ struct World {
         if (input.isTouched) {
             let position = input.touchCoordinates
                     .toNdcSpace(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
-                    .toWorldSpace(camera: camera!, aspect: input.aspect)
+                    .toWorldSpace(camera: hudCamera, aspect: input.aspect)
             let location = TouchLocation(position: position, model: .square)
             touchLocation = location
 
@@ -114,6 +120,26 @@ struct World {
             var button = buttons[i]
             button.update(input: gameInput)
             buttons[i] = button
+        }
+
+        // silly quick work around
+        if let playButton = buttons.first { $0.id == "play"}, let b = playButton as? TapButton {
+            if (b.togglePlay) {
+                camera = floatingCamera
+                // hey it works for now...
+                if buttons.count == drawMazeUI.count {
+                    drawMazeUI = buttons
+                    playMazeUI[0] = playButton
+                    buttons = playMazeUI
+                }
+            } else {
+                camera = overHeadCamera
+                if buttons.count == playMazeUI.count {
+                    playMazeUI = buttons
+                    drawMazeUI[0] = playButton
+                    buttons = drawMazeUI
+                }
+            }
         }
     }
 

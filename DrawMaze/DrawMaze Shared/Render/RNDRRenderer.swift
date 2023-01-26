@@ -104,12 +104,21 @@ class RNDRRenderer {
 
 
             var finalTransform: Float4x4
-            finalTransform = ndcToScreen
-                * clipToNdc
-                * viewToClip
-                * game.world.camera!.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
-                * actor.uprightToWorld
-                * actor.modelToUpright
+            if actor is Button || actor is TouchLocation {
+                finalTransform = ndcToScreen
+                    * clipToNdc
+                    * viewToClip
+                    * game.world.hudCamera.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * actor.uprightToWorld
+                    * actor.modelToUpright
+            } else {
+                finalTransform = ndcToScreen
+                    * clipToNdc
+                    * viewToClip
+                    * game.world.camera!.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * actor.uprightToWorld
+                    * actor.modelToUpright
+            }
 
             let buffer = device.makeBuffer(bytes: model.v, length: MemoryLayout<Float3>.stride * model.v.count, options: [])
 

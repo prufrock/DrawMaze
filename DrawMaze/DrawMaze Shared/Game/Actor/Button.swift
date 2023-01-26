@@ -103,6 +103,7 @@ struct TapButton: Button {
                 Float4x4.scale(x: radius, y: radius, z: radius)
         }
     }
+    public var togglePlay: Bool = false
 
     init(
         id: String,
@@ -125,6 +126,7 @@ struct TapButton: Button {
             if (selected(input)) {
                 toggleState = .Toggled
                 self.color = toggledColor
+                self.togglePlay = !self.togglePlay
             }
         case .Toggled:
             debounceTime += input.externalInput.timeStep
