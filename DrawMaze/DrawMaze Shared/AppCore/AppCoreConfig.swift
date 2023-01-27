@@ -6,9 +6,17 @@ import Foundation
 
 public struct AppCoreConfig {
 
+    public let game: Game
+
+    public let platform: Platform
+
     public let services: Services
 
-    public let game: Game
+    // Configuring how the platform interacts with the Game
+    public struct Platform {
+        public let maximumTimeStep: Float // the maximum length of a time step
+        public let worldTimeStep: Float // number of steps to take each frame
+    }
 
     // Need to be careful about the difference between configuration and levels.
     public struct Game {
