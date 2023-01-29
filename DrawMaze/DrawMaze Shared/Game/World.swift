@@ -102,7 +102,7 @@ struct World {
        - input: The actionable changes in the game from the ViewController.
      */
     mutating func update(timeStep: Float, input: Input) {
-        var gameInput = GameInput(externalInput: input, selectedButtonId: nil)
+        var gameInput = GameInput(platform: input, selectedButtonId: nil)
 
         if (input.isTouched) {
             let position = input.touchCoordinates

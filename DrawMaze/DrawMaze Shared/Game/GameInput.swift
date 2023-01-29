@@ -5,7 +5,7 @@
 import Foundation
 
 struct GameInput {
-    let externalInput: Input
+    let platform: Input
     var selectedButtonId: String?
     var play: Bool = false
 }

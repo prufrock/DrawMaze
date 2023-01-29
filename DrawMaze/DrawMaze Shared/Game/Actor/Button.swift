@@ -4,7 +4,7 @@
 
 import simd
 
-protocol Button: Actor {
+protocol Button: Actor, Changes {
     var id: String { get }
 
     mutating func update(input: GameInput)
@@ -64,6 +64,16 @@ struct ToggleButton: Button {
                 self.color = notToggledColor
             }
         }
+    }
+
+    mutating func update(_ world: World, input: GameInput) -> [ChangeAction] {
+        self.update(input: input)
+
+//        let changeSet: Array<Changes> = [self]
+//
+//        return changeSet
+        let changeSet: Array<ChangeAction> = [.update(change: self)]
+        return changeSet
     }
 
     private func selected(_ input: GameInput) -> Bool {
@@ -129,7 +139,7 @@ struct TapButton: Button {
                 self.togglePlay = !self.togglePlay
             }
         case .Toggled:
-            debounceTime += input.externalInput.timeStep
+            debounceTime += input.platform.timeStep
 
             if (debounceTime > debounceDuration) {
                 toggleState = .NotToggled
