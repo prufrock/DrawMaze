@@ -52,8 +52,8 @@ public extension Float2 {
         // converting position.y is like converting position.x
         // multiply by -1 when flipY is set because on iOS the origin is in the upper left
         let y = (flipY ? -1 : 1) * (((y / screenHeight) * 2) - 1)
-        print("click screen:", String(format: "%.8f, %.8f", self.x, self.y))
-        print("click NDC:", String(format: "%.8f, %.8f", x, y))
+        // print("click screen:", String(format: "%.8f, %.8f", self.x, self.y))
+        // print("click NDC:", String(format: "%.8f, %.8f", x, y))
         return Float2(x, y) // ndc space
     }
 
@@ -68,8 +68,8 @@ public extension Float2 {
         // TODO need to share the camera values used by the renderer
         let ndc = Float4(position: self)
         let position4 = (camera.worldToView(fov: .pi/2, aspect: aspect, nearPlane: 0.1, farPlane: 20.0)).inverse * Float4(position: self)
-        print("ndc world:", String(format: "%.8f, %.8f, %.8f, %.8f", ndc.x, ndc.y, ndc.z, ndc.w))
-        print("click world:", String(format: "%.8f, %.8f, %.8f, %.8f", position4.x, position4.y, position4.z, position4.w))
+        // print("ndc world:", String(format: "%.8f, %.8f, %.8f, %.8f", ndc.x, ndc.y, ndc.z, ndc.w))
+        // print("click world:", String(format: "%.8f, %.8f, %.8f, %.8f", position4.x, position4.y, position4.z, position4.w))
         return Float2(position4.x, position4.y) // world space
     }
 }

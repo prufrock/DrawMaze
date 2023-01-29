@@ -41,10 +41,12 @@ struct World {
 
     // The UI used to create a maze. I expect this eventually needs to get more complicated but going with it for now.
     private var drawMazeUI: [Button] = []
+    // The buttons to show when playing
     private var playMazeUI: [Button] = []
+    // The button to switch between draw and play
     private var playButton: Button
 
-    init(config: AppCoreConfig.Game.World, map:  TileMap) {
+    init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
         self.map = map
         walls = []
@@ -77,6 +79,7 @@ struct World {
         floatingCamera = CameraFloating(position: Float2(0.0, 0.0), model: .square) // world
         camera = overHeadCamera
 
+        // draw the world
         for y in 0..<map.height {
             for x in 0..<map.width {
                 let position = Float2(x: Float(x) + 0.5, y: Float(y) + 0.5) // world, in the center of the tile
@@ -91,7 +94,6 @@ struct World {
             }
         }
     }
-
 
     /**
      Update the game.
