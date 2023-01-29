@@ -4,7 +4,7 @@
 
 import simd
 
-protocol Button: Actor, Changes {
+protocol Button: Actor, Change {
     var id: String { get }
 
     mutating func update(input: GameInput)
@@ -69,11 +69,7 @@ struct ToggleButton: Button {
     mutating func update(_ world: World, input: GameInput) -> [ChangeAction] {
         self.update(input: input)
 
-//        let changeSet: Array<Changes> = [self]
-//
-//        return changeSet
-        let changeSet: Array<ChangeAction> = [.update(change: self)]
-        return changeSet
+        return [.update(change: self)]
     }
 
     private func selected(_ input: GameInput) -> Bool {
@@ -113,7 +109,7 @@ struct TapButton: Button {
                 Float4x4.scale(x: radius, y: radius, z: radius)
         }
     }
-    public var togglePlay: Bool = false
+    var togglePlay: Bool = false
 
     init(
         id: String,
