@@ -4,7 +4,7 @@
 
 import simd
 
-protocol Button: Actor, Change {
+protocol Button: Actor, Change, Changeable {
     var id: String { get }
 
     mutating func update(input: GameInput)
@@ -66,11 +66,7 @@ struct ToggleButton: Button {
         }
     }
 
-    mutating func update(_ world: World, input: GameInput) -> [ChangeAction] {
-        self.update(input: input)
 
-        return [.update(change: self)]
-    }
 
     private func selected(_ input: GameInput) -> Bool {
         id == input.selectedButtonId
@@ -78,6 +74,31 @@ struct ToggleButton: Button {
 
     public enum State {
         case NotToggled, Toggled
+    }
+}
+
+extension ToggleButton: Changeable {
+    mutating func update(_ world: World, input: GameInput) -> [ChangeAction] {
+        self.update(input: input)
+
+        return [.update(change: self)]
+    }
+
+    mutating func accept(_ changes: [ChangeAction]) {
+        changes.filter { changeAction in
+            // single items can only update
+            if case .update(_) = changeAction, changeAction.get() is Self {
+                return true
+            } else {
+                return false
+            }
+        }.forEach { change in
+            let btn = changes.first!.get() as! Self
+            // Eventually figure out how to make this more of a diffing situation.
+            if self.id == btn.id {
+                self = btn
+            }
+        }
     }
 }
 
@@ -151,5 +172,30 @@ struct TapButton: Button {
 
     public enum State {
         case NotToggled, Toggled
+    }
+}
+
+extension TapButton: Changeable {
+    mutating func update(_ world: World, input: GameInput) -> [ChangeAction] {
+        self.update(input: input)
+
+        return [.update(change: self)]
+    }
+
+    mutating func accept(_ changes: [ChangeAction]) {
+        changes.filter { changeAction in
+            // single items can only update
+            if case .update(_) = changeAction, changeAction.get() is Self {
+                return true
+            } else {
+                return false
+            }
+        }.forEach { change in
+            let btn = changes.first!.get() as! Self
+            // Eventually figure out how to make this more of a diffing situation.
+            if self.id == btn.id {
+                self = btn
+            }
+        }
     }
 }

@@ -19,4 +19,14 @@ final class ButtonTests: XCTestCase {
         let btn = changes.first!.get() as! Button
         XCTAssertEqual(F3(0.5, 0.5, 0.0), btn.color)
     }
+
+    func testAccept() throws {
+        var button = ToggleButton(id: "toggle", centeredIn: F2(5.0, 5.0), color: F3(0.5, 0.5, 0.0))
+
+        var changes: [ChangeAction] = []
+        changes.append(.update(change: ToggleButton(id: "toggle", centeredIn: F2(5.0, 5.0), color: F3(0.2, 0.2, 0.0))))
+
+        button.accept(changes)
+        XCTAssertEqual(F3(0.2, 0.2, 0.0), button.color)
+    }
 }
