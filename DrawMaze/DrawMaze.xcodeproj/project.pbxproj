@@ -40,6 +40,7 @@
 		5AF0E8AF11535468DC073109 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2B2BDE7613818C19ABC /* Wall.swift */; };
 		5AF0E8DBD467FEC9D060B796 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AF0E901810EBDBC9055998B /* levels.json */; };
 		5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
+		5AF0E969026452FD07B2B389 /* TaskUpdateButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0ED8B2D8D96802B0D95C5 /* TaskUpdateButtons.swift */; };
 		5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
@@ -61,6 +62,7 @@
 		5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
+		5AF0EFC8ACE15E12DBC8BECE /* TaskUpdateButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0ED8B2D8D96802B0D95C5 /* TaskUpdateButtons.swift */; };
 		5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EFFD83C29E9AE7FA126A /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
@@ -153,6 +155,7 @@
 		5AF0EA0B60A7B40DCB2A7519 /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		5AF0EAB90CCB3D98C995C0EC /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		5AF0ED24D672D3503B229FBA /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
+		5AF0ED8B2D8D96802B0D95C5 /* TaskUpdateButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskUpdateButtons.swift; sourceTree = "<group>"; };
 		5AF0EDE885A998F8DD7DE175 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
 		5AF0EE29190E895016D01D73 /* AppCoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreContext.swift; sourceTree = "<group>"; };
@@ -453,6 +456,7 @@
 			isa = PBXGroup;
 			children = (
 				63AC503C298625730084F44E /* ChangeSets.swift */,
+				5AF0ED8B2D8D96802B0D95C5 /* TaskUpdateButtons.swift */,
 			);
 			path = ChangeSets;
 			sourceTree = "<group>";
@@ -741,6 +745,7 @@
 				5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */,
 				5AF0EEBB62D00E5CFC4AA877 /* Button.swift in Sources */,
 				5AF0EDBF21EFB29EBF2C1E4C /* GameInput.swift in Sources */,
+				5AF0E969026452FD07B2B389 /* TaskUpdateButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +808,7 @@
 				5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */,
 				5AF0ED5F81332194B0EA9D9F /* Button.swift in Sources */,
 				5AF0EB705385B6FB50527088 /* GameInput.swift in Sources */,
+				5AF0EFC8ACE15E12DBC8BECE /* TaskUpdateButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

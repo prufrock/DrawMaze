@@ -117,12 +117,15 @@ struct World {
             }
         }
 
+        var buttonChanges: [ChangeAction] = []
         // Update buttons
         for i in (0 ..< buttons.count) {
             var button = buttons[i]
-            button.update(input: gameInput)
-            buttons[i] = button
+            buttonChanges.append(contentsOf: button.update(self, input: gameInput))
         }
+        var changeable = (buttons as [Changeable])
+        changeable.accept(buttonChanges)
+        buttons = (changeable as! [Button])
 
         // silly quick work around
         if let playButton = buttons.first { $0.id == "play"}, let b = playButton as? TapButton {

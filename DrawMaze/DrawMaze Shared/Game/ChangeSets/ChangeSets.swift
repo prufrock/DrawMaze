@@ -18,6 +18,8 @@ protocol Change {
  An object that changes and can be changed.
  */
 protocol Changeable {
+    var id: String { get }
+
     /**
      Calculates the changes to be made and changes itself in response.
      */
