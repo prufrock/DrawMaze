@@ -10,6 +10,10 @@ import XCTest
 
 final class FloatExtTests: XCTestCase {
 
+    func testRoundDown() throws {
+        XCTAssertEqual(1, Float(1.6).roundDown())
+    }
+
     func testConvertToRadians() throws {
         XCTAssertEqual(0, Float(0).toRadians(), accuracy: 0.0)
         XCTAssertEqual(.pi/4, Float(45).toRadians(), accuracy: 0.0000002)

@@ -87,6 +87,7 @@
 		634DC4BF2965315E004083ED /* Float2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4BD2965315E004083ED /* Float2Exts.swift */; };
 		634DC4C12965323A004083ED /* Float3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4C02965323A004083ED /* Float3Exts.swift */; };
 		634DC4C22965323A004083ED /* Float3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634DC4C02965323A004083ED /* Float3Exts.swift */; };
+		635E1BB42988C673002FFB88 /* Float4x4ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E1BB32988C673002FFB88 /* Float4x4ExtTests.swift */; };
 		635E89E429667976007F1ABE /* FloatExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A5296532FD0078DF20 /* FloatExtTests.swift */; };
 		635E89E52966797D007F1ABE /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C351B29078EAB0050F354 /* AppCoreTests.swift */; };
 		637607A8296536990078DF20 /* DoubleExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637607A7296536990078DF20 /* DoubleExts.swift */; };
@@ -186,6 +187,7 @@
 		634DC4BA296530A4004083ED /* FloatExts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExts.swift; sourceTree = "<group>"; };
 		634DC4BD2965315E004083ED /* Float2Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2Exts.swift; sourceTree = "<group>"; };
 		634DC4C02965323A004083ED /* Float3Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3Exts.swift; sourceTree = "<group>"; };
+		635E1BB32988C673002FFB88 /* Float4x4ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4x4ExtTests.swift; sourceTree = "<group>"; };
 		637607A5296532FD0078DF20 /* FloatExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtTests.swift; sourceTree = "<group>"; };
 		637607A7296536990078DF20 /* DoubleExts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExts.swift; sourceTree = "<group>"; };
 		637607AA296536C80078DF20 /* IntExts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntExts.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				637607A5296532FD0078DF20 /* FloatExtTests.swift */,
+				635E1BB32988C673002FFB88 /* Float4x4ExtTests.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 				635E89E429667976007F1ABE /* FloatExtTests.swift in Sources */,
 				632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */,
 				635E89E52966797D007F1ABE /* AppCoreTests.swift in Sources */,
+				635E1BB42988C673002FFB88 /* Float4x4ExtTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
