@@ -51,6 +51,9 @@ public extension Float4x4 {
         scale(x: 1, y: 1, z: z)
     }
 
+    /**
+     Rotate about the X axis with Euler angles
+     */
     static func rotateX(_ angle: Float) -> Float4x4 {
         Float4x4(
             [1,           0,          0, 0],
@@ -60,6 +63,9 @@ public extension Float4x4 {
         )
     }
 
+    /**
+     Rotate about the Y axes with Euler angles.
+     */
     static func rotateY(_ angle: Float) -> Float4x4 {
         Float4x4(
             [cos(angle), 0, -sin(angle), 0],
@@ -69,6 +75,9 @@ public extension Float4x4 {
         )
     }
 
+    /**
+     Rotate about the Z axes with Euler angles.
+     */
     static func rotateZ(_ angle: Float) -> Float4x4 {
         Float4x4(
             [ cos(angle), sin(angle), 0, 0],
