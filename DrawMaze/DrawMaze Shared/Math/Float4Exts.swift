@@ -5,7 +5,8 @@
 import Foundation
 import simd
 
-typealias Float4 = SIMD4<Float>
+public typealias Float4 = SIMD4<Float>
+public typealias F4 = Float4
 
 public extension Float4 {
     var xyz: Float3 {

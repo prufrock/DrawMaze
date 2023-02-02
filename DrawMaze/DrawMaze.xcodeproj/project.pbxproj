@@ -22,9 +22,11 @@
 		5AF0E3277FD90C3C0EFCCAE9 /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
 		5AF0E348EE50019AFD4C3976 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */; };
 		5AF0E3BD27EF01D01B982EFC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF41E46C82A6B15E4808 /* Game.swift */; };
+		5AF0E3D7DE650E7B958C67EC /* Float3ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EB68D31A6B9A55D3D1E3 /* Float3ExtTests.swift */; };
 		5AF0E3DA30273901735F1A92 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */; };
 		5AF0E41E83CC02786B007E55 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE885A998F8DD7DE175 /* Model.swift */; };
 		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
+		5AF0E5DB90AB58CEBAC28DE2 /* HLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */; };
 		5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
 		5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
 		5AF0E65AAF3BC27461677878 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */; };
@@ -40,9 +42,11 @@
 		5AF0E8AF11535468DC073109 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2B2BDE7613818C19ABC /* Wall.swift */; };
 		5AF0E8DBD467FEC9D060B796 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AF0E901810EBDBC9055998B /* levels.json */; };
 		5AF0E952A054A00A4E6A32C5 /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
+		5AF0E96AB06C00DD12E4166F /* Float2x2ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E42E342F3002F61263E5 /* Float2x2ExtTests.swift */; };
 		5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
+		5AF0EB54ED04EA4AD250A73B /* Float4ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EB000DC31BCE746D128B /* Float4ExtTests.swift */; };
 		5AF0EB705385B6FB50527088 /* GameInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E6F379DD8B32094FD88E /* GameInput.swift */; };
 		5AF0EB87B0584495A996C48A /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
 		5AF0EC85D570462A6D8C880B /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2B2BDE7613818C19ABC /* Wall.swift */; };
@@ -60,6 +64,7 @@
 		5AF0EECD66C82C639065C4AC /* AppCoreContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE29190E895016D01D73 /* AppCoreContext.swift */; };
 		5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
+		5AF0EF8F4937BE8B0E3883DF /* Float3x3ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3185F45C439F6888720 /* Float3x3ExtTests.swift */; };
 		5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
 		5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EFFD83C29E9AE7FA126A /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */; };
@@ -136,8 +141,11 @@
 		5AF0E1A5497D0AA1CB81D18D /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNDRRenderer.swift; sourceTree = "<group>"; };
 		5AF0E2B2BDE7613818C19ABC /* Wall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
+		5AF0E3185F45C439F6888720 /* Float3x3ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3x3ExtTests.swift; sourceTree = "<group>"; };
 		5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2x2Exts.swift; sourceTree = "<group>"; };
+		5AF0E42E342F3002F61263E5 /* Float2x2ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2x2ExtTests.swift; sourceTree = "<group>"; };
 		5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4x4Exts.swift; sourceTree = "<group>"; };
+		5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLP.swift; sourceTree = "<group>"; };
 		5AF0E6F379DD8B32094FD88E /* GameInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameInput.swift; sourceTree = "<group>"; };
 		5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		5AF0E7C2A61D7A72D0C55A87 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
@@ -150,6 +158,8 @@
 		5AF0E9B50947438189318EBF /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		5AF0EA0B60A7B40DCB2A7519 /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		5AF0EAB90CCB3D98C995C0EC /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
+		5AF0EB000DC31BCE746D128B /* Float4ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4ExtTests.swift; sourceTree = "<group>"; };
+		5AF0EB68D31A6B9A55D3D1E3 /* Float3ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3ExtTests.swift; sourceTree = "<group>"; };
 		5AF0ED24D672D3503B229FBA /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		5AF0EDE885A998F8DD7DE175 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
@@ -374,6 +384,7 @@
 			children = (
 				632C351A29078E700050F354 /* Shared */,
 				632C34FF29078CEA0050F354 /* DrawMaze_iOSTests.swift */,
+				5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */,
 			);
 			path = "DrawMaze iOSTests";
 			sourceTree = "<group>";
@@ -441,6 +452,10 @@
 			children = (
 				637607A5296532FD0078DF20 /* FloatExtTests.swift */,
 				635E1BB32988C673002FFB88 /* Float4x4ExtTests.swift */,
+				5AF0EB000DC31BCE746D128B /* Float4ExtTests.swift */,
+				5AF0E3185F45C439F6888720 /* Float3x3ExtTests.swift */,
+				5AF0EB68D31A6B9A55D3D1E3 /* Float3ExtTests.swift */,
+				5AF0E42E342F3002F61263E5 /* Float2x2ExtTests.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -784,6 +799,11 @@
 				632C350029078CEA0050F354 /* DrawMaze_iOSTests.swift in Sources */,
 				635E89E52966797D007F1ABE /* AppCoreTests.swift in Sources */,
 				635E1BB42988C673002FFB88 /* Float4x4ExtTests.swift in Sources */,
+				5AF0EB54ED04EA4AD250A73B /* Float4ExtTests.swift in Sources */,
+				5AF0EF8F4937BE8B0E3883DF /* Float3x3ExtTests.swift in Sources */,
+				5AF0E5DB90AB58CEBAC28DE2 /* HLP.swift in Sources */,
+				5AF0E3D7DE650E7B958C67EC /* Float3ExtTests.swift in Sources */,
+				5AF0E96AB06C00DD12E4166F /* Float2x2ExtTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

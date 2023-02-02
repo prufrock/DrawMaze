@@ -5,7 +5,7 @@ import simd
 
 final class Float4x4ExtTests: XCTestCase {
 
-    private let accuracy: Float = 0.0000003
+    private let accuracy: Float = HLP.accuracy
 
     func testTranslate() throws {
         var start = Float4(1.0, 0.0, 0.0, 1.0)

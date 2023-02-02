@@ -12,6 +12,10 @@ public typealias Float3 = SIMD3<Float>
 public typealias F3 = Float3
 
 public extension Float3 {
+    var f2: Float2 {
+        toFloat2()
+    }
+
     var length: Float {
         (x * x + y * y + z * z).squareRoot()
     }
