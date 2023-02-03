@@ -44,53 +44,53 @@ final class Float2ExtTests: XCTestCase {
         XCTAssertEqual(1.0, result.w)
     }
 
-    func testToNdcSpace() throws {
+    func testScreenToNdc() throws {
         var v = F2(0.0, 0.0)
-        XCTAssertEqual(F2(-1.0, 1.0), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100))
-        XCTAssertEqual(F2(-1.0, -1.0), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100, flipY: false))
+        XCTAssertEqual(F2(-1.0, 1.0), v.screenToNdc(screenWidth: 100.0, screenHeight: 100))
+        XCTAssertEqual(F2(-1.0, -1.0), v.screenToNdc(screenWidth: 100.0, screenHeight: 100, flipY: false))
 
         v = F2(25.0, 25.0)
-        XCTAssertEqual(F2(-0.5, 0.5), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100))
-        XCTAssertEqual(F2(-0.5, -0.5), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100, flipY: false))
+        XCTAssertEqual(F2(-0.5, 0.5), v.screenToNdc(screenWidth: 100.0, screenHeight: 100))
+        XCTAssertEqual(F2(-0.5, -0.5), v.screenToNdc(screenWidth: 100.0, screenHeight: 100, flipY: false))
 
         v = F2(50.0, 50.0)
-        XCTAssertEqual(F2(0.0, 0.0), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100))
-        XCTAssertEqual(F2(0.0, 0.0), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100, flipY: false))
+        XCTAssertEqual(F2(0.0, 0.0), v.screenToNdc(screenWidth: 100.0, screenHeight: 100))
+        XCTAssertEqual(F2(0.0, 0.0), v.screenToNdc(screenWidth: 100.0, screenHeight: 100, flipY: false))
 
         v = F2(75.0, 75.0)
-        XCTAssertEqual(F2(0.5, -0.5), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100))
-        XCTAssertEqual(F2(0.5, 0.5), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100, flipY: false))
+        XCTAssertEqual(F2(0.5, -0.5), v.screenToNdc(screenWidth: 100.0, screenHeight: 100))
+        XCTAssertEqual(F2(0.5, 0.5), v.screenToNdc(screenWidth: 100.0, screenHeight: 100, flipY: false))
 
         v = F2(100.0, 100.0)
-        XCTAssertEqual(F2(1.0, -1.0), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100))
-        XCTAssertEqual(F2(1.0, 1.0), v.toNdcSpace(screenWidth: 100.0, screenHeight: 100, flipY: false))
+        XCTAssertEqual(F2(1.0, -1.0), v.screenToNdc(screenWidth: 100.0, screenHeight: 100))
+        XCTAssertEqual(F2(1.0, 1.0), v.screenToNdc(screenWidth: 100.0, screenHeight: 100, flipY: false))
     }
 
-    func testToWorldSpace() {
+    func testNdcToWorld() {
         let camera = TestCamera()
 
         var v = F2(-1.0, 1.0)
-        var u = v.toWorldSpace(camera: camera, aspect: 1.0)
+        var u = v.ndcToWorld(camera: camera, aspect: 1.0)
         XCTAssertEqual(-0.9999998, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.9999998, u.y, accuracy: HLP.accuracy)
 
         v = F2(-0.5, 0.5)
-        u = v.toWorldSpace(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera, aspect: 1.0)
         XCTAssertEqual(-0.4999999, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.4999999, u.y, accuracy: HLP.accuracy)
 
         v = F2(0.0, 0.0)
-        u = v.toWorldSpace(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera, aspect: 1.0)
         XCTAssertEqual(0.0, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.0, u.y, accuracy: HLP.accuracy)
 
         v = F2(0.5, 0.5)
-        u = v.toWorldSpace(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera, aspect: 1.0)
         XCTAssertEqual(0.4999999, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.4999999, u.y, accuracy: HLP.accuracy)
 
         v = F2(1.0, 1.0)
-        u = v.toWorldSpace(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera, aspect: 1.0)
         XCTAssertEqual(0.9999998, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.9999998, u.y, accuracy: HLP.accuracy)
     }

@@ -48,7 +48,7 @@ public extension Float2 {
        - flipY: macOS has an origin in the lower left while iOS has the origin in the upper right so you need to flip y.
      - Returns:
      */
-    func toNdcSpace(screenWidth: Float, screenHeight: Float, flipY: Bool = true) -> Float2 {
+    func screenToNdc(screenWidth: Float, screenHeight: Float, flipY: Bool = true) -> Float2 {
         // divide position.x by the screenWidth so number varies between 0 and 1
         // multiply that by 2 so that it varies between 0 and 2
         // subtract 1 because NDC x increases as you go to the right and this moves the value between -1 and 1.
@@ -69,7 +69,7 @@ public extension Float2 {
        - aspect: The aspect ratio of the screen to adjust the camera for.
      - Returns:
      */
-    func toWorldSpace(camera: Camera, aspect: Float) -> Float2 {
+    func ndcToWorld(camera: Camera, aspect: Float) -> Float2 {
         // Invert the Camera so that the position can go from NDC space to world space.
         // TODO need to share the camera values used by the renderer for the world space projected into: hud or simulation
         let ndc = Float4(position: self)
