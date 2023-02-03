@@ -106,8 +106,8 @@ struct World {
 
         if (input.isTouched) {
             let position = input.touchCoordinates
-                    .toNdcSpace(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
-                    .toWorldSpace(camera: hudCamera, aspect: input.aspect)
+                    .screenToNdc(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
+                    .ndcToWorld(camera: hudCamera, aspect: input.aspect)
             let location = TouchLocation(position: position, model: .square)
             touchLocation = location
 
