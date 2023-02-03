@@ -1,5 +1,5 @@
 //
-//  FloatExts.swift
+//  Float2Exts.swift
 //  DrawMaze
 //
 //  Created by David Kanenwisher on 1/3/23.
@@ -20,6 +20,10 @@ public extension Float2 {
         Float2(x: -y, y: x)
     }
 
+    var f3: Float3 {
+        toFloat3()
+    }
+
     init(_ x: Int, _ y: Int) {
         self.init(Float(x), Float(y))
     }
@@ -37,6 +41,7 @@ public extension Float2 {
     }
 
     /**
+     Converts from screen to NDC.
      - Parameters:
        - screenWidth: The width of the screen that corresponds with the coordinates.
        - screenHeight: The height of the screen that corresponds with the coordinates.
@@ -58,6 +63,7 @@ public extension Float2 {
     }
 
     /**
+     Converts NDC space to world space
      - Parameters:
        - camera:  The camera to convert the point through.
        - aspect: The aspect ratio of the screen to adjust the camera for.
@@ -65,7 +71,7 @@ public extension Float2 {
      */
     func toWorldSpace(camera: Camera, aspect: Float) -> Float2 {
         // Invert the Camera so that the position can go from NDC space to world space.
-        // TODO need to share the camera values used by the renderer
+        // TODO need to share the camera values used by the renderer for the world space projected into: hud or simulation
         let ndc = Float4(position: self)
         let position4 = (camera.worldToView(fov: .pi/2, aspect: aspect, nearPlane: 0.1, farPlane: 20.0)).inverse * Float4(position: self)
         // print("ndc world:", String(format: "%.8f, %.8f, %.8f, %.8f", ndc.x, ndc.y, ndc.z, ndc.w))
