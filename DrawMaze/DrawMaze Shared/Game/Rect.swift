@@ -4,10 +4,11 @@
 
 import Foundation
 
-struct Rect {
+// TODO: consider moving Rect out of Game
+public struct Rect {
     var min, max: Float2
 
-    func intersection(with rect: Rect) -> Float2? {
+    public func intersection(with rect: Rect) -> Float2? {
         let left = Float2(x: max.x - rect.min.x, y: 0) // world
         if left.x <= 0 {
             return nil
@@ -27,5 +28,9 @@ struct Rect {
 
         // sort by length with the smallest first and grab that one
         return [left, right, up, down].sorted(by: { $0.length < $1.length }).first
+    }
+
+    public func contains(_ p: Float2) -> Bool {
+        !(min.x > p.x || max.x < p.x || min.y > p.y || max.y < p.y)
     }
 }
