@@ -146,16 +146,16 @@ struct World {
     }
 
     private func pickButton(at location: TouchLocation) -> Button? {
-        var largestIntersectedButtonButton: Button? = nil
+        var largestIntersectedButton: Button? = nil
         var largestIntersection: Float2?
         buttons.forEach { button in
             if let intersection = location.intersection(with: button),
                intersection.length > largestIntersection?.length ?? 0 {
                 largestIntersection = intersection
-                largestIntersectedButtonButton = button
+                largestIntersectedButton = button
             }
         }
 
-        return largestIntersectedButtonButton
+        return largestIntersectedButton
     }
 }
