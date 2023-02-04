@@ -125,7 +125,7 @@ struct World {
         }
 
         // silly quick work around
-        if let playButton = buttons.first { $0.id == "play"}, let b = playButton as? TapButton {
+        if let playButton = buttons.first(where: { $0.id == "play"}), let b = playButton as? TapButton {
             if (b.togglePlay) {
                 camera = floatingCamera
                 // hey it works for now...
