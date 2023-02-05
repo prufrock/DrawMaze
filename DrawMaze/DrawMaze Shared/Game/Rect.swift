@@ -33,4 +33,29 @@ public struct Rect {
     public func contains(_ p: Float2) -> Bool {
         !(min.x > p.x || max.x < p.x || min.y > p.y || max.y < p.y)
     }
+
+    /**
+     Upper left origin
+     */
+    public func divide(_ direction: Divide) -> (Rect, Rect) {
+        let size: Float
+        switch direction {
+        case .horizontal:
+            size = (max.y - min.y) / 2
+            return (
+                Rect(min: min, max: Float2(max.x, max.y - size)),
+                Rect(min: Float2(min.x, min.y + size), max: max)
+            )
+        case .vertical:
+            size = (max.x - min.x) / 2
+            return (
+                Rect(min: min, max: Float2(max.x - size, max.y)),
+                Rect(min: Float2(min.x + size, min.y), max: max)
+            )
+        }
+    }
+
+    public enum Divide {
+        case horizontal, vertical
+    }
 }

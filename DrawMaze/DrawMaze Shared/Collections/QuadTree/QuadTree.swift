@@ -6,7 +6,6 @@ import Foundation
 
 protocol CTSQuadTree {
     func insert(_ p: Float2) -> Bool
-    func subdivide()
     func queryRange(_ range: Rect) -> [Float2]
 }
 
@@ -26,8 +25,11 @@ public class CTSQuadTreeList: CTSQuadTree {
 
     private var boundary: Rect
 
-    public init(boundary: Rect) {
+    private var level: Int
+
+    public init(boundary: Rect, level: Int = 0) {
         self.boundary = boundary
+        self.level = level
     }
 
     public func insert(_ p: Float2) -> Bool {
@@ -36,15 +38,27 @@ public class CTSQuadTreeList: CTSQuadTree {
             return false
         }
 
-        if hasVacancies() && notDivided() {
+        if hasVacancies() && !divided() {
             points.append(p)
             return true
         }
 
-        return false
-    }
+        if !divided() {
+            _ = subDivide()
+        }
 
-    public func subdivide() {
+        //TODO: use a list of 4 elements?
+        if northWest!.insert(p) {
+            return true
+        } else if northEast!.insert(p) {
+            return true
+        } else if southWest!.insert(p) {
+            return true
+        } else if southEast!.insert(p) {
+            return true
+        }
+
+        return false
     }
 
     public func queryRange(_ range: Rect) -> [Float2] {
@@ -55,7 +69,21 @@ public class CTSQuadTreeList: CTSQuadTree {
        points.count < capacity
     }
 
-    func notDivided() -> Bool{
-        northWest == nil
+    private func divided() -> Bool {
+        northWest != nil
+    }
+
+    private func subDivide() -> Bool {
+        let (ab, cd) = boundary.divide(.horizontal)
+        let (a, b) = ab.divide(.vertical)
+        let (c, d) = cd.divide(.vertical)
+
+        northWest = CTSQuadTreeList(boundary: a, level: level + 1)
+        northEast = CTSQuadTreeList(boundary: b, level: level + 1)
+        southWest = CTSQuadTreeList(boundary: c, level: level + 1)
+        southEast = CTSQuadTreeList(boundary: d, level: level + 1)
+
+        //TODO: Consider checking when they get too small
+        return true
     }
 }
