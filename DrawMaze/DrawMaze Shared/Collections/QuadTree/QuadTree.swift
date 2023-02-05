@@ -9,7 +9,10 @@ protocol CTSQuadTree {
     func find(_ rect: Rect) -> [Float2]
 }
 
-public class CTSQuadTreeList: CTSQuadTree {
+/**
+ A quad tree that only works on points.
+ */
+public class CTSQuadTreePoint: CTSQuadTree {
 
     // node capacity
     private var capacity = 4
@@ -105,10 +108,10 @@ public class CTSQuadTreeList: CTSQuadTree {
         let (a, b) = ab.divide(.vertical)
         let (c, d) = cd.divide(.vertical)
 
-        northWest = CTSQuadTreeList(boundary: a, level: level + 1)
-        northEast = CTSQuadTreeList(boundary: b, level: level + 1)
-        southWest = CTSQuadTreeList(boundary: c, level: level + 1)
-        southEast = CTSQuadTreeList(boundary: d, level: level + 1)
+        northWest = CTSQuadTreePoint(boundary: a, level: level + 1)
+        northEast = CTSQuadTreePoint(boundary: b, level: level + 1)
+        southWest = CTSQuadTreePoint(boundary: c, level: level + 1)
+        southEast = CTSQuadTreePoint(boundary: d, level: level + 1)
 
         //TODO: Consider checking when they get too small
         return true
