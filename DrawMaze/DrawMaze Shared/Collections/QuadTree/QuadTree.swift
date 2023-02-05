@@ -6,7 +6,7 @@ import Foundation
 
 protocol CTSQuadTree {
     func insert(_ p: Float2) -> Bool
-    func queryRange(_ range: Rect) -> [Float2]
+    func find(_ rect: Rect) -> [Float2]
 }
 
 public class CTSQuadTreeList: CTSQuadTree {
@@ -61,8 +61,35 @@ public class CTSQuadTreeList: CTSQuadTree {
         return false
     }
 
-    public func queryRange(_ range: Rect) -> [Float2] {
-    []
+    public func find(_ rect: Rect) -> [Float2] {
+        var found: [Float2] = []
+
+        // Look, if the rect doesn't intersect with the boundary, what are we evening doing here?
+        if boundary.intersection(with: rect) == nil {
+            return found
+        }
+
+        // Check the points in this node
+        if !points.isEmpty {
+            points.forEach { point in
+                if rect.contains(point) {
+                    found.append(point)
+                }
+            }
+        }
+
+        // No more partitions to check then head home
+        if !divided() {
+            return found
+        }
+
+        // Check with the partitions
+        found.append(contentsOf: northWest!.find(rect))
+        found.append(contentsOf: northEast!.find(rect))
+        found.append(contentsOf: southWest!.find(rect))
+        found.append(contentsOf: southEast!.find(rect))
+
+        return found
     }
 
     private func hasVacancies() -> Bool {
