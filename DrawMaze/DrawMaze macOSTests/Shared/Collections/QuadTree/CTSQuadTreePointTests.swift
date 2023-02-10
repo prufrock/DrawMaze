@@ -5,7 +5,7 @@
 import XCTest
 @testable import DrawMaze_iOS
 
-final class CTSQuadTreeListTests: XCTestCase {
+final class CTSQuadTreePointTests: XCTestCase {
     func testInsert() throws {
         let t = CTSQuadTreePoint(boundary: Rect(min: F2(0.0, 0.0), max: F2(5.0.f)))
 

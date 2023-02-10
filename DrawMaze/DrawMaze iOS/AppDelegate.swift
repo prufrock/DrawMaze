@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Insert code here to initialize your application
+        let useRenderServiceErsatz = CommandLine.arguments.contains("-render-service-ersatz")
+        let renderServiceType: RenderServiceType = useRenderServiceErsatz ? .ersatz : .ersatz
+
         let config = AppCoreConfig(
             game: AppCoreConfig.Game(
                 world: AppCoreConfig.Game.World()
@@ -23,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ),
             services: AppCoreConfig.Services(
                 renderService: AppCoreConfig.Services.RenderService(
+                    type: renderServiceType,
                     clearColor: (0.3, 0.0, 0.3, 1.0)
                 ),
                 fileService: AppCoreConfig.Services.FileService(

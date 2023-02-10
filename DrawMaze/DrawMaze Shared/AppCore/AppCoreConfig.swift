@@ -35,6 +35,7 @@ public struct AppCoreConfig {
         public let fileService: AppCoreConfig.Services.FileService
 
         public struct RenderService {
+            public let type: RenderServiceType
             public let clearColor: (Double, Double, Double, Double)
         }
 

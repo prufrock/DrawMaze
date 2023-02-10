@@ -21,6 +21,7 @@ final class AppCoreTests: XCTestCase {
             ),
             services: AppCoreConfig.Services(
                 renderService: AppCoreConfig.Services.RenderService(
+                    type: .ersatz,
                     clearColor: (0.3, 0.0, 0.3, 1.0)
                 ),
                 fileService: AppCoreConfig.Services.FileService(

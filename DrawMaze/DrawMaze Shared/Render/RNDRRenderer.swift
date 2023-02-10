@@ -5,12 +5,15 @@
 import Foundation
 import MetalKit
 
-/**
- Knows how to render to the view.
 
- - Just the bare minimum to get the clear color set on the screen.
+protocol RNDRRenderer {
+    func render(game: Game, to view: MTKView, with screen: ScreenDimensions)
+}
+
+/**
+ Knows how to render to the view with Metal.
  */
-class RNDRRenderer {
+class RNDRMetalRenderer: RNDRRenderer {
     private let device: MTLDevice
     private let commandQueue: MTLCommandQueue
     private let config: AppCoreConfig.Services.RenderService
@@ -143,5 +146,14 @@ class RNDRRenderer {
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
+    }
+}
+
+/**
+ Does nothing, useful for testing in iCloud which doesn't support Metal.
+ */
+class RNDRErsatzRenderer: RNDRRenderer {
+    public func render(game: Game, to view: MTKView, with screen: ScreenDimensions) {
+        //no-op
     }
 }

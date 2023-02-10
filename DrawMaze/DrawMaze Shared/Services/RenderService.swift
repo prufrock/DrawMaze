@@ -14,7 +14,13 @@ public class RenderService {
 
     public func sync(_ command: RenderCommand) {
         // Not sure about creating this on every render request. Where does renderer cache stuff at then?
-        let renderer = RNDRRenderer(config: config)
+        let renderer: RNDRRenderer
+        switch config.type {
+        case .ersatz:
+            renderer = RNDRErsatzRenderer()
+        case .metal:
+            renderer = RNDRMetalRenderer(config: config)
+        }
         renderer.render(
             game: command.game,
             to: command.metalView,
@@ -27,4 +33,8 @@ public struct RenderCommand: ServiceCommand {
     let metalView: MTKView
     let screenDimensions: ScreenDimensions
     let game: Game
+}
+
+public enum RenderServiceType {
+    case ersatz, metal
 }
