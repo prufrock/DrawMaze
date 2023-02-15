@@ -28,6 +28,10 @@ public extension Float2 {
         self.init(Float(x), Float(y))
     }
 
+    init(_ x: Float) {
+        self.init(x, x)
+    }
+
     func toFloat3() -> Float3 {
         Float3(self)
     }

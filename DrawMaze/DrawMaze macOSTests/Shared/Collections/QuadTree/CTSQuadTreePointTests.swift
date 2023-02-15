@@ -19,7 +19,7 @@ final class CTSQuadTreePointTests: XCTestCase {
 
     func testFindWhenThereIsOnlyOneNode() throws {
         let t = CTSQuadTreePoint(boundary: Rect(min: F2(0.0, 0.0), max: F2(5.0.f)))
-        t.insert(Float2(1.0, 1.0))
+        _ = t.insert(Float2(1.0, 1.0))
 
         let result = t.find(Rect(min: F2(0.75, 0.75), max: F2(1.25, 1.25)))
 
@@ -29,11 +29,11 @@ final class CTSQuadTreePointTests: XCTestCase {
 
     func testFindWhenTheMatchIsInAPartition() throws {
         let t = CTSQuadTreePoint(boundary: Rect(min: F2(0.0, 0.0), max: F2(5.0.f)))
-        t.insert(Float2(5.0, 5.0))
-        t.insert(Float2(3.0, 3.0))
-        t.insert(Float2(2.0, 2.0))
-        t.insert(Float2(2.1, 2.1))
-        t.insert(Float2(1.0, 1.0))
+        _ = t.insert(Float2(5.0, 5.0))
+        _ = t.insert(Float2(3.0, 3.0))
+        _ = t.insert(Float2(2.0, 2.0))
+        _ = t.insert(Float2(2.1, 2.1))
+        _ = t.insert(Float2(1.0, 1.0))
 
         let result = t.find(Rect(min: F2(0.75, 0.75), max: F2(1.25, 1.25)))
 

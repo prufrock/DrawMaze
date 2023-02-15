@@ -6,12 +6,28 @@ import XCTest
 @testable import DrawMaze_iOS
 
 final class RectTests: XCTestCase {
-    func testContains() throws {
+    func testContainsFloat2() throws {
         let r = Rect(min: Float2(0.0, 0.0), max: Float2(5.0, 5.0))
 
         XCTAssertEqual(false, r.contains(Float2(6.0, 6.0)))
         XCTAssertEqual(false, r.contains(Float2(6.0, 4.0)))
         XCTAssertEqual(true, r.contains(Float2(1.0, 1.0)))
+    }
+
+    func testContainsRect() throws {
+        let r = Rect(0.0, 0.0, 5.0, 5.0)
+
+        XCTAssertEqual(false, r.contains(Float2(6.0, 6.0)))
+        XCTAssertEqual(false, r.contains(Float2(6.0, 4.0)))
+        XCTAssertEqual(true, r.contains(Float2(1.0, 1.0)))
+
+        // assuming upper left origin
+        XCTAssertFalse(r.contains(-1.0, -1.0, 1.0, 1.0)) // upper left
+        XCTAssertFalse(r.contains(4.0, 1.0, 6.0, -1.0)) // upper right
+        XCTAssertFalse(r.contains(-1.0, 4.0, 1.0, 6.0)) // lower left
+        XCTAssertFalse(r.contains(4.0, 4.0, 6.0, 6.0)) // lower right
+
+        XCTAssertTrue(r.contains(0.0, 0.0, 3.0, 3.0))
     }
 
     func testDivide() throws {

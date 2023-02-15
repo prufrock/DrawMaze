@@ -8,6 +8,7 @@ import Foundation
  A quad tree that only works on points.
  */
 public class CTSQuadTreePoint: CTSQuadTree {
+    typealias Element = Float2
 
     // node capacity
     private var capacity = 4
@@ -16,7 +17,7 @@ public class CTSQuadTreePoint: CTSQuadTree {
     private var points: [Float2] = []
 
     // partitions of 2D space
-    private var nodes: [CTSQuadTree] = []
+    private var nodes: [CTSQuadTreePoint] = []
 
     private var boundary: Rect
 
@@ -27,14 +28,14 @@ public class CTSQuadTreePoint: CTSQuadTree {
         self.level = level
     }
 
-    public func insert(_ p: Float2) -> Bool {
+    public func insert(_ element: Float2) -> Bool {
         // it it's outside the quadtree reject it
-        if !boundary.contains(p) {
+        if !boundary.contains(element) {
             return false
         }
 
         if hasVacancies() && !divided() {
-            points.append(p)
+            points.append(element)
             return true
         }
 
@@ -45,7 +46,7 @@ public class CTSQuadTreePoint: CTSQuadTree {
         var inserted = false
         var treeIterator = nodes.makeIterator()
         while let tree = treeIterator.next(), inserted == false {
-            inserted = tree.insert(p)
+            inserted = tree.insert(element)
         }
 
         return inserted

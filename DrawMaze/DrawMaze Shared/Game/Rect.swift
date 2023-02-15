@@ -5,8 +5,42 @@
 import Foundation
 
 // TODO: consider moving Rect out of Game
-public struct Rect {
+public struct Rect: Equatable {
     var min, max: Float2
+
+    var area: Float {
+        get {
+            height * width
+        }
+    }
+
+    var height: Float {
+        get {
+            max.y - min.y
+        }
+    }
+
+    var width: Float {
+        get {
+            max.x - min.x
+        }
+    }
+
+    private var corners: [F2] {
+        get {
+            [F2(min.x, min.y), F2(min.x, max.y), F2(max.x, max.y), F2(max.x, min.y)]
+        }
+    }
+
+    public init(min: Float2, max: Float2) {
+        self.min = min
+        self.max = max
+    }
+
+    public init(_ minX: Float, _ minY: Float, _ maxX: Float, _ maxY: Float) {
+        min = Float2(minX, minY)
+        max = Float2(maxX, maxY)
+    }
 
     public func intersection(with rect: Rect) -> Float2? {
         let left = Float2(x: max.x - rect.min.x, y: 0) // world
@@ -28,6 +62,20 @@ public struct Rect {
 
         // sort by length with the smallest first and grab that one
         return [left, right, up, down].sorted(by: { $0.length < $1.length }).first
+    }
+
+    func contains(_ rect: Rect) -> Bool {
+        // This can't contain the rectangle if it's not big enough
+        if (area < rect.area) {
+            return false
+        }
+
+        // All 4 corners must be inside this rectangle.
+        return rect.corners.filter{ contains($0) }.count == 4
+    }
+
+    public func contains(_ minX: Float, _ maxX: Float, _ minY: Float, _ maxY: Float) -> Bool {
+        contains(Rect(minX, maxX, minY, maxY))
     }
 
     public func contains(_ p: Float2) -> Bool {
