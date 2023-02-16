@@ -2,9 +2,9 @@
 // Created by David Kanenwisher on 2/14/23.
 //
 
-protocol ECSEntity {
-    var id: String { get }
+struct ECSEntity {
+    var id: String
 
     // components
-    var graphics: ECSGraphics { get }
+    var graphics: ECSGraphics?
 }

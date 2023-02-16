@@ -4,5 +4,7 @@
 
 import Foundation
 
-protocol ECSGraphics: ECSComponent {
+struct ECSGraphics: ECSComponent {
+    var entityID: String
+    var uprightToWorld: Float4x4
 }
