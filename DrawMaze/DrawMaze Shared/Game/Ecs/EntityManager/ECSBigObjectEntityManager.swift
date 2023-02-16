@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import simd
 
 /**
  * Manages Entities that are big objects composed of all their components rather than

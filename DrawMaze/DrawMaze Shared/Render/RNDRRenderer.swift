@@ -136,6 +136,8 @@ class RNDRMetalRenderer: RNDRRenderer {
             encoder.setFragmentBytes(&fragmentColor, length: MemoryLayout<Float3>.stride, index: 0)
             encoder.drawPrimitives(type: model.primitiveType, vertexStart: 0, vertexCount: model.v.count)
         }
+
+        renderSceneGraph(game.world.sceneGraph, game: game, screen: screen, encoder: encoder)
         encoder.endEncoding()
 
         guard let drawable = view.currentDrawable else {
@@ -146,6 +148,35 @@ class RNDRMetalRenderer: RNDRRenderer {
 
         commandBuffer.present(drawable)
         commandBuffer.commit()
+    }
+
+    private func renderSceneGraph(_ graph: [ECSGraphics], game: Game, screen: ScreenDimensions, encoder: MTLRenderCommandEncoder) {
+        for graphic in graph {
+            let model: Model = Square()
+
+            let viewToClip = Float4x4.identity()
+            let clipToNdc = Float4x4.identity()
+            let ndcToScreen = Float4x4.identity()
+
+            var finalTransform: Float4x4 = ndcToScreen
+                    * clipToNdc
+                    * viewToClip
+                    * game.world.hudCamera.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * graphic.uprightToWorld
+
+            let buffer = device.makeBuffer(bytes: model.v, length: MemoryLayout<Float3>.stride * model.v.count, options: [])
+
+            encoder.setRenderPipelineState(vertexPipeline)
+            encoder.setDepthStencilState(depthStencilState)
+            encoder.setVertexBuffer(buffer, offset: 0, index: 0)
+            encoder.setVertexBytes(&finalTransform, length: MemoryLayout<Float4x4>.stride, index: 1)
+
+            var fragmentColor = F3(1.0, 1.0, 1.0)
+
+            encoder.setFragmentBuffer(buffer, offset: 0, index: 0)
+            encoder.setFragmentBytes(&fragmentColor, length: MemoryLayout<Float3>.stride, index: 0)
+            encoder.drawPrimitives(type: model.primitiveType, vertexStart: 0, vertexCount: model.v.count)
+        }
     }
 }
 

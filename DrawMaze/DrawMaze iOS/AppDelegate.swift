@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Insert code here to initialize your application
         let useRenderServiceErsatz = CommandLine.arguments.contains("-render-service-ersatz")
-        let renderServiceType: RenderServiceType = useRenderServiceErsatz ? .ersatz : .ersatz
+        let renderServiceType: RenderServiceType = useRenderServiceErsatz ? .ersatz : .metal
 
         let config = AppCoreConfig(
             game: AppCoreConfig.Game(

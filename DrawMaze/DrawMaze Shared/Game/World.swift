@@ -10,6 +10,8 @@ import Foundation
 struct World {
     private let config: AppCoreConfig.Game.World
 
+    private var entityManager: ECSEntityManager
+
     private(set) var map: TileMap
 
     var actors: [Actor] {
@@ -23,6 +25,12 @@ struct World {
             list.append(contentsOf: walls)
 
             return list
+        }
+    }
+
+    var sceneGraph: [ECSGraphics] {
+        get {
+            entityManager.sceneGraph
         }
     }
 
@@ -49,6 +57,7 @@ struct World {
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
         self.map = map
+        self.entityManager = ECSBigObjectEntityManager()
         walls = []
         playButton = TapButton(id: "play", centeredIn: F2(7.f, 17.f), model: .square, color: F3(0, 0.2, 0))
         drawMazeUI = [
@@ -93,6 +102,8 @@ struct World {
                 }
             }
         }
+
+        entityManager.createDecoration(id: "d1", position: Float2(6, 6))
     }
 
     /**
