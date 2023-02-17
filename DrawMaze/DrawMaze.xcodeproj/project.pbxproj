@@ -14,6 +14,7 @@
 		5AF0E10DFDF0957A312D6CC7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF41E46C82A6B15E4808 /* Game.swift */; };
 		5AF0E13AC2AD29C013C3F3D3 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0B60A7B40DCB2A7519 /* Thing.swift */; };
 		5AF0E19B28668B98B58CDD33 /* ECSEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E544BC8F6CC0B7486C22 /* ECSEntityManager.swift */; };
+		5AF0E1A2D3D07111664FDF35 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
 		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		5AF0E2021FFF1A23F257CE8E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE885A998F8DD7DE175 /* Model.swift */; };
 		5AF0E22C4E5B10B86DE0EC3A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */; };
@@ -34,6 +35,7 @@
 		5AF0E3D7DE650E7B958C67EC /* Float3ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EB68D31A6B9A55D3D1E3 /* Float3ExtTests.swift */; };
 		5AF0E3DA30273901735F1A92 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */; };
 		5AF0E41E83CC02786B007E55 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE885A998F8DD7DE175 /* Model.swift */; };
+		5AF0E4CB96EABCCE770E2636 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
 		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
 		5AF0E5DB90AB58CEBAC28DE2 /* HLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */; };
 		5AF0E5E726C8947B79F7FC8F /* CTSQuadTreeRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA33AE406841AA70AEF0 /* CTSQuadTreeRectTests.swift */; };
@@ -169,6 +171,7 @@
 		5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2x2Exts.swift; sourceTree = "<group>"; };
 		5AF0E3DA025DD40BF8219B4E /* CSTQuadTreeRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSTQuadTreeRect.swift; sourceTree = "<group>"; };
 		5AF0E42E342F3002F61263E5 /* Float2x2ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2x2ExtTests.swift; sourceTree = "<group>"; };
+		5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSScene.swift; sourceTree = "<group>"; };
 		5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4x4Exts.swift; sourceTree = "<group>"; };
 		5AF0E544BC8F6CC0B7486C22 /* ECSEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSEntityManager.swift; sourceTree = "<group>"; };
 		5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLP.swift; sourceTree = "<group>"; };
@@ -312,6 +315,7 @@
 				5AF0EA4B0A0798439809D5C9 /* EntityManager */,
 				5AF0E1FABD25BF4ECDA63396 /* Entities */,
 				5AF0E69E6CC8F1FADC095AAB /* Components */,
+				5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */,
 			);
 			path = Ecs;
 			sourceTree = "<group>";
@@ -347,8 +351,16 @@
 			isa = PBXGroup;
 			children = (
 				5AF0E885DFEBAC0CE919FA9E /* QuadTree */,
+				5AF0E62C41943DB46438FC4F /* Graphs */,
 			);
 			path = Collections;
+			sourceTree = "<group>";
+		};
+		5AF0E62C41943DB46438FC4F /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Graphs;
 			sourceTree = "<group>";
 		};
 		5AF0E69E6CC8F1FADC095AAB /* Components */ = {
@@ -875,6 +887,7 @@
 				5AF0EF2B32063C2D2E2C5B17 /* ECSComponent.swift in Sources */,
 				5AF0E19B28668B98B58CDD33 /* ECSEntityManager.swift in Sources */,
 				5AF0E9DABE2319DC3DE7DE97 /* ECSBigObjectEntityManager.swift in Sources */,
+				5AF0E4CB96EABCCE770E2636 /* ECSScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -945,6 +958,7 @@
 				5AF0E66C6CDD1330016999D3 /* ECSComponent.swift in Sources */,
 				5AF0E02C561376F803090E74 /* ECSEntityManager.swift in Sources */,
 				5AF0E3C33E0506B8EA2CB79F /* ECSBigObjectEntityManager.swift in Sources */,
+				5AF0E1A2D3D07111664FDF35 /* ECSScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

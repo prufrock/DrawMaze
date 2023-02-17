@@ -21,9 +21,9 @@ final class ECSBigObjectEntityManagerTests: XCTestCase {
         var manager = ECSBigObjectEntityManager()
         _ = manager.createDecoration(id: "d1", position: F2(2.0, 2.0))
 
-        let graphic = manager.sceneGraph.first!
+        let graphic = manager.scene.first { $0.entityID == "d1" }
 
-        let v = graphic.uprightToWorld * F4(0.0, 0.0, 0.0, 1.0)
+        let v = graphic!.uprightToWorld * F4(0.0, 0.0, 0.0, 1.0)
 
         XCTAssertEqual(2.0, v.x, "")
         XCTAssertEqual(2.0, v.y, "")

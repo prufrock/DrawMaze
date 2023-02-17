@@ -28,9 +28,9 @@ struct World {
         }
     }
 
-    var sceneGraph: [ECSGraphics] {
+    var scene: ECSSceneGraph {
         get {
-            entityManager.sceneGraph
+            entityManager.scene
         }
     }
 

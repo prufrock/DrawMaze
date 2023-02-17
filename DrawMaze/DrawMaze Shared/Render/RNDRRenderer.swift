@@ -137,7 +137,7 @@ class RNDRMetalRenderer: RNDRRenderer {
             encoder.drawPrimitives(type: model.primitiveType, vertexStart: 0, vertexCount: model.v.count)
         }
 
-        renderSceneGraph(game.world.sceneGraph, game: game, screen: screen, encoder: encoder)
+        renderSceneGraph(game.world.scene, game: game, screen: screen, encoder: encoder)
         encoder.endEncoding()
 
         guard let drawable = view.currentDrawable else {
@@ -150,7 +150,7 @@ class RNDRMetalRenderer: RNDRRenderer {
         commandBuffer.commit()
     }
 
-    private func renderSceneGraph(_ graph: [ECSGraphics], game: Game, screen: ScreenDimensions, encoder: MTLRenderCommandEncoder) {
+    private func renderSceneGraph(_ graph: ECSSceneGraph, game: Game, screen: ScreenDimensions, encoder: MTLRenderCommandEncoder) {
         for graphic in graph {
             let model: Model = Square()
 

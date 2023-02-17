@@ -12,15 +12,14 @@ import simd
 struct ECSBigObjectEntityManager: ECSEntityManager {
     var entities: [ECSEntity] = []
 
-    // One day it'll be a graph
-    var sceneGraph: [ECSGraphics] = []
+    var scene = ECSSceneGraph()
 
     mutating func createDecoration(id: String, position: Float2) -> ECSEntity {
         let graphics = ECSGraphics(entityID: id, uprightToWorld: Float4x4.translate(position))
         let entity = ECSEntity(id: id, graphics: graphics)
 
         entities.append(entity)
-        sceneGraph.append(graphics)
+        scene.addChild(data: graphics)
 
         return entity
     }
