@@ -64,4 +64,8 @@ extension Actor {
     func intersection(with actor: Actor) -> Float2? {
         rect.intersection(with: actor.rect)
     }
+
+    func intersection(with rect: Rect) -> Float2? {
+        rect.intersection(with: rect)
+    }
 }

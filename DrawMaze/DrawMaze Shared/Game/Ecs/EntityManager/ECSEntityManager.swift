@@ -15,4 +15,9 @@ protocol ECSEntityManager {
 
     @discardableResult
     mutating func createToggleButton(id: String, position: Float2) -> ECSEntity
+
+    @discardableResult
+    func collides(with rect: Rect) -> [ECSCollision]
+
+    func find(_ entityId: String) -> ECSEntity?
 }

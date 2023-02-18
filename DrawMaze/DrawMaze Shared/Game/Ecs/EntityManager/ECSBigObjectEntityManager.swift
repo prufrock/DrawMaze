@@ -28,8 +28,13 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     }
 
     mutating func createToggleButton(id: String, position: Float2) -> ECSEntity {
-        let graphics = ECSGraphics(entityID: id, uprightToWorld: Float4x4.translate(position))
-        let collision = ECSCollision(entityID: id, radius: 0.5, position: position)
+        let radius: Float = 0.5
+        let graphics = ECSGraphics(
+            entityID: id,
+            color: F4(Color.green),
+            uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: 0.5, y: 0.5, z: 1.0)
+        )
+        let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let toggleButton = ECSToggleButton(entityID: id)
         let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
 
@@ -42,5 +47,10 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
     public func collides(with rect: Rect) -> [ECSCollision] {
         collisions.filter { rect.intersection(with: $0.rect) != nil }
+    }
+
+    public func find(_ entityId: String) -> ECSEntity? {
+        // eventually get a map or something on entityId
+        entities.first{ $0.id == entityId }
     }
 }

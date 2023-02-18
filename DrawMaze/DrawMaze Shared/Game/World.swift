@@ -104,6 +104,8 @@ struct World {
         }
 
         entityManager.createDecoration(id: "d1", position: Float2(6, 6))
+        entityManager.createToggleButton(id: "b1", position: Float2(2, 6))
+        entityManager.createToggleButton(id: "b2", position: Float2(3.1, 6))
     }
 
     /**
@@ -123,8 +125,12 @@ struct World {
             touchLocation = location
 
             let button = pickButton(at: location)
+            let entity = pickCollision(at: location)
             if let selected = button {
                 gameInput.selectedButtonId = selected.id
+            }
+            if let selected = entity {
+                print("collided entity \(selected.id)")
             }
         }
 
@@ -164,6 +170,20 @@ struct World {
                intersection.length > largestIntersection?.length ?? 0 {
                 largestIntersection = intersection
                 largestIntersectedButton = button
+            }
+        }
+
+        return largestIntersectedButton
+    }
+
+    private func pickCollision(at location: TouchLocation) -> ECSEntity? {
+        var largestIntersectedButton: ECSEntity? = nil
+        var largestIntersection: Float2?
+        entityManager.collides(with: location.rect).forEach { button in
+            if let intersection = location.intersection(with: button.rect),
+               intersection.length > largestIntersection?.length ?? 0 {
+                largestIntersection = intersection
+                largestIntersectedButton = entityManager.find(button.entityID)!
             }
         }
 
