@@ -171,7 +171,7 @@ class RNDRMetalRenderer: RNDRRenderer {
             encoder.setVertexBuffer(buffer, offset: 0, index: 0)
             encoder.setVertexBytes(&finalTransform, length: MemoryLayout<Float4x4>.stride, index: 1)
 
-            var fragmentColor = F3(1.0, 1.0, 1.0)
+            var fragmentColor = graphic.color
 
             encoder.setFragmentBuffer(buffer, offset: 0, index: 0)
             encoder.setFragmentBytes(&fragmentColor, length: MemoryLayout<Float3>.stride, index: 0)

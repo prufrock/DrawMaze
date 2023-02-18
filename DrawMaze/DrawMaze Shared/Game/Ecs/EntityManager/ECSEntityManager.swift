@@ -12,4 +12,7 @@ protocol ECSEntityManager {
 
     @discardableResult
     mutating func createDecoration(id: String, position: Float2) -> ECSEntity
+
+    @discardableResult
+    mutating func createToggleButton(id: String, position: Float2) -> ECSEntity
 }
