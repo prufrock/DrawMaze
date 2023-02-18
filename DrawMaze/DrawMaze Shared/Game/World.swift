@@ -131,10 +131,12 @@ struct World {
             }
             if let selected = entity {
                 print("collided entity \(selected.id)")
+                gameInput.selectedButton = selected
             }
         }
 
         // Update buttons
+        gameInput.selectedButton
         for i in (0 ..< buttons.count) {
             var button = buttons[i]
             button.update(input: gameInput)

@@ -15,4 +15,11 @@ struct ECSEntity {
 
     // physics
     var collision: ECSCollision?
+
+    mutating func update(input: GameInput, world: World) {
+        if var button = toggleButton {
+            button.update(input: input, entity: self, world: world)
+            toggleButton = button
+        }
+    }
 }

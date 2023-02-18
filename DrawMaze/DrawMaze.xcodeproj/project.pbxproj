@@ -39,6 +39,7 @@
 		5AF0E41E83CC02786B007E55 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE885A998F8DD7DE175 /* Model.swift */; };
 		5AF0E4CB96EABCCE770E2636 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
 		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
+		5AF0E528CCBD81B6F322DBB4 /* ECSToggleButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E86D419FDD2DB2FC97F0 /* ECSToggleButtonTests.swift */; };
 		5AF0E5DB90AB58CEBAC28DE2 /* HLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */; };
 		5AF0E5E726C8947B79F7FC8F /* CTSQuadTreeRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA33AE406841AA70AEF0 /* CTSQuadTreeRectTests.swift */; };
 		5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
@@ -191,6 +192,7 @@
 		5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMap.swift; sourceTree = "<group>"; };
 		5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		5AF0E810589299D491809FB1 /* TouchLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchLocation.swift; sourceTree = "<group>"; };
+		5AF0E86D419FDD2DB2FC97F0 /* ECSToggleButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSToggleButtonTests.swift; sourceTree = "<group>"; };
 		5AF0E8AC85199D1D06D70D61 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		5AF0E8DF9084BF1B1BF34821 /* ECSToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSToggleButton.swift; sourceTree = "<group>"; };
 		5AF0E901810EBDBC9055998B /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF0E2EA2DCFF80058D1196F /* Physics */,
+				5AF0EECA90B8D56965C4B530 /* Behavior */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -481,6 +484,14 @@
 				5AF0E921F0C401B651014AE4 /* ECSCollision.swift */,
 			);
 			path = Physics;
+			sourceTree = "<group>";
+		};
+		5AF0EECA90B8D56965C4B530 /* Behavior */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0E86D419FDD2DB2FC97F0 /* ECSToggleButtonTests.swift */,
+			);
+			path = Behavior;
 			sourceTree = "<group>";
 		};
 		5AF0EF95555E4C553B65E146 /* Render */ = {
@@ -1034,6 +1045,7 @@
 				5AF0E5E726C8947B79F7FC8F /* CTSQuadTreeRectTests.swift in Sources */,
 				5AF0E6BE22C0634FACEBEDFD /* ECSBigObjectEntityManagerTests.swift in Sources */,
 				5AF0EC4ECDDC97E1463D2B3B /* ECSCollisionTests.swift in Sources */,
+				5AF0E528CCBD81B6F322DBB4 /* ECSToggleButtonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

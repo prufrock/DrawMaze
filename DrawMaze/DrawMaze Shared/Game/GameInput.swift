@@ -7,5 +7,6 @@ import Foundation
 struct GameInput {
     let externalInput: Input
     var selectedButtonId: String?
+    var selectedButton: ECSEntity?
     var play: Bool = false
 }
