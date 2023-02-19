@@ -20,4 +20,6 @@ protocol ECSEntityManager {
     func collides(with rect: Rect) -> [ECSCollision]
 
     func find(_ entityId: String) -> ECSEntity?
+
+    mutating func update(_: ECSEntity)
 }

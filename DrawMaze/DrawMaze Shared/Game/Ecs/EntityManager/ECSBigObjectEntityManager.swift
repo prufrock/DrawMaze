@@ -53,4 +53,22 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         // eventually get a map or something on entityId
         entities.first{ $0.id == entityId }
     }
+
+    mutating public func update(_ entity: ECSEntity) {
+        //TODO: this might need to be cleaned up a little
+        entities.remove(at: entities.firstIndex { $0.id == entity.id }!)
+        entities.append(entity)
+
+        collisions = collisions.filter { $0.entityID != entity.id }
+        if let collision = entity.collision {
+            collisions.append(collision)
+        }
+
+        var graphics = scene.filter { $0.entityID != entity.id }
+        if let graphic = entity.graphics {
+            graphics.append(graphic)
+        }
+        scene = ECSSceneGraph()
+        graphics.forEach { scene.addChild(data: $0) }
+    }
 }

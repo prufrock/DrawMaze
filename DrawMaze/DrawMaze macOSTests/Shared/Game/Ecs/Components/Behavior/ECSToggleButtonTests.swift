@@ -11,7 +11,8 @@ final class ECSToggleButtonTests: XCTestCase {
 
     func testWhenNotSelected() throws {
         var button = ECSToggleButton(entityID: "b1")
-        button.update(input: HLP.gameInput, entity: ECSEntity(id: "b1", toggleButton: button), world: HLP.world)
+        var entity = ECSEntity(id: "b1", toggleButton: button)
+        button.update(input: HLP.gameInput, entity: &entity, world: HLP.world)
 
         XCTAssertEqual(ECSToggleButton.State.NotToggled, button.buttonState, "Should not have been toggled")
     }
@@ -19,10 +20,11 @@ final class ECSToggleButtonTests: XCTestCase {
     func testWhenSelected() throws {
         var button = ECSToggleButton(entityID: "b1")
         var gameInput = HLP.gameInput
-        let entity = ECSEntity(id: "b1", toggleButton: button)
+        var entity = ECSEntity(id: "b1", toggleButton: button, graphics: ECSGraphics(entityID: "b1"))
         gameInput.selectedButton = entity
-        button.update(input: gameInput, entity: entity, world: HLP.world)
+        button.update(input: gameInput, entity: &entity, world: HLP.world)
 
         XCTAssertEqual(ECSToggleButton.State.Toggled, button.buttonState, "Did the logic change?")
+        XCTAssertEqual(Float4(Color.blue), entity.graphics?.color, "Make sure you modified the struct.")
     }
 }

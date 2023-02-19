@@ -136,7 +136,10 @@ struct World {
         }
 
         // Update buttons
-        gameInput.selectedButton
+        if var selectedButton = gameInput.selectedButton {
+            selectedButton.update(input: gameInput, world: self)
+            entityManager.update(selectedButton)
+        }
         for i in (0 ..< buttons.count) {
             var button = buttons[i]
             button.update(input: gameInput)
