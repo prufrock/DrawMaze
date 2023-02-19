@@ -25,6 +25,6 @@ final class ECSToggleButtonTests: XCTestCase {
         button.update(input: gameInput, entity: &entity, world: HLP.world)
 
         XCTAssertEqual(ECSToggleButton.State.Toggled, button.buttonState, "Did the logic change?")
-        XCTAssertEqual(Float4(Color.blue), entity.graphics?.color, "Make sure you modified the struct.")
+        XCTAssertEqual(button.toggledColor, entity.graphics?.color, "Make sure you modified the struct.")
     }
 }

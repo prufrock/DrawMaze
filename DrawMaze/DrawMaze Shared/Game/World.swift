@@ -74,7 +74,7 @@ struct World {
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = horizontalStart + (i / gridHeight)
-            drawMazeUI.append(ToggleButton(id: String(i), centeredIn: F2(x.f, y.f), model: .square, color: F3(0, 0.2, 0)))
+            entityManager.createToggleButton(id: "map-btn" + String(i), position: Float2(x.f + 0.5, y.f + 0.5))
         }
         buttons = drawMazeUI
         reset()

@@ -29,13 +29,13 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
     mutating func createToggleButton(id: String, position: Float2) -> ECSEntity {
         let radius: Float = 0.5
+        let toggleButton = ECSToggleButton(entityID: id)
         let graphics = ECSGraphics(
             entityID: id,
-            color: F4(Color.green),
+            color: toggleButton.notToggledColor,
             uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: 0.5, y: 0.5, z: 1.0)
         )
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
-        let toggleButton = ECSToggleButton(entityID: id)
         let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
 
         entities.append(entity)
