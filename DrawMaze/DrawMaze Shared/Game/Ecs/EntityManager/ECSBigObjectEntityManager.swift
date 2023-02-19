@@ -59,16 +59,16 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         entities.remove(at: entities.firstIndex { $0.id == entity.id }!)
         entities.append(entity)
 
-        collisions = collisions.filter { $0.entityID != entity.id }
         if let collision = entity.collision {
+            collisions = collisions.filter { $0.entityID != entity.id }
             collisions.append(collision)
         }
 
-        var graphics = scene.filter { $0.entityID != entity.id }
         if let graphic = entity.graphics {
+            var graphics = scene.filter { $0.entityID != entity.id }
             graphics.append(graphic)
+            scene = ECSSceneGraph()
+            graphics.forEach { scene.addChild(data: $0) }
         }
-        scene = ECSSceneGraph()
-        graphics.forEach { scene.addChild(data: $0) }
     }
 }

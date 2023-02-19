@@ -39,4 +39,18 @@ final class ECSBigObjectEntityManagerTests: XCTestCase {
 
         XCTAssertEqual(1, found.count, "Should collide with the one button")
     }
+
+    func testUpdate() throws {
+        var manager = ECSBigObjectEntityManager()
+        var button = manager.createToggleButton(id: "b1", position: F2(2.0))
+
+        button.collision?.position = F2(1.0)
+        button.graphics?.color = Float4(Color.grey)
+
+        manager.update(button)
+
+        let updatedButton = manager.entities.first { $0.id == button.id }!
+        XCTAssertEqual(Float4(Color.grey), updatedButton.graphics?.color , "color updated to grey")
+        XCTAssertEqual(F2(1.0), updatedButton.collision?.position , "position updated to 1.0")
+    }
 }
