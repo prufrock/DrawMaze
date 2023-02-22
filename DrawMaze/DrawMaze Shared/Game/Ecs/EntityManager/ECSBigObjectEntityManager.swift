@@ -29,7 +29,25 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
     mutating func createToggleButton(id: String, position: Float2) -> ECSEntity {
         let radius: Float = 0.5
-        let toggleButton = ECSToggleButton(entityID: id)
+        let toggleButton = ECSToggleButton(entityID: id, toggledAction: { _, _, _ in print("toggled")}, notToggledAction: { _, _, _ in print("not toggled")})
+        let graphics = ECSGraphics(
+            entityID: id,
+            color: toggleButton.notToggledColor,
+            uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: 0.5, y: 0.5, z: 1.0)
+        )
+        let collision = ECSCollision(entityID: id, radius: radius, position: position)
+        let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
+
+        entities.append(entity)
+        collisions.append(collision)
+        scene.addChild(data: graphics)
+
+        return entity
+    }
+
+    mutating func createToggleButton(id: String, position: Float2, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity {
+        let radius: Float = 0.5
+        let toggleButton = ECSToggleButton(entityID: id, toggledAction: toggledAction, notToggledAction: notToggledAction)
         let graphics = ECSGraphics(
             entityID: id,
             color: toggleButton.notToggledColor,

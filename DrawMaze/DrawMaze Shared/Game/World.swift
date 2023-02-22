@@ -21,7 +21,6 @@ struct World {
             if let clicked = touchLocation {
                 list.append(clicked)
             }
-            list.append(contentsOf: buttons)
             list.append(contentsOf: walls)
 
             return list
@@ -34,6 +33,8 @@ struct World {
         }
     }
 
+    private var playing = false
+
     private var walls: [Wall]
 
     public var camera: Camera?
@@ -43,29 +44,18 @@ struct World {
 
     private var touchLocation: TouchLocation?
 
-    private var selectedButtonId: Int = -1
-    
-    private var buttons: [Button] = []
-
-    // The UI used to create a maze. I expect this eventually needs to get more complicated but going with it for now.
-    private var drawMazeUI: [Button] = []
-    // The buttons to show when playing
-    private var playMazeUI: [Button] = []
-    // The button to switch between draw and play
-    private var playButton: Button
-
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
         self.map = map
         self.entityManager = ECSBigObjectEntityManager()
         walls = []
-        playButton = TapButton(id: "play", centeredIn: F2(7.f, 17.f), model: .square, color: F3(0, 0.2, 0))
-        drawMazeUI = [
-            playButton
-        ]
-        playMazeUI = [
-            playButton
-        ]
+        entityManager.createToggleButton(
+            id: "btn-play",
+            position: F2(7.5.f, 17.5.f),
+            toggledAction: {gameInput, ecsEntity, world in world.playing.toggle() },
+            notToggledAction: {gameInput, ecsEntity, world in world.playing.toggle() }
+        )
+
         // whole iphone 14 screen is 10 across and 20 down
         let gridWidth = 9
         let gridHeight = 9
@@ -74,9 +64,8 @@ struct World {
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = horizontalStart + (i / gridHeight)
-            entityManager.createToggleButton(id: "map-btn" + String(i), position: Float2(x.f + 0.5, y.f + 0.5))
+            entityManager.createToggleButton(id: "btn-map" + String(i), position: Float2(x.f + 0.5, y.f + 0.5))
         }
-        buttons = drawMazeUI
         reset()
     }
 
@@ -102,10 +91,6 @@ struct World {
                 }
             }
         }
-
-        entityManager.createDecoration(id: "d1", position: Float2(6, 6))
-        entityManager.createToggleButton(id: "b1", position: Float2(2, 6))
-        entityManager.createToggleButton(id: "b2", position: Float2(3.1, 6))
     }
 
     /**
@@ -124,11 +109,8 @@ struct World {
             let location = TouchLocation(position: position, model: .square)
             touchLocation = location
 
-            let button = pickButton(at: location)
             let entity = pickCollision(at: location)
-            if let selected = button {
-                gameInput.selectedButtonId = selected.id
-            }
+
             if let selected = entity {
                 print("collided entity \(selected.id)")
                 gameInput.selectedButton = selected
@@ -137,48 +119,16 @@ struct World {
 
         // Update buttons
         if var selectedButton = gameInput.selectedButton {
-            selectedButton.update(input: gameInput, world: self)
+            selectedButton.update(input: gameInput, world: &self)
             entityManager.update(selectedButton)
-        }
-        for i in (0 ..< buttons.count) {
-            var button = buttons[i]
-            button.update(input: gameInput)
-            buttons[i] = button
         }
 
         // silly quick work around
-        if let playButton = buttons.first(where: { $0.id == "play"}), let b = playButton as? TapButton {
-            if (b.togglePlay) {
-                camera = floatingCamera
-                // hey it works for now...
-                if buttons.count == drawMazeUI.count {
-                    drawMazeUI = buttons
-                    playMazeUI[0] = playButton
-                    buttons = playMazeUI
-                }
-            } else {
-                camera = overHeadCamera
-                if buttons.count == playMazeUI.count {
-                    playMazeUI = buttons
-                    drawMazeUI[0] = playButton
-                    buttons = drawMazeUI
-                }
-            }
+        if (playing) {
+            camera = floatingCamera
+        } else {
+            camera = overHeadCamera
         }
-    }
-
-    private func pickButton(at location: TouchLocation) -> Button? {
-        var largestIntersectedButton: Button? = nil
-        var largestIntersection: Float2?
-        buttons.forEach { button in
-            if let intersection = location.intersection(with: button),
-               intersection.length > largestIntersection?.length ?? 0 {
-                largestIntersection = intersection
-                largestIntersectedButton = button
-            }
-        }
-
-        return largestIntersectedButton
     }
 
     private func pickCollision(at location: TouchLocation) -> ECSEntity? {

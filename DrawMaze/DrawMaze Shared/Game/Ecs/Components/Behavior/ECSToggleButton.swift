@@ -9,16 +9,30 @@ struct ECSToggleButton: ECSComponent {
     var buttonState: State = .NotToggled
     let toggledColor: Float4 = Float4(0.0, 0.6, 0.0, 1.0)
     let notToggledColor: Float4 = Float4(0.0, 0.2, 0.0, 1.0)
+    var toggledAction: ((GameInput, inout ECSEntity, inout World) -> Void)? = nil
+    var notToggledAction: ((GameInput, inout ECSEntity, inout World) -> Void)? = nil
 
-    mutating func update(input: GameInput, entity: inout ECSEntity, world: World) {
+    init(entityID: String, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> (), notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> ()) {
+        self.entityID = entityID
+        self.toggledAction = toggledAction
+        self.notToggledAction = notToggledAction
+    }
+
+    mutating func update(input: GameInput, entity: inout ECSEntity, world: inout World) {
         if (input.selectedButton?.id == entityID) {
             switch buttonState {
             case .Toggled:
                 buttonState =  .NotToggled
                 entity.graphics?.color = notToggledColor
+                if let action = toggledAction {
+                    action(input, &entity, &world)
+                }
             case .NotToggled:
                 buttonState = .Toggled
                 entity.graphics?.color = toggledColor
+                if let action = notToggledAction {
+                    action(input, &entity, &world)
+                }
             }
         }
     }
