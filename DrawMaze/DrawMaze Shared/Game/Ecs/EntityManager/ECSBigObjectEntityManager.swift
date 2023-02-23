@@ -12,6 +12,7 @@ import simd
 struct ECSBigObjectEntityManager: ECSEntityManager {
     var entities: [ECSEntity] = []
 
+    //TODO: what if there were many scenes(hud, world), each with its own uniforms like camera?
     var scene = ECSSceneGraph()
 
     //TODO: convert to a quad tree
@@ -45,7 +46,12 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         return entity
     }
 
-    mutating func createToggleButton(id: String, position: Float2, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity {
+    mutating func createToggleButton(
+        id: String,
+        position: Float2,
+        toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void,
+        notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void
+    ) -> ECSEntity {
         let radius: Float = 0.5
         let toggleButton = ECSToggleButton(entityID: id, toggledAction: toggledAction, notToggledAction: notToggledAction)
         let graphics = ECSGraphics(
@@ -55,6 +61,26 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         )
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
+
+        entities.append(entity)
+        collisions.append(collision)
+        scene.addChild(data: graphics)
+
+        return entity
+    }
+
+    /**
+     * Create a prop: an entity that can be collided with.
+     */
+    mutating func createProp(id: String, position: Float2, radius: Float) -> ECSEntity {
+        let graphics = ECSGraphics(
+            entityID: id,
+            color: Float4(0.0, 0.0, 1.0, 1.0),
+            uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: radius, y: radius, z: 1.0),
+            camera: .world
+        )
+        let collision = ECSCollision(entityID: id, radius: radius, position: position)
+        let entity = ECSEntity(id: id, graphics: graphics, collision: collision)
 
         entities.append(entity)
         collisions.append(collision)

@@ -107,7 +107,7 @@ class RNDRMetalRenderer: RNDRRenderer {
 
 
             var finalTransform: Float4x4
-            if actor is Button || actor is TouchLocation {
+            if actor is TouchLocation {
                 finalTransform = ndcToScreen
                     * clipToNdc
                     * viewToClip
@@ -158,10 +158,19 @@ class RNDRMetalRenderer: RNDRRenderer {
             let clipToNdc = Float4x4.identity()
             let ndcToScreen = Float4x4.identity()
 
+            //TODO: This is a hack, need to find a better way to get the camera. Maybe in the scene the graphic is a child of?
+            let camera: Camera
+            switch graphic.camera {
+            case .hud:
+                camera = game.world.hudCamera
+            case .world:
+                camera = game.world.camera!
+            }
+
             var finalTransform: Float4x4 = ndcToScreen
                     * clipToNdc
                     * viewToClip
-                    * game.world.hudCamera.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * camera.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
                     * graphic.uprightToWorld
 
             let buffer = device.makeBuffer(bytes: model.v, length: MemoryLayout<Float3>.stride * model.v.count, options: [])

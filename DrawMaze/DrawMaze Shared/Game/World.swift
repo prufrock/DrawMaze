@@ -21,7 +21,6 @@ struct World {
             if let clicked = touchLocation {
                 list.append(clicked)
             }
-            list.append(contentsOf: walls)
 
             return list
         }
@@ -35,8 +34,6 @@ struct World {
 
     private var playing = false
 
-    private var walls: [Wall]
-
     public var camera: Camera?
     private var overHeadCamera: Camera?
     private var floatingCamera: Camera?
@@ -48,7 +45,6 @@ struct World {
         self.config = config
         self.map = map
         self.entityManager = ECSBigObjectEntityManager()
-        walls = []
         entityManager.createToggleButton(
             id: "btn-play",
             position: F2(7.5.f, 17.5.f),
@@ -87,7 +83,11 @@ struct World {
                     // not going to render floors for now
                     break
                 case .wall:
-                    walls.append(Wall(position: position, model: .square))
+                    entityManager.createProp(
+                        id: "wall" + String(x) + String(y),
+                        position: Float2(x.f + 0.5, y.f + 0.5),
+                        radius: 0.5
+                    )
                 }
             }
         }
