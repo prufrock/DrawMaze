@@ -13,17 +13,36 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     var entities: [ECSEntity] = []
 
     //TODO: what if there were many scenes(hud, world), each with its own uniforms like camera?
-    var scene = ECSSceneGraph()
+    //rebuild the scene graph each time it's needed -- may only want to do when it's dirty
+    var scene: ECSSceneGraph
+    {
+        var scene = ECSSceneGraph()
+        for entity in entities {
+            if let component = entity.graphics {
+                scene.addChild(data: component)
+            }
+        }
+        return scene
+    }
 
     //TODO: convert to a quad tree
-    private var collisions: [ECSCollision] = []
+    //TODO: rebuild the collision list each time it's needed -- may only want to do when it's dirty
+    private var collisions: [ECSCollision]
+    {
+        var collection: [ECSCollision] = []
+        for entity in entities {
+            if let component = entity.collision {
+                collection.append(component)
+            }
+        }
+        return collection
+    }
 
     mutating func createDecoration(id: String, position: Float2) -> ECSEntity {
         let graphics = ECSGraphics(entityID: id, uprightToWorld: Float4x4.translate(position))
         let entity = ECSEntity(id: id, graphics: graphics)
 
-        entities.append(entity)
-        scene.addChild(data: graphics)
+        update(entity)
 
         return entity
     }
@@ -39,9 +58,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
 
-        entities.append(entity)
-        collisions.append(collision)
-        scene.addChild(data: graphics)
+        update(entity)
 
         return entity
     }
@@ -62,9 +79,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
 
-        entities.append(entity)
-        collisions.append(collision)
-        scene.addChild(data: graphics)
+        update(entity)
 
         return entity
     }
@@ -72,19 +87,17 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     /**
      * Create a prop: an entity that can be collided with.
      */
-    mutating func createProp(id: String, position: Float2, radius: Float) -> ECSEntity {
+    mutating func createProp(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera = .world) -> ECSEntity {
         let graphics = ECSGraphics(
             entityID: id,
             color: Float4(0.0, 0.0, 1.0, 1.0),
             uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: radius, y: radius, z: 1.0),
-            camera: .world
+            camera: camera
         )
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let entity = ECSEntity(id: id, graphics: graphics, collision: collision)
 
-        entities.append(entity)
-        collisions.append(collision)
-        scene.addChild(data: graphics)
+        update(entity)
 
         return entity
     }
@@ -100,19 +113,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
     mutating public func update(_ entity: ECSEntity) {
         //TODO: this might need to be cleaned up a little
-        entities.remove(at: entities.firstIndex { $0.id == entity.id }!)
+        entities = entities.filter { $0.id != entity.id }
         entities.append(entity)
-
-        if let collision = entity.collision {
-            collisions = collisions.filter { $0.entityID != entity.id }
-            collisions.append(collision)
-        }
-
-        if let graphic = entity.graphics {
-            var graphics = scene.filter { $0.entityID != entity.id }
-            graphics.append(graphic)
-            scene = ECSSceneGraph()
-            graphics.forEach { scene.addChild(data: $0) }
-        }
     }
 }

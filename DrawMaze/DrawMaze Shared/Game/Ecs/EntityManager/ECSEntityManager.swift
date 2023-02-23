@@ -20,7 +20,7 @@ protocol ECSEntityManager {
     mutating func createToggleButton(id: String, position: Float2, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity
 
     @discardableResult
-    mutating func createProp(id: String, position: Float2, radius: Float) -> ECSEntity
+    mutating func createProp(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity
 
     @discardableResult
     func collides(with rect: Rect) -> [ECSCollision]

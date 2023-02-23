@@ -14,4 +14,8 @@ struct ECSCollision: ECSComponent {
         // the rectangle is centered on the position
         return Rect(min: position - halfSize, max: position + halfSize)
     }
+
+    func intersection(with rect: Rect) -> Float2? {
+        rect.intersection(with: rect)
+    }
 }

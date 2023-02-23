@@ -18,10 +18,6 @@ struct World {
         get {
             var list: [Actor] = []
 
-            if let clicked = touchLocation {
-                list.append(clicked)
-            }
-
             return list
         }
     }
@@ -38,8 +34,6 @@ struct World {
     private var overHeadCamera: Camera?
     private var floatingCamera: Camera?
     public var hudCamera = HudCamera(model: .square)
-
-    private var touchLocation: TouchLocation?
 
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
@@ -86,7 +80,8 @@ struct World {
                     entityManager.createProp(
                         id: "wall" + String(x) + String(y),
                         position: Float2(x.f + 0.5, y.f + 0.5),
-                        radius: 0.5
+                        radius: 0.5,
+                        camera: .world
                     )
                 }
             }
@@ -106,14 +101,13 @@ struct World {
             let position = input.touchCoordinates
                     .screenToNdc(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
                     .ndcToWorld(camera: hudCamera, aspect: input.aspect)
-            let location = TouchLocation(position: position, model: .square)
-            touchLocation = location
+            let eLocation = entityManager.createProp(id: "touchLocation", position: position, radius: 0.12, camera: .hud)
 
-            let entity = pickCollision(at: location)
-
-            if let selected = entity {
-                print("collided entity \(selected.id)")
-                gameInput.selectedButton = selected
+            if let collision = eLocation.collision {
+                if let selected = pickCollision(at: collision) {
+                    print("collided entity \(selected.id)")
+                    gameInput.selectedButton = selected
+                }
             }
         }
 
@@ -131,7 +125,8 @@ struct World {
         }
     }
 
-    private func pickCollision(at location: TouchLocation) -> ECSEntity? {
+    //TODO: find a new home, maybe EntityManager?
+    private func pickCollision(at location: ECSCollision) -> ECSEntity? {
         var largestIntersectedButton: ECSEntity? = nil
         var largestIntersection: Float2?
         entityManager.collides(with: location.rect).forEach { button in

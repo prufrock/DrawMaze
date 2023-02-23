@@ -68,7 +68,6 @@
 		5AF0E9DABE2319DC3DE7DE97 /* ECSBigObjectEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E2A6C32C0AB9736D5F0C /* ECSBigObjectEntityManager.swift */; };
 		5AF0EA1EF4C4D808BD5D3042 /* CSTQuadTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EAAC950E185923A4C1F5 /* CSTQuadTreePoint.swift */; };
 		5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
-		5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EAADB106BBE84CD82918 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E35C88DE2963764E3778 /* Color.swift */; };
 		5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
 		5AF0EB54ED04EA4AD250A73B /* Float4ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EB000DC31BCE746D128B /* Float4ExtTests.swift */; };
@@ -95,7 +94,6 @@
 		5AF0EF8F4937BE8B0E3883DF /* Float3x3ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3185F45C439F6888720 /* Float3x3ExtTests.swift */; };
 		5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
 		5AF0EFD99C8AB4A331E2E9DF /* ECSGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF59246EFEC9843B845A /* ECSGraphics.swift */; };
-		5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E810589299D491809FB1 /* TouchLocation.swift */; };
 		5AF0EFFD83C29E9AE7FA126A /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
 		632C34BC29078C280050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34BB29078C280050F354 /* ViewController.swift */; };
@@ -186,7 +184,6 @@
 		5AF0E7D0B7A5A6714D67584A /* CTSQuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQuadTree.swift; sourceTree = "<group>"; };
 		5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMap.swift; sourceTree = "<group>"; };
 		5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
-		5AF0E810589299D491809FB1 /* TouchLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchLocation.swift; sourceTree = "<group>"; };
 		5AF0E86D419FDD2DB2FC97F0 /* ECSToggleButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSToggleButtonTests.swift; sourceTree = "<group>"; };
 		5AF0E8AC85199D1D06D70D61 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		5AF0E8DF9084BF1B1BF34821 /* ECSToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSToggleButton.swift; sourceTree = "<group>"; };
@@ -395,7 +392,6 @@
 			children = (
 				5AF0E9B50947438189318EBF /* Camera.swift */,
 				5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */,
-				5AF0E810589299D491809FB1 /* TouchLocation.swift */,
 			);
 			path = Actor;
 			sourceTree = "<group>";
@@ -924,7 +920,6 @@
 				5AF0E2021FFF1A23F257CE8E /* Model.swift in Sources */,
 				63DDDA90296D192D0013605A /* Shaders.metal in Sources */,
 				5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */,
-				5AF0EAA7783C718B821430A8 /* TouchLocation.swift in Sources */,
 				5AF0EDBF21EFB29EBF2C1E4C /* GameInput.swift in Sources */,
 				5AF0E2D57D5AC5969380C186 /* CTSQuadTree.swift in Sources */,
 				5AF0EA1EF4C4D808BD5D3042 /* CSTQuadTreePoint.swift in Sources */,
@@ -996,7 +991,6 @@
 				634673E4296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */,
 				5AF0E41E83CC02786B007E55 /* Model.swift in Sources */,
 				5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */,
-				5AF0EFE4EE80BDC96321A7A1 /* TouchLocation.swift in Sources */,
 				5AF0EB705385B6FB50527088 /* GameInput.swift in Sources */,
 				5AF0E6A845FAB05E3CAE2BE6 /* CTSQuadTree.swift in Sources */,
 				5AF0E71D763BB4D89C0B808A /* CSTQuadTreePoint.swift in Sources */,

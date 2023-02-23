@@ -29,4 +29,3 @@ extension ScopeFunction {
     }
 }
 extension NSObject: ScopeFunction {}
-extension TouchLocation: ScopeFunction {}

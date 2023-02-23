@@ -88,55 +88,6 @@ class RNDRMetalRenderer: RNDRRenderer {
                        """)
         }
 
-        let actors = game.world.actors
-
-        for actor in actors {
-            let model: Model
-            switch actor.model {
-            case .dot:
-                model = Dot()
-            case .square:
-                model = Square()
-            case .wfSquare:
-                model = WireframeSquare()
-            }
-
-            let viewToClip = Float4x4.identity()
-            let clipToNdc = Float4x4.identity()
-            let ndcToScreen = Float4x4.identity()
-
-
-            var finalTransform: Float4x4
-            if actor is TouchLocation {
-                finalTransform = ndcToScreen
-                    * clipToNdc
-                    * viewToClip
-                    * game.world.hudCamera.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
-                    * actor.uprightToWorld
-                    * actor.modelToUpright
-            } else {
-                finalTransform = ndcToScreen
-                    * clipToNdc
-                    * viewToClip
-                    * game.world.camera!.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
-                    * actor.uprightToWorld
-                    * actor.modelToUpright
-            }
-
-            let buffer = device.makeBuffer(bytes: model.v, length: MemoryLayout<Float3>.stride * model.v.count, options: [])
-
-            encoder.setRenderPipelineState(vertexPipeline)
-            encoder.setDepthStencilState(depthStencilState)
-            encoder.setVertexBuffer(buffer, offset: 0, index: 0)
-            encoder.setVertexBytes(&finalTransform, length: MemoryLayout<Float4x4>.stride, index: 1)
-
-            var fragmentColor = actor.color
-
-            encoder.setFragmentBuffer(buffer, offset: 0, index: 0)
-            encoder.setFragmentBytes(&fragmentColor, length: MemoryLayout<Float3>.stride, index: 0)
-            encoder.drawPrimitives(type: model.primitiveType, vertexStart: 0, vertexCount: model.v.count)
-        }
-
         renderSceneGraph(game.world.scene, game: game, screen: screen, encoder: encoder)
         encoder.endEncoding()
 
