@@ -11,6 +11,7 @@ struct ECSEntity {
     var toggleButton: ECSToggleButton?
 
     // graphics
+    var camera: ECSCamera?
     var graphics: ECSGraphics?
 
     // physics
@@ -20,6 +21,11 @@ struct ECSEntity {
         if var button = toggleButton {
             button.update(input: input, entity: &self, world: &world)
             toggleButton = button
+        }
+
+        if var camera = camera {
+            camera.update(input: input, entity: &self, world: &world)
+            self.camera = camera
         }
     }
 }

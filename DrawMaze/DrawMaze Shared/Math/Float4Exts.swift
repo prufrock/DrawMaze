@@ -20,4 +20,8 @@ public extension Float4 {
     init(position value: Float2) {
         self.init(value.x, value.y, 0.0, 1.0)
     }
+
+    init(value: Float) {
+        self.init(value, value, value, value)
+    }
 }

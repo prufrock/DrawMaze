@@ -34,6 +34,7 @@ struct World {
     private var overHeadCamera: Camera?
     private var floatingCamera: Camera?
     public var hudCamera = HudCamera(model: .square)
+    public var entityHudCamera: ECSEntity?
 
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
@@ -50,11 +51,13 @@ struct World {
         let gridWidth = 9
         let gridHeight = 9
         let horizontalStart = 7
-        let totalButtons = 81
+        let totalButtons = gridWidth * gridHeight
+        let radius = 0.5.f
+        let buttonSize = radius * 2.0
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = horizontalStart + (i / gridHeight)
-            entityManager.createToggleButton(id: "btn-map" + String(i), position: Float2(x.f + 0.5, y.f + 0.5))
+            entityManager.createToggleButton(id: "btn-map" + String(i), position: Float2(x.f * buttonSize,  y.f * buttonSize))
         }
         reset()
     }
@@ -66,6 +69,8 @@ struct World {
         overHeadCamera = CameraOverhead(position: Float2(0.0, 0.0), model: .square) // world
         floatingCamera = CameraFloating(position: Float2(0.0, 0.0), model: .square) // world
         camera = overHeadCamera
+
+        entityHudCamera = entityManager.createCamera(id: "hud-camera", initialAspectRatio: 1.0)
 
         // draw the world
         for y in 0..<map.height {
@@ -96,6 +101,12 @@ struct World {
      */
     mutating func update(timeStep: Float, input: Input) {
         var gameInput = GameInput(externalInput: input, selectedButtonId: nil)
+
+        // Update the camera
+        if var camera = entityHudCamera {
+            camera.update(input: gameInput, world: &self)
+            entityHudCamera = camera
+        }
 
         if (input.isTouched) {
             let position = input.touchCoordinates

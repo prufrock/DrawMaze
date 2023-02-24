@@ -111,18 +111,21 @@ class RNDRMetalRenderer: RNDRRenderer {
 
             //TODO: This is a hack, need to find a better way to get the camera. Maybe in the scene the graphic is a child of?
             let camera: Camera
+            var finalTransform: Float4x4
             switch graphic.camera {
             case .hud:
-                camera = game.world.hudCamera
-            case .world:
-                camera = game.world.camera!
-            }
-
-            var finalTransform: Float4x4 = ndcToScreen
+                finalTransform = ndcToScreen
                     * clipToNdc
                     * viewToClip
-                    * camera.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * game.world.entityHudCamera!.camera!.projection()
                     * graphic.uprightToWorld
+            case .world:
+                finalTransform = ndcToScreen
+                    * clipToNdc
+                    * viewToClip
+                    * game.world.camera!.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * graphic.uprightToWorld
+            }
 
             let buffer = device.makeBuffer(bytes: model.v, length: MemoryLayout<Float3>.stride * model.v.count, options: [])
 

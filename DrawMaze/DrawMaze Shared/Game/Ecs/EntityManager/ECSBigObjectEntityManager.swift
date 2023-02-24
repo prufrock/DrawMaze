@@ -53,7 +53,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         let graphics = ECSGraphics(
             entityID: id,
             color: toggleButton.notToggledColor,
-            uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: 0.5, y: 0.5, z: 1.0)
+            uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: radius, y: radius, z: 1.0)
         )
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let entity = ECSEntity(id: id, toggleButton: toggleButton, graphics: graphics, collision: collision)
@@ -96,6 +96,20 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         )
         let collision = ECSCollision(entityID: id, radius: radius, position: position)
         let entity = ECSEntity(id: id, graphics: graphics, collision: collision)
+
+        update(entity)
+
+        return entity
+    }
+
+    mutating func createCamera(id: String, initialAspectRatio: Float) -> ECSEntity {
+        let worldToView: (ECSCamera) -> Float4x4 = { component in
+            Float4x4.translate(x: -1, y: 1, z: 0.0) * // 0,0 in world space should be -1, 1 or the upper left corner in NDC.
+                Float4x4.scale(x: 0.1, y: 0.1, z: 1.0) *
+                Float4x4.scale(x: 1 / component.aspect, y: -1.0, z: 1.0)
+        }
+        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, worldToView: worldToView)
+        let entity = ECSEntity(id: id, camera: camera)
 
         update(entity)
 

@@ -23,6 +23,9 @@ protocol ECSEntityManager {
     mutating func createProp(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity
 
     @discardableResult
+    mutating func createCamera(id: String, initialAspectRatio: Float) -> ECSEntity
+
+    @discardableResult
     func collides(with rect: Rect) -> [ECSCollision]
 
     func find(_ entityId: String) -> ECSEntity?

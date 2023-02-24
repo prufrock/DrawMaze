@@ -76,6 +76,7 @@ public extension Float2 {
     func ndcToWorld(camera: Camera, aspect: Float) -> Float2 {
         // Invert the Camera so that the position can go from NDC space to world space.
         // TODO need to share the camera values used by the renderer for the world space projected into: hud or simulation
+        //TODO: What if moved this into the camera?
         let position4 = (camera.worldToView(fov: .pi/2, aspect: aspect, nearPlane: 0.1, farPlane: 20.0)).inverse * Float4(position: self)
         // print("ndc world:", String(format: "%.8f, %.8f, %.8f, %.8f", ndc.x, ndc.y, ndc.z, ndc.w))
         // print("click world:", String(format: "%.8f, %.8f, %.8f, %.8f", position4.x, position4.y, position4.z, position4.w))
