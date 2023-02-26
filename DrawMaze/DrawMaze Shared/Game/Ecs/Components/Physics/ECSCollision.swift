@@ -15,7 +15,7 @@ struct ECSCollision: ECSComponent {
         return Rect(min: position - halfSize, max: position + halfSize)
     }
 
-    func intersection(with rect: Rect) -> Float2? {
-        self.rect.intersection(with: rect)
+    func intersection(with other: Rect) -> Float2? {
+        rect.intersection(with: other)
     }
 }
