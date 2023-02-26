@@ -10,6 +10,13 @@ final class Float2ExtTests: XCTestCase {
 
     let pTriple = F2(3.0, 4.0) // pythagorean triple 🤓
 
+    let entityCamera: ECSCamera = {
+        let worldToView: (ECSCamera) -> Float4x4 = { component in
+            Float4x4.perspectiveProjection(fov: .pi/2, aspect: component.aspect, nearPlane: 0.1, farPlane: 20.0)
+        }
+        return ECSCamera(entityID: "camera-1", aspect: 1.0, worldToView: worldToView)
+    }()
+
     func testLength() throws {
         XCTAssertEqual(5.0, pTriple.length)
     }
@@ -67,51 +74,31 @@ final class Float2ExtTests: XCTestCase {
     }
 
     func testNdcToWorld() {
-        let camera = TestCamera()
+        let camera = entityCamera
 
         var v = F2(-1.0, 1.0)
-        var u = v.ndcToWorld(camera: camera, aspect: 1.0)
+        var u = v.ndcToWorld(camera: camera)
         XCTAssertEqual(-0.9999998, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.9999998, u.y, accuracy: HLP.accuracy)
 
         v = F2(-0.5, 0.5)
-        u = v.ndcToWorld(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera)
         XCTAssertEqual(-0.4999999, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.4999999, u.y, accuracy: HLP.accuracy)
 
         v = F2(0.0, 0.0)
-        u = v.ndcToWorld(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera)
         XCTAssertEqual(0.0, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.0, u.y, accuracy: HLP.accuracy)
 
         v = F2(0.5, 0.5)
-        u = v.ndcToWorld(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera)
         XCTAssertEqual(0.4999999, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.4999999, u.y, accuracy: HLP.accuracy)
 
         v = F2(1.0, 1.0)
-        u = v.ndcToWorld(camera: camera, aspect: 1.0)
+        u = v.ndcToWorld(camera: camera)
         XCTAssertEqual(0.9999998, u.x, accuracy: HLP.accuracy)
         XCTAssertEqual(0.9999998, u.y, accuracy: HLP.accuracy)
-    }
-
-    struct TestCamera: Camera {
-        var position3d: DrawMaze_iOS.F3 = F3()
-
-        func worldToView(fov: Float, aspect: Float, nearPlane: Float, farPlane: Float) -> DrawMaze_iOS.Float4x4 {
-            Float4x4.perspectiveProjection(fov: fov, aspect: aspect, nearPlane: nearPlane, farPlane: farPlane)
-        }
-
-        var position: DrawMaze_iOS.F2 = F2()
-
-        var model: DrawMaze_iOS.BasicModels = .square
-
-        var color: DrawMaze_iOS.Float3 = F3()
-
-        var radius: Float = 0.5
-
-        var modelToUpright: DrawMaze_iOS.Float4x4 = Float4x4()
-
-        var uprightToWorld: DrawMaze_iOS.Float4x4 = Float4x4()
     }
 }

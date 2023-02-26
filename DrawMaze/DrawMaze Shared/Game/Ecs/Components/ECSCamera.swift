@@ -4,12 +4,18 @@
 
 import simd
 
-struct ECSCamera: ECSComponent {
+public struct ECSCamera: ECSComponent {
     var entityID: String
 
     var aspect: Float
 
-    let worldToView: (Self) -> Float4x4
+    private let worldToView: (Self) -> Float4x4
+
+    init(entityID: String, aspect: Float, worldToView: @escaping (Self) -> Float4x4) {
+        self.entityID = entityID
+        self.aspect = aspect
+        self.worldToView = worldToView
+    }
 
     func projection() -> Float4x4 {
         worldToView(self)

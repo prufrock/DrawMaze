@@ -14,14 +14,6 @@ struct World {
 
     private(set) var map: TileMap
 
-    var actors: [Actor] {
-        get {
-            var list: [Actor] = []
-
-            return list
-        }
-    }
-
     var scene: ECSSceneGraph {
         get {
             entityManager.scene
@@ -53,11 +45,10 @@ struct World {
         let horizontalStart = 7
         let totalButtons = gridWidth * gridHeight
         let radius = 0.5.f
-        let buttonSize = radius * 2.0
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = horizontalStart + (i / gridHeight)
-            entityManager.createToggleButton(id: "btn-map" + String(i), position: Float2(x.f * buttonSize,  y.f * buttonSize))
+            entityManager.createToggleButton(id: "btn-map" + String(i), position: Float2(x.f + radius,  y.f + radius))
         }
         reset()
     }
@@ -84,7 +75,7 @@ struct World {
                 case .wall:
                     entityManager.createProp(
                         id: "wall" + String(x) + String(y),
-                        position: Float2(x.f + 0.5, y.f + 0.5),
+                        position: position,
                         radius: 0.5,
                         camera: .world
                     )
@@ -111,7 +102,7 @@ struct World {
         if (input.isTouched) {
             let position = input.touchCoordinates
                     .screenToNdc(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
-                    .ndcToWorld(camera: hudCamera, aspect: input.aspect)
+                    .ndcToWorld(camera: entityHudCamera!.camera!)
             let eLocation = entityManager.createProp(id: "touchLocation", position: position, radius: 0.12, camera: .hud)
 
             if let collision = eLocation.collision {
@@ -140,11 +131,13 @@ struct World {
     private func pickCollision(at location: ECSCollision) -> ECSEntity? {
         var largestIntersectedButton: ECSEntity? = nil
         var largestIntersection: Float2?
+        // TODO: Needs some touching up =|
         entityManager.collides(with: location.rect).forEach { button in
-            if let intersection = location.intersection(with: button.rect),
-               intersection.length > largestIntersection?.length ?? 0 {
+            if location.entityID != button.entityID, let intersection = location.intersection(with: button.rect),
+               intersection.length > (largestIntersection?.length ?? 0) {
                 largestIntersection = intersection
                 largestIntersectedButton = entityManager.find(button.entityID)!
+                print(button.entityID)
             }
         }
 
