@@ -116,9 +116,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         return entity
     }
 
-    public func collides(with rect: Rect) -> [ECSCollision] {
-        collisions.filter { rect.intersection(with: $0.rect) != nil }
-    }
+    // MARK: Entity Table
 
     public func find(_ entityId: String) -> ECSEntity? {
         // eventually get a map or something on entityId
@@ -129,5 +127,27 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         //TODO: this might need to be cleaned up a little
         entities = entities.filter { $0.id != entity.id }
         entities.append(entity)
+    }
+
+    // MARK: Collision Table
+
+    public func collides(with rect: Rect) -> [ECSCollision] {
+        collisions.filter { rect.intersection(with: $0.rect) != nil }
+    }
+
+    public func pickCollision(at location: ECSCollision) -> ECSEntity? {
+        var largestIntersectedButton: ECSEntity? = nil
+        var largestIntersection: Float2?
+        // TODO: Needs some touching up =|
+        collides(with: location.rect).forEach { button in
+            if location.entityID != button.entityID, let intersection = location.intersection(with: button.rect),
+               intersection.length > (largestIntersection?.length ?? 0) {
+                largestIntersection = intersection
+                largestIntersectedButton = find(button.entityID)!
+                print(button.entityID)
+            }
+        }
+
+        return largestIntersectedButton
     }
 }

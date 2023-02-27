@@ -53,4 +53,24 @@ final class ECSBigObjectEntityManagerTests: XCTestCase {
         XCTAssertEqual(Float4(Color.grey), updatedButton.graphics?.color , "color updated to grey")
         XCTAssertEqual(F2(1.0), updatedButton.collision?.position , "position updated to 1.0")
     }
+
+    func testPickCollision() throws {
+        var manager11 = ECSBigObjectEntityManager()
+        _ = manager11.createToggleButton(id: "b11", position: F2(2.0))
+        _ = manager11.createToggleButton(id: "b12", position: F2(4.0))
+        let prop11 = manager11.createProp(id: "p11", position: F2(2.5), radius: 0.5)
+
+        let found11 = manager11.pickCollision(at: prop11.collision!)!
+
+        XCTAssertEqual("b11", found11.id, "Should collide with the one button")
+
+        var manager21 = ECSBigObjectEntityManager()
+        _ = manager21.createToggleButton(id: "b21", position: F2(2.0))
+        _ = manager21.createToggleButton(id: "b22", position: F2(2.2))
+        let prop21 = manager21.createProp(id: "p21", position: F2(2.5), radius: 0.5)
+
+        let found21 = manager21.pickCollision(at: prop21.collision!)!
+
+        XCTAssertEqual("b22", found21.id, "Should collide with largest intersection")
+    }
 }

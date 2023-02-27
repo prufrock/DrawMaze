@@ -106,7 +106,7 @@ struct World {
             let eLocation = entityManager.createProp(id: "touchLocation", position: position, radius: 0.12, camera: .hud)
 
             if let collision = eLocation.collision {
-                if let selected = pickCollision(at: collision) {
+                if let selected = entityManager.pickCollision(at: collision) {
                     print("collided entity \(selected.id)")
                     gameInput.selectedButton = selected
                 }
@@ -125,22 +125,5 @@ struct World {
         } else {
             camera = overHeadCamera
         }
-    }
-
-    //TODO: find a new home, maybe EntityManager?
-    private func pickCollision(at location: ECSCollision) -> ECSEntity? {
-        var largestIntersectedButton: ECSEntity? = nil
-        var largestIntersection: Float2?
-        // TODO: Needs some touching up =|
-        entityManager.collides(with: location.rect).forEach { button in
-            if location.entityID != button.entityID, let intersection = location.intersection(with: button.rect),
-               intersection.length > (largestIntersection?.length ?? 0) {
-                largestIntersection = intersection
-                largestIntersectedButton = entityManager.find(button.entityID)!
-                print(button.entityID)
-            }
-        }
-
-        return largestIntersectedButton
     }
 }

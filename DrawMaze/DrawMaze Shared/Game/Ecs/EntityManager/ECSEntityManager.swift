@@ -25,10 +25,16 @@ protocol ECSEntityManager {
     @discardableResult
     mutating func createCamera(id: String, initialAspectRatio: Float) -> ECSEntity
 
-    @discardableResult
-    func collides(with rect: Rect) -> [ECSCollision]
+    //MARK: Entity Table
 
     func find(_ entityId: String) -> ECSEntity?
 
     mutating func update(_: ECSEntity)
+
+    //MARK: Collision Table
+
+    @discardableResult
+    func collides(with rect: Rect) -> [ECSCollision]
+
+    func pickCollision(at location: ECSCollision) -> ECSEntity?
 }
