@@ -29,7 +29,6 @@
 		5AF0E320D78052928C5E0C48 /* RenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0148075573804D82175 /* RenderService.swift */; };
 		5AF0E32218D931C70B3A21AC /* CollectionExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0C9242F4023EF58485 /* CollectionExts.swift */; };
 		5AF0E3277FD90C3C0EFCCAE9 /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
-		5AF0E348EE50019AFD4C3976 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */; };
 		5AF0E387EA3807AD4E934A18 /* ECSToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E8DF9084BF1B1BF34821 /* ECSToggleButton.swift */; };
 		5AF0E3A977226B8E83C0BCDC /* ECSEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE1566A1D149EA459871 /* ECSEntity.swift */; };
 		5AF0E3BD27EF01D01B982EFC /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF41E46C82A6B15E4808 /* Game.swift */; };
@@ -44,9 +43,7 @@
 		5AF0E5E726C8947B79F7FC8F /* CTSQuadTreeRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA33AE406841AA70AEF0 /* CTSQuadTreeRectTests.swift */; };
 		5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
 		5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
-		5AF0E65AAF3BC27461677878 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */; };
 		5AF0E66C6CDD1330016999D3 /* ECSComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE6FE4234EAE2551694 /* ECSComponent.swift */; };
-		5AF0E68D4FF9BACAB784ADCE /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9B50947438189318EBF /* Camera.swift */; };
 		5AF0E6A845FAB05E3CAE2BE6 /* CTSQuadTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7D0B7A5A6714D67584A /* CTSQuadTree.swift */; };
 		5AF0E6BD11567043158AAB49 /* ECSEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE1566A1D149EA459871 /* ECSEntity.swift */; };
 		5AF0E6BE22C0634FACEBEDFD /* ECSBigObjectEntityManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7BD845A8B10E56F5009 /* ECSBigObjectEntityManagerTests.swift */; };
@@ -79,7 +76,6 @@
 		5AF0EC1C4EA448A92712F916 /* ECSToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E8DF9084BF1B1BF34821 /* ECSToggleButton.swift */; };
 		5AF0EC2C2AE3DA798A82A619 /* CSTQuadTreeRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3DA025DD40BF8219B4E /* CSTQuadTreeRect.swift */; };
 		5AF0EC4ECDDC97E1463D2B3B /* ECSCollisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EEC5076B04684D6B8C98 /* ECSCollisionTests.swift */; };
-		5AF0EC9B4F44FB10BF01F2DA /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9B50947438189318EBF /* Camera.swift */; };
 		5AF0ED006E8E93F6C94590B6 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7C2A61D7A72D0C55A87 /* World.swift */; };
 		5AF0ED29ABF963DFF8266ADF /* CollectionExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0C9242F4023EF58485 /* CollectionExts.swift */; };
 		5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
@@ -187,14 +183,12 @@
 		5AF0E7C2A61D7A72D0C55A87 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		5AF0E7D0B7A5A6714D67584A /* CTSQuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQuadTree.swift; sourceTree = "<group>"; };
 		5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileMap.swift; sourceTree = "<group>"; };
-		5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		5AF0E86D419FDD2DB2FC97F0 /* ECSToggleButtonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSToggleButtonTests.swift; sourceTree = "<group>"; };
 		5AF0E8AC85199D1D06D70D61 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		5AF0E8DF9084BF1B1BF34821 /* ECSToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSToggleButton.swift; sourceTree = "<group>"; };
 		5AF0E901810EBDBC9055998B /* levels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = levels.json; sourceTree = "<group>"; };
 		5AF0E921F0C401B651014AE4 /* ECSCollision.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSCollision.swift; sourceTree = "<group>"; };
 		5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3x3Exts.swift; sourceTree = "<group>"; };
-		5AF0E9B50947438189318EBF /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		5AF0EA0B60A7B40DCB2A7519 /* Thing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		5AF0EA0C9242F4023EF58485 /* CollectionExts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExts.swift; sourceTree = "<group>"; };
 		5AF0EA33AE406841AA70AEF0 /* CTSQuadTreeRectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQuadTreeRectTests.swift; sourceTree = "<group>"; };
@@ -396,8 +390,6 @@
 		5AF0E73AEB088A1FD394FAA4 /* Actor */ = {
 			isa = PBXGroup;
 			children = (
-				5AF0E9B50947438189318EBF /* Camera.swift */,
-				5AF0E7EF912C9763A5CC5FC8 /* Actor.swift */,
 			);
 			path = Actor;
 			sourceTree = "<group>";
@@ -914,7 +906,6 @@
 				5AF0EE8B51FB093F2FB5F2A3 /* Float2x2Exts.swift in Sources */,
 				5AF0E3BD27EF01D01B982EFC /* Game.swift in Sources */,
 				5AF0E8AD15B9405BDF01E5A0 /* Input.swift in Sources */,
-				5AF0EC9B4F44FB10BF01F2DA /* Camera.swift in Sources */,
 				5AF0E2B7E41D5BC4069C3461 /* MapData.swift in Sources */,
 				5AF0E03A62BE8C96B68A21E9 /* Rect.swift in Sources */,
 				5AF0E13AC2AD29C013C3F3D3 /* Thing.swift in Sources */,
@@ -923,7 +914,6 @@
 				5AF0ED006E8E93F6C94590B6 /* World.swift in Sources */,
 				634673E3296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */,
 				5AF0E2DB089CC406A1DDCE49 /* FileService.swift in Sources */,
-				5AF0E348EE50019AFD4C3976 /* Actor.swift in Sources */,
 				5AF0E2021FFF1A23F257CE8E /* Model.swift in Sources */,
 				63DDDA90296D192D0013605A /* Shaders.metal in Sources */,
 				5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */,
@@ -987,7 +977,6 @@
 				5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */,
 				5AF0E10DFDF0957A312D6CC7 /* Game.swift in Sources */,
 				5AF0E87157F98C14E974BF62 /* Input.swift in Sources */,
-				5AF0E68D4FF9BACAB784ADCE /* Camera.swift in Sources */,
 				5AF0E709CAD9F8B2CEDF623A /* MapData.swift in Sources */,
 				5AF0EE63292B366278F58456 /* Rect.swift in Sources */,
 				5AF0E05ECF38AD89B02B5103 /* Thing.swift in Sources */,
@@ -995,7 +984,6 @@
 				5AF0E76B11DC4F071E6F1853 /* TileMap.swift in Sources */,
 				5AF0E6EE0F387AAFD9795719 /* World.swift in Sources */,
 				5AF0E7BA6C30A760EA6B1C93 /* FileService.swift in Sources */,
-				5AF0E65AAF3BC27461677878 /* Actor.swift in Sources */,
 				634673E4296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */,
 				5AF0E41E83CC02786B007E55 /* Model.swift in Sources */,
 				5AF0E61D5C0F39869B36DA4B /* ScreenDimensions.swift in Sources */,

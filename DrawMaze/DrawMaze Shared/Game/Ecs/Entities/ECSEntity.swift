@@ -17,7 +17,7 @@ struct ECSEntity {
     // physics
     var collision: ECSCollision?
 
-    mutating func update(input: GameInput, world: inout World) {
+    mutating func update(input: GameInput, world: inout World) -> ECSEntity {
         if var button = toggleButton {
             button.update(input: input, entity: &self, world: &world)
             toggleButton = button
@@ -27,5 +27,7 @@ struct ECSEntity {
             camera.update(input: input, entity: &self, world: &world)
             self.camera = camera
         }
+
+        return self
     }
 }

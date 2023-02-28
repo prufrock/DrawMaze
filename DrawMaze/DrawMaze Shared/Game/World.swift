@@ -3,6 +3,7 @@
 //
 
 import Foundation
+import simd
 
 /**
  - Going to see if I can get by with just the config from AppCore for now.
@@ -22,11 +23,10 @@ struct World {
 
     private var playing = false
 
-    public var camera: Camera?
-    private var overHeadCamera: Camera?
-    private var floatingCamera: Camera?
-    public var hudCamera = HudCamera(model: .square)
-    public var entityHudCamera: ECSEntity?
+    public var camera: ECSEntity?
+    public var hudCamera: ECSEntity?
+    public var overHeadCamera: ECSEntity?
+    public var floatingCamera: ECSEntity?
 
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
@@ -57,11 +57,40 @@ struct World {
      Set the world back to how it all began...
      */
     private mutating func reset() {
-        overHeadCamera = CameraOverhead(position: Float2(0.0, 0.0), model: .square) // world
-        floatingCamera = CameraFloating(position: Float2(0.0, 0.0), model: .square) // world
-        camera = overHeadCamera
 
-        entityHudCamera = entityManager.createCamera(id: "hud-camera", initialAspectRatio: 1.0)
+        floatingCamera = entityManager.createCamera(
+            id: "floating-camera",
+            initialAspectRatio: 1.0,
+            position3d: F3(0.0, 0.0, 1.5),
+            baseWorldToView: { component in
+                Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
+                    * Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
+                	* Float4x4.rotateX(.pi/2)
+                    * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z).inverse //invert because we look out of the camera
+            })
+
+
+        overHeadCamera = entityManager.createCamera(
+            id: "overhead-camera",
+            initialAspectRatio: 1.0,
+            position3d: F3(0.0, 0.0, -10.5),
+            baseWorldToView: { component in
+                Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
+                    * Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
+                    * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z).inverse //invert because we look out of the camera
+            })
+
+        camera = floatingCamera
+
+        hudCamera = entityManager.createCamera(
+            id: "hud-camera",
+            initialAspectRatio: 1.0,
+            position3d: F3(0.0, 0.0, 0.0),
+            baseWorldToView: { component in
+                Float4x4.translate(x: -1, y: 1, z: 0.0) * // 0,0 in world space should be -1, 1 or the upper left corner in NDC.
+                    Float4x4.scale(x: 0.1, y: 0.1, z: 1.0) *
+                    Float4x4.scale(x: 1 / component.aspect, y: -1.0, z: 1.0)
+            })
 
         // draw the world
         for y in 0..<map.height {
@@ -93,16 +122,10 @@ struct World {
     mutating func update(timeStep: Float, input: Input) {
         var gameInput = GameInput(externalInput: input, selectedButtonId: nil)
 
-        // Update the camera
-        if var camera = entityHudCamera {
-            camera.update(input: gameInput, world: &self)
-            entityHudCamera = camera
-        }
-
         if (input.isTouched) {
             let position = input.touchCoordinates
                     .screenToNdc(screenWidth: input.viewWidth, screenHeight: input.viewHeight, flipY: true)
-                    .ndcToWorld(camera: entityHudCamera!.camera!)
+                    .ndcToWorld(camera: hudCamera!.camera!)
             let eLocation = entityManager.createProp(id: "touchLocation", position: position, radius: 0.12, camera: .hud)
 
             if let collision = eLocation.collision {
@@ -113,10 +136,22 @@ struct World {
             }
         }
 
-        // Update buttons
-        if var selectedButton = gameInput.selectedButton {
-            selectedButton.update(input: gameInput, world: &self)
-            entityManager.update(selectedButton)
+        // Update all of the entities
+        entityManager.entities.forEach { entity in
+            var newEntity = entity
+            entityManager.update(newEntity.update(input: gameInput, world: &self))
+        }
+
+        if let camera = hudCamera {
+            hudCamera = entityManager.find(camera.id)
+        }
+
+        if let camera = overHeadCamera {
+            overHeadCamera = entityManager.find(camera.id)
+        }
+
+        if let camera = floatingCamera {
+            floatingCamera = entityManager.find(camera.id)
         }
 
         // silly quick work around

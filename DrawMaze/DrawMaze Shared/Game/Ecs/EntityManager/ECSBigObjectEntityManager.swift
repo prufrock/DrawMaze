@@ -102,13 +102,8 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         return entity
     }
 
-    mutating func createCamera(id: String, initialAspectRatio: Float) -> ECSEntity {
-        let worldToView: (ECSCamera) -> Float4x4 = { component in
-            Float4x4.translate(x: -1, y: 1, z: 0.0) * // 0,0 in world space should be -1, 1 or the upper left corner in NDC.
-                Float4x4.scale(x: 0.1, y: 0.1, z: 1.0) *
-                Float4x4.scale(x: 1 / component.aspect, y: -1.0, z: 1.0)
-        }
-        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, worldToView: worldToView)
+    mutating func createCamera(id: String, initialAspectRatio: Float, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
+        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, position3d: position3d, worldToView: baseWorldToView)
         let entity = ECSEntity(id: id, camera: camera)
 
         update(entity)

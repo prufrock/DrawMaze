@@ -23,7 +23,7 @@ protocol ECSEntityManager {
     mutating func createProp(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity
 
     @discardableResult
-    mutating func createCamera(id: String, initialAspectRatio: Float) -> ECSEntity
+    mutating func createCamera(id: String, initialAspectRatio: Float, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity
 
     //MARK: Entity Table
 

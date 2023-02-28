@@ -113,20 +113,19 @@ class RNDRMetalRenderer: RNDRRenderer {
             let ndcToScreen = Float4x4.identity()
 
             //TODO: This is a hack, need to find a better way to get the camera. Maybe in the scene the graphic is a child of?
-            let camera: Camera
             var finalTransform: Float4x4
             switch graphic.camera {
             case .hud:
                 finalTransform = ndcToScreen
                     * clipToNdc
                     * viewToClip
-                    * game.world.entityHudCamera!.camera!.projection()
+                    * game.world.hudCamera!.camera!.projection()
                     * graphic.uprightToWorld
             case .world:
                 finalTransform = ndcToScreen
                     * clipToNdc
                     * viewToClip
-                    * game.world.camera!.worldToView(fov: .pi/2, aspect: screen.aspect, nearPlane: 0.1, farPlane: 20.0)
+                    * game.world.camera!.camera!.projection()
                     * graphic.uprightToWorld
             }
 
