@@ -103,6 +103,9 @@ class RNDRMetalRenderer: RNDRRenderer {
 
     private func renderSceneGraph(_ graph: ECSSceneGraph, game: Game, screen: ScreenDimensions, encoder: MTLRenderCommandEncoder) {
         for graphic in graph {
+            if graphic.hidden {
+                continue
+            }
             let model: Model = Square()
 
             let viewToClip = Float4x4.identity()

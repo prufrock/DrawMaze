@@ -37,4 +37,7 @@ protocol ECSEntityManager {
     func collides(with rect: Rect) -> [ECSCollision]
 
     func pickCollision(at location: ECSCollision) -> ECSEntity?
+
+    //MARK: Graphics table
+    mutating func hideMapButtons(_ hidden: Bool)
 }

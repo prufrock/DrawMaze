@@ -122,8 +122,10 @@ struct World {
         // silly quick work around
         if (playing) {
             camera = floatingCamera
+            entityManager.hideMapButtons(true)
         } else {
             camera = overHeadCamera
+            entityManager.hideMapButtons(false)
         }
     }
 }

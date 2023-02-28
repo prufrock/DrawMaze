@@ -129,6 +129,18 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         entities.append(entity)
     }
 
+    // TODO need to think a little about how to generalize these sorts of operations
+    // SELECT * FROM entities WHERE graphics != nil; UPDATE graphics SET hidden = true WHERE entityID = id
+    mutating public func hideMapButtons(_ hidden: Bool) {
+        entities = entities.map { entity in
+            guard entity.graphics != nil, entity.id.starts(with: "btn-map") else { return entity }
+            var newEntity = entity
+            newEntity.graphics?.hidden = hidden
+
+            return newEntity
+        }
+    }
+
     // MARK: Collision Table
 
     public func collides(with rect: Rect) -> [ECSCollision] {
