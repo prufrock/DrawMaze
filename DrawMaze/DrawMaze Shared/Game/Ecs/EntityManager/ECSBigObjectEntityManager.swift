@@ -66,11 +66,12 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     mutating func createToggleButton(
         id: String,
         position: Float2,
+        buttonState: ECSToggleButton.State = .NotToggled,
         toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void,
         notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void
     ) -> ECSEntity {
         let radius: Float = 0.5
-        let toggleButton = ECSToggleButton(entityID: id, toggledAction: toggledAction, notToggledAction: notToggledAction)
+        let toggleButton = ECSToggleButton(entityID: id, buttonState: buttonState, toggledAction: toggledAction, notToggledAction: notToggledAction)
         let graphics = ECSGraphics(
             entityID: id,
             color: toggleButton.notToggledColor,
@@ -131,8 +132,15 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
             guard entity.graphics != nil, entity.id.starts(with: "btn-map") else { return entity }
             var newEntity = entity
             newEntity.graphics?.hidden = hidden
+            newEntity.collision?.hidden = hidden
 
             return newEntity
+        }
+    }
+
+    mutating public func removeWalls() {
+        entities = entities.filter { entity in
+            !entity.id.starts(with: "wall")
         }
     }
 
@@ -147,7 +155,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         var largestIntersection: Float2?
         // TODO: Needs some touching up =|
         collides(with: location.rect).forEach { button in
-            if location.entityID != button.entityID, let intersection = location.intersection(with: button.rect),
+            if button.hidden != true, location.entityID != button.entityID, let intersection = location.intersection(with: button.rect),
                intersection.length > (largestIntersection?.length ?? 0) {
                 largestIntersection = intersection
                 largestIntersectedButton = find(button.entityID)!

@@ -17,7 +17,7 @@ protocol ECSEntityManager {
     mutating func createToggleButton(id: String, position: Float2) -> ECSEntity
 
     @discardableResult
-    mutating func createToggleButton(id: String, position: Float2, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity
+    mutating func createToggleButton(id: String, position: Float2, buttonState: ECSToggleButton.State, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity
 
     @discardableResult
     mutating func createProp(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity
@@ -30,6 +30,8 @@ protocol ECSEntityManager {
     func find(_ entityId: String) -> ECSEntity?
 
     mutating func update(_: ECSEntity)
+
+    mutating func removeWalls()
 
     //MARK: Collision Table
 

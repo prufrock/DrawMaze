@@ -8,6 +8,7 @@ struct ECSCollision: ECSComponent {
     var entityID: String
     var radius: Float = 0.5
     var position: F2 = F2(0.0, 0.0)
+    var hidden = false
 
     var rect: Rect {
         let halfSize = Float2(radius, radius)

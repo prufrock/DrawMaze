@@ -13,7 +13,7 @@ struct World {
 
     private var entityManager: ECSEntityManager
 
-    private(set) var map: TileMap
+    public var map: TileMap
 
     var scene: ECSSceneGraph {
         get {
@@ -28,6 +28,8 @@ struct World {
     public var overHeadCamera: ECSEntity?
     public var floatingCamera: ECSEntity?
 
+    private var mapData: MapData = MapData(tiles: (0..<81).map { _ in .wall }, width: 9)
+
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
         self.map = map
@@ -35,20 +37,61 @@ struct World {
         entityManager.createToggleButton(
             id: "btn-play",
             position: F2(7.5.f, 17.5.f),
-            toggledAction: {gameInput, ecsEntity, world in world.playing.toggle() },
-            notToggledAction: {gameInput, ecsEntity, world in world.playing.toggle() }
+            buttonState: ECSToggleButton.State.NotToggled,
+            toggledAction: {
+                gameInput, ecsEntity, world in
+                world.playing.toggle()
+                world.entityManager.removeWalls()
+                world.map = TileMap(world.mapData, index: 0)
+                for y in 0..<world.map.height {
+                    for x in 0..<world.map.width {
+                        let position = Float2(x: Float(x) + 0.5, y: Float(y) + 0.5) // world, in the center of the tile
+                        let tile = world.map[x, y]
+                        switch tile {
+                        case .floor:
+                            // not going to render floors for now
+                            break
+                        case .wall:
+                            world.entityManager.createProp(
+                                id: "wall" + String(x) + String(y),
+                                position: position,
+                                radius: 0.5,
+                                camera: .world
+                            )
+                        }
+                    }
+                }
+            },
+            notToggledAction: { gameInput, ecsEntity, world in
+                world.playing.toggle()
+                world.entityManager.removeWalls()
+            }
         )
 
         // whole iphone 14 screen is 10 across and 20 down
         let gridWidth = 9
         let gridHeight = 9
         let horizontalStart = 7
-        let totalButtons = gridWidth * gridHeight
+        let totalButtons = (gridWidth * gridHeight)
         let radius = 0.5.f
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
-            let y = horizontalStart + (i / gridHeight)
-            entityManager.createToggleButton(id: "btn-map" + String(i), position: Float2(x.f + radius,  y.f + radius))
+            let y = (i / gridHeight)
+            entityManager.createToggleButton(
+                id: "btn-map" + String(i),
+                position: Float2(x.f + radius,  y.f + radius + horizontalStart.f),
+                buttonState: mapData.tiles[x + y * mapData.width] == .floor ? .NotToggled : .Toggled,
+                toggledAction: { gameInput, ecsEntity, world in
+                    var tiles = world.mapData.tiles
+                    tiles[x + y * world.mapData.width] = .wall
+                    world.mapData = MapData(tiles: tiles, width: world.mapData.width)
+                },
+                notToggledAction: { gameInput, ecsEntity, world in
+                    var tiles = world.mapData.tiles
+                    tiles[x + y * world.mapData.width] = .floor
+                    world.mapData = MapData(tiles: tiles, width: world.mapData.width)
+                }
+            )
         }
         reset()
     }
@@ -61,11 +104,12 @@ struct World {
         floatingCamera = entityManager.createCamera(
             id: "floating-camera",
             initialAspectRatio: 1.0,
-            position3d: F3(0.0, 0.0, 1.5),
+            position3d: F3(-4.0, -4.0, 1.5),
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
                     * Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
                 	* Float4x4.rotateX(.pi/2)
+                    * Float4x4.rotateZ(45.f.toRadians())
                     * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z).inverse //invert because we look out of the camera
             })
 
@@ -91,26 +135,6 @@ struct World {
                     Float4x4.scale(x: 0.1, y: 0.1, z: 1.0) *
                     Float4x4.scale(x: 1 / component.aspect, y: -1.0, z: 1.0)
             })
-
-        // draw the world
-        for y in 0..<map.height {
-            for x in 0..<map.width {
-                let position = Float2(x: Float(x) + 0.5, y: Float(y) + 0.5) // world, in the center of the tile
-                let tile = map[x, y]
-                switch tile {
-                case .floor:
-                    // not going to render floors for now
-                    break
-                case .wall:
-                    entityManager.createProp(
-                        id: "wall" + String(x) + String(y),
-                        position: position,
-                        radius: 0.5,
-                        camera: .world
-                    )
-                }
-            }
-        }
     }
 
     /**
@@ -157,6 +181,7 @@ struct World {
         // silly quick work around
         if (playing) {
             camera = floatingCamera
+            // TODO: hiding buttons in response to world state could be a component
             entityManager.hideMapButtons(true)
         } else {
             camera = overHeadCamera

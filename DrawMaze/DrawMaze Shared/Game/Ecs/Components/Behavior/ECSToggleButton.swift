@@ -12,8 +12,9 @@ struct ECSToggleButton: ECSComponent {
     var toggledAction: ((GameInput, inout ECSEntity, inout World) -> Void)? = nil
     var notToggledAction: ((GameInput, inout ECSEntity, inout World) -> Void)? = nil
 
-    init(entityID: String, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> (), notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> ()) {
+    init(entityID: String, buttonState: State = .NotToggled, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> (), notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> ()) {
         self.entityID = entityID
+        self.buttonState = buttonState
         self.toggledAction = toggledAction
         self.notToggledAction = notToggledAction
     }
@@ -23,17 +24,22 @@ struct ECSToggleButton: ECSComponent {
             switch buttonState {
             case .Toggled:
                 buttonState =  .NotToggled
-                entity.graphics?.color = notToggledColor
-                if let action = toggledAction {
+                if let action = notToggledAction {
                     action(input, &entity, &world)
                 }
             case .NotToggled:
                 buttonState = .Toggled
-                entity.graphics?.color = toggledColor
-                if let action = notToggledAction {
+                if let action = toggledAction {
                     action(input, &entity, &world)
                 }
             }
+        }
+
+        switch buttonState {
+        case .Toggled:
+            entity.graphics?.color = toggledColor
+        case .NotToggled:
+            entity.graphics?.color = notToggledColor
         }
     }
 
