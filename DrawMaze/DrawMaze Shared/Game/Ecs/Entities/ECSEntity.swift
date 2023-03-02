@@ -9,6 +9,8 @@ struct ECSEntity {
 
     // behaviors
     var toggleButton: ECSToggleButton?
+    var mapButton: ECSMapButton?
+    var wall: ECSWall?
 
     // graphics
     var camera: ECSCamera?
@@ -18,9 +20,21 @@ struct ECSEntity {
     var collision: ECSCollision?
 
     mutating func update(input: GameInput, world: inout World) -> ECSEntity {
+
+        // MARK: Behavior
         if var button = toggleButton {
             button.update(input: input, entity: &self, world: &world)
             toggleButton = button
+        }
+
+        if var component = mapButton {
+            component.update(input: input, entity: &self, world: &world)
+            mapButton = component
+        }
+
+        if var component = wall {
+            component.update(input: input, entity: &self, world: &world)
+            wall = component
         }
 
         if var camera = camera {

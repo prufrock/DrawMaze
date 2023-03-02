@@ -21,14 +21,14 @@ struct World {
         }
     }
 
-    private var playing = false
+    public var playing = false
 
     public var camera: ECSEntity?
     public var hudCamera: ECSEntity?
     public var overHeadCamera: ECSEntity?
     public var floatingCamera: ECSEntity?
 
-    private var mapData: MapData = MapData(tiles: (0..<81).map { _ in .wall }, width: 9)
+    private var mapData: MapData = MapData(tiles: (0..<81).map { _ in .floor }, width: 9)
 
     init(config: AppCoreConfig.Game.World, map: TileMap) {
         self.config = config
@@ -41,7 +41,6 @@ struct World {
             toggledAction: {
                 gameInput, ecsEntity, world in
                 world.playing.toggle()
-                world.entityManager.removeWalls()
                 world.map = TileMap(world.mapData, index: 0)
                 for y in 0..<world.map.height {
                     for x in 0..<world.map.width {
@@ -49,10 +48,12 @@ struct World {
                         let tile = world.map[x, y]
                         switch tile {
                         case .floor:
-                            // not going to render floors for now
+                            if let entity = world.entityManager.find("wall" + String(x) + String(y)) {
+                                world.entityManager.remove(entity)
+                            }
                             break
                         case .wall:
-                            world.entityManager.createProp(
+                            world.entityManager.createWall(
                                 id: "wall" + String(x) + String(y),
                                 position: position,
                                 radius: 0.5,
@@ -64,7 +65,6 @@ struct World {
             },
             notToggledAction: { gameInput, ecsEntity, world in
                 world.playing.toggle()
-                world.entityManager.removeWalls()
             }
         )
 
@@ -77,7 +77,7 @@ struct World {
         for i in 0..<totalButtons { // one less than total cuz grid starts at 0,0
             let x = i % gridWidth
             let y = (i / gridHeight)
-            entityManager.createToggleButton(
+            entityManager.createMapButton(
                 id: "btn-map" + String(i),
                 position: Float2(x.f + radius,  y.f + radius + horizontalStart.f),
                 buttonState: mapData.tiles[x + y * mapData.width] == .floor ? .NotToggled : .Toggled,
@@ -108,7 +108,7 @@ struct World {
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
                     * Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
-                	* Float4x4.rotateX(.pi/2)
+                    * Float4x4.rotateX(.pi/2)
                     * Float4x4.rotateZ(45.f.toRadians())
                     * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z).inverse //invert because we look out of the camera
             })
@@ -162,8 +162,10 @@ struct World {
 
         // Update all of the entities
         entityManager.entities.forEach { entity in
-            var newEntity = entity
-            entityManager.update(newEntity.update(input: gameInput, world: &self))
+            // TODO: using this until I find a better way to skip drawing a wall that's now a floor.
+            if var newEntity = entityManager.find(entity.id) {
+                entityManager.update(newEntity.update(input: gameInput, world: &self))
+            }
         }
 
         if let camera = hudCamera {
@@ -181,11 +183,8 @@ struct World {
         // silly quick work around
         if (playing) {
             camera = floatingCamera
-            // TODO: hiding buttons in response to world state could be a component
-            entityManager.hideMapButtons(true)
         } else {
             camera = overHeadCamera
-            entityManager.hideMapButtons(false)
         }
     }
 }

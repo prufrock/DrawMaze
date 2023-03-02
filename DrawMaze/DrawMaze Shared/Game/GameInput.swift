@@ -9,4 +9,5 @@ struct GameInput {
     var selectedButtonId: String?
     var selectedButton: ECSEntity?
     var play: Bool = false
+    var floors: Set = Set<String>()
 }

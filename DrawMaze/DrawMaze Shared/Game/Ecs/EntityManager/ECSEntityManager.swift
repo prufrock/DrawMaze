@@ -20,7 +20,13 @@ protocol ECSEntityManager {
     mutating func createToggleButton(id: String, position: Float2, buttonState: ECSToggleButton.State, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity
 
     @discardableResult
+    mutating func createMapButton(id: String, position: Float2, buttonState: ECSMapButton.State, toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void, notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void) -> ECSEntity
+
+    @discardableResult
     mutating func createProp(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity
+
+    @discardableResult
+    mutating func createWall(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity
 
     @discardableResult
     mutating func createCamera(id: String, initialAspectRatio: Float, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity
@@ -31,7 +37,7 @@ protocol ECSEntityManager {
 
     mutating func update(_: ECSEntity)
 
-    mutating func removeWalls()
+    mutating func remove(_: ECSEntity)
 
     //MARK: Collision Table
 
@@ -39,7 +45,4 @@ protocol ECSEntityManager {
     func collides(with rect: Rect) -> [ECSCollision]
 
     func pickCollision(at location: ECSCollision) -> ECSEntity?
-
-    //MARK: Graphics table
-    mutating func hideMapButtons(_ hidden: Bool)
 }

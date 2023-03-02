@@ -4,13 +4,20 @@
 
 import Foundation
 import simd
+import os.signpost
+
 
 /**
  * Manages Entities that are big objects composed of all their components rather than
  * all separate objects.
  */
 struct ECSBigObjectEntityManager: ECSEntityManager {
-    var entities: [ECSEntity] = []
+    var entities: [ECSEntity]
+    {
+        entityMap.values.map({$0})
+    }
+
+    private var entityMap: [String:ECSEntity] = [:]
 
     //TODO: what if there were many scenes(hud, world), each with its own uniforms like camera?
     //rebuild the scene graph each time it's needed -- may only want to do when it's dirty
@@ -85,6 +92,28 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         return entity
     }
 
+    mutating func createMapButton(
+        id: String,
+        position: Float2,
+        buttonState: ECSMapButton.State = .NotToggled,
+        toggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void,
+        notToggledAction: @escaping (GameInput, inout ECSEntity, inout World) -> Void
+    ) -> ECSEntity {
+        let radius: Float = 0.5
+        let mapButton = ECSMapButton(entityID: id, buttonState: buttonState, toggledAction: toggledAction, notToggledAction: notToggledAction)
+        let graphics = ECSGraphics(
+            entityID: id,
+            color: mapButton.notToggledColor,
+            uprightToWorld: Float4x4.translate(position) * Float4x4.scale(x: 0.5, y: 0.5, z: 1.0)
+        )
+        let collision = ECSCollision(entityID: id, radius: radius, position: position)
+        let entity = ECSEntity(id: id, mapButton: mapButton, graphics: graphics, collision: collision)
+
+        update(entity)
+
+        return entity
+    }
+
     /**
      * Create a prop: an entity that can be collided with.
      */
@@ -103,6 +132,16 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         return entity
     }
 
+    mutating func createWall(id: String, position: Float2, radius: Float, camera: ECSGraphics.Camera) -> ECSEntity {
+        var entity = createProp(id: id, position: position, radius: radius, camera: camera)
+
+        entity.wall = ECSWall(entityID: id)
+
+        update(entity)
+
+        return entity
+    }
+
     mutating func createCamera(id: String, initialAspectRatio: Float, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
         let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, position3d: position3d, worldToView: baseWorldToView)
         let entity = ECSEntity(id: id, camera: camera)
@@ -115,33 +154,16 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     // MARK: Entity Table
 
     public func find(_ entityId: String) -> ECSEntity? {
-        // eventually get a map or something on entityId
-        entities.first{ $0.id == entityId }
+        entityMap[entityId]
     }
 
     mutating public func update(_ entity: ECSEntity) {
-        //TODO: this might need to be cleaned up a little
-        entities = entities.filter { $0.id != entity.id }
-        entities.append(entity)
+        entityMap[entity.id] = entity
     }
 
-    // TODO need to think a little about how to generalize these sorts of operations
-    // SELECT * FROM entities WHERE graphics != nil; UPDATE graphics SET hidden = true WHERE entityID = id
-    mutating public func hideMapButtons(_ hidden: Bool) {
-        entities = entities.map { entity in
-            guard entity.graphics != nil, entity.id.starts(with: "btn-map") else { return entity }
-            var newEntity = entity
-            newEntity.graphics?.hidden = hidden
-            newEntity.collision?.hidden = hidden
-
-            return newEntity
-        }
-    }
-
-    mutating public func removeWalls() {
-        entities = entities.filter { entity in
-            !entity.id.starts(with: "wall")
-        }
+    mutating public func remove(_ entity: ECSEntity) {
+        let removed = entityMap.removeValue(forKey: entity.id)
+        print("removed \(removed?.id)")
     }
 
     // MARK: Collision Table
