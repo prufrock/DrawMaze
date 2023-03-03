@@ -28,6 +28,30 @@ class GameViewController: UIViewController {
     private var lastTouchedTime: Double = 0.0
     var touchCoords: Float2 = Float2()
 
+    // variables for using the touch screen as a joystick
+    private let panGesture = UIPanGestureRecognizer()
+    private var inputVector: Float2 {
+        switch panGesture.state {
+        case .began, .changed:
+            let translation = panGesture.translation(in: view)
+            var vector = Float2(x: Float(translation.x), y: Float(translation.y))
+            vector /= max(joystickRadius, vector.length)
+
+            //update the position of where the gesture started
+            //to make movement a little smoother
+            panGesture.setTranslation(CGPoint(
+                x: Double(vector.x * joystickRadius),
+                y: Double(vector.y * joystickRadius)
+            ), in: view)
+
+            return vector
+        default:
+            return Float2(x: 0, y: 0)
+        }
+    }
+    // travel distance of 80 screen points ~0.5" so 40 radius
+    private let joystickRadius: Float = 40
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +63,10 @@ class GameViewController: UIViewController {
         })
         game = Game(config: core.config.game, levels: levels)
         setupMetalView()
+
+        // attach the pan gesture recognizer so there's an on screen joystick
+        panGesture.delegate = self
+        view.addGestureRecognizer(panGesture)
 
         // attach the UITapGestureRecognizer to turn the screen into a button
         tapGesture.delegate = self
@@ -68,7 +96,13 @@ extension GameViewController: MTKViewDelegate {
     }
 
     public func draw(in view: MTKView) {
+        let inputVector = inputVector
+        let rotation = inputVector.x * core.config.game.world.playerTurningSpeed * core.config.platform.worldTimeStep
+
         var input = Input(
+            speed: -inputVector.y,
+            rotation: Float2x2.rotate(rotation),
+            rotation3d: Float4x4.rotateY(inputVector.x * core.config.game.world.playerTurningSpeed * core.config.platform.worldTimeStep),
             // pressing fire happens while rendering new frames so the press we care about is the one that happened after
             // the last frame was rendered.
             isTouched: lastTouchedTime > lastFrameTime,

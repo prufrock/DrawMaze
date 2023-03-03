@@ -8,6 +8,11 @@ import simd
 public typealias Float2x2 = simd_float2x2
 
 public extension Float2x2 {
+
+    static func identity() -> Self {
+        matrix_identity_float2x2
+    }
+
     static func rotate(_ angle: Float) -> Self {
         Self(
             [ cos(angle), sin(angle)],

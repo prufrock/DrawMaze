@@ -15,6 +15,9 @@ struct World {
 
     public var map: TileMap
 
+    // TODO cheating for a little bit
+    public var rotation3d = Float4x4.rotateY(.pi/2)
+
     var scene: ECSSceneGraph {
         get {
             entityManager.scene
@@ -104,19 +107,22 @@ struct World {
         floatingCamera = entityManager.createCamera(
             id: "floating-camera",
             initialAspectRatio: 1.0,
-            position3d: F3(-4.0, -4.0, 1.5),
+            speed: 1.0,
+            position3d: F3(0.0, 0.0, 1.5),
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
-                    * Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
-                    * Float4x4.rotateX(.pi/2)
-                    * Float4x4.rotateZ(45.f.toRadians())
-                    * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z).inverse //invert because we look out of the camera
+                    * ( Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
+                        * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z)
+                        * Float4x4.translate(x: 0, y: 0, z: -1.0)
+                        * Float4x4.rotateX(.pi/2)
+                        * component.rotation3d).inverse // flip all of these things around because the camera stays put while the world moves
             })
 
 
         overHeadCamera = entityManager.createCamera(
             id: "overhead-camera",
             initialAspectRatio: 1.0,
+            speed: 0.0,
             position3d: F3(0.0, 0.0, -10.5),
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
@@ -129,6 +135,7 @@ struct World {
         hudCamera = entityManager.createCamera(
             id: "hud-camera",
             initialAspectRatio: 1.0,
+            speed: 1.0,
             position3d: F3(0.0, 0.0, 0.0),
             baseWorldToView: { component in
                 Float4x4.translate(x: -1, y: 1, z: 0.0) * // 0,0 in world space should be -1, 1 or the upper left corner in NDC.

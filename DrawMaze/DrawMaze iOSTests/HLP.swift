@@ -34,6 +34,6 @@ struct HLP {
 
     static let world = World(config: HLP.appCoreConfig.game.world, map: TileMap(MapData(tiles: [Tile.floor, Tile.floor, Tile.floor, Tile.floor], width: 2), index: 0))
 
-    static let input = Input(timeStep: 0.0, isTouched: false, touchCoordinates: F2(0.0), viewWidth: 100, viewHeight: 100, aspect: 1.0)
+    static let input = Input(speed: 0.0, rotation: Float2x2.identity(), rotation3d: Float4x4.identity(), timeStep: 0.0, isTouched: false, touchCoordinates: F2(0.0), viewWidth: 100, viewHeight: 100, aspect: 1.0)
     static let gameInput = GameInput(externalInput: input)
 }

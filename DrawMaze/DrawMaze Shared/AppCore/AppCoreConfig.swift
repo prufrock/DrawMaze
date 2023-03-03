@@ -26,7 +26,7 @@ public struct AppCoreConfig {
         public let world: World
 
         public struct World {
-
+            public let playerTurningSpeed: Float = .pi/2
         }
     }
 

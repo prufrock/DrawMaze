@@ -142,8 +142,8 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         return entity
     }
 
-    mutating func createCamera(id: String, initialAspectRatio: Float, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
-        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, position3d: position3d, worldToView: baseWorldToView)
+    mutating func createCamera(id: String, initialAspectRatio: Float, speed: Float = 0, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
+        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, worldToView: baseWorldToView)
         let entity = ECSEntity(id: id, camera: camera)
 
         update(entity)

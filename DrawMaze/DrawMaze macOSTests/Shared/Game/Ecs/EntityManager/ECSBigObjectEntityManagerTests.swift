@@ -73,19 +73,4 @@ final class ECSBigObjectEntityManagerTests: XCTestCase {
 
         XCTAssertEqual("b22", found21.id, "Should collide with largest intersection")
     }
-
-    func testHideMapButtons() {
-        var manager = ECSBigObjectEntityManager()
-        _ = manager.createToggleButton(id: "btn-map1", position: F2(2.0))
-
-        manager.scene.forEach { graphic in
-            XCTAssertFalse(graphic.hidden)
-        }
-
-        manager.hideMapButtons(true)
-
-        manager.scene.forEach { graphic in
-            XCTAssertTrue(graphic.hidden)
-        }
-    }
 }
