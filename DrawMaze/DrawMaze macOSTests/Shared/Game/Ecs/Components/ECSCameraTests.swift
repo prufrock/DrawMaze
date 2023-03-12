@@ -19,6 +19,7 @@ final class ECSCameraTests: XCTestCase {
                 Float4x4.scale(x: 1 / component.aspect, y: -1.0, z: 1.0)
         }
         var camera = ECSCamera(entityID: "c1", aspect: 1.0, position3d: F3(0.0, 0.0, 0.0), worldToView: worldToView)
+        entity.camera = camera
 
         XCTAssertEqual("c1", camera.entityID)
         let result = camera.projection() * F4(1.0)
