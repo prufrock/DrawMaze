@@ -22,6 +22,7 @@
 		5AF0E22C4E5B10B86DE0EC3A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */; };
 		5AF0E22E1A3153B35D100AB0 /* CSTQuadTreeRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3DA025DD40BF8219B4E /* CSTQuadTreeRect.swift */; };
 		5AF0E2565B90BD09487440FA /* ECSBigObjectEntityManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E8DB0D5D929109D484F8 /* ECSBigObjectEntityManagerTests.swift */; };
+		5AF0E279EE4BB0452EDA90DF /* CTSPriorityQueueDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE14311B6F43D687BECE /* CTSPriorityQueueDict.swift */; };
 		5AF0E298A230718A49B35B33 /* levels.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AF0E901810EBDBC9055998B /* levels.json */; };
 		5AF0E2B2EFEDFF20DE998B7C /* Float4x4ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E167CDB6E86AB0342BDB /* Float4x4ExtTests.swift */; };
 		5AF0E2B7E41D5BC4069C3461 /* MapData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0ED24D672D3503B229FBA /* MapData.swift */; };
@@ -82,8 +83,10 @@
 		5AF0EB5E9AA3A85E22845A07 /* RectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E310A6EE901350A6AF38 /* RectTests.swift */; };
 		5AF0EB705385B6FB50527088 /* GameInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E6F379DD8B32094FD88E /* GameInput.swift */; };
 		5AF0EB87B0584495A996C48A /* Float4x4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E4E22870C4F2405A54B5 /* Float4x4Exts.swift */; };
+		5AF0EBCEB930CD8B22E3ED79 /* CTSPriorityQueueDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE14311B6F43D687BECE /* CTSPriorityQueueDict.swift */; };
 		5AF0EC1C4EA448A92712F916 /* ECSToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E8DF9084BF1B1BF34821 /* ECSToggleButton.swift */; };
 		5AF0EC2C2AE3DA798A82A619 /* CSTQuadTreeRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3DA025DD40BF8219B4E /* CSTQuadTreeRect.swift */; };
+		5AF0EC4AD64C93DD9CC69BFC /* CTSPriorityQueueDictTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0BFF81B19BDDD873C73 /* CTSPriorityQueueDictTests.swift */; };
 		5AF0ED006E8E93F6C94590B6 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7C2A61D7A72D0C55A87 /* World.swift */; };
 		5AF0ED29ABF963DFF8266ADF /* CollectionExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0C9242F4023EF58485 /* CollectionExts.swift */; };
 		5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
@@ -176,6 +179,7 @@
 		5AF0E07D7C69584B1216D62E /* Float4Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4Exts.swift; sourceTree = "<group>"; };
 		5AF0E09622A43295F1FD185B /* ECSWall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSWall.swift; sourceTree = "<group>"; };
 		5AF0E0ADA718CB97B0A573DF /* CTSStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSStack.swift; sourceTree = "<group>"; };
+		5AF0E0BFF81B19BDDD873C73 /* CTSPriorityQueueDictTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSPriorityQueueDictTests.swift; sourceTree = "<group>"; };
 		5AF0E167CDB6E86AB0342BDB /* Float4x4ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4x4ExtTests.swift; sourceTree = "<group>"; };
 		5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenDimensions.swift; sourceTree = "<group>"; };
 		5AF0E1A5497D0AA1CB81D18D /* Input.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 		5AF0EDE885A998F8DD7DE175 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AF0EE094A52004BDFC667E8 /* FloatExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtTests.swift; sourceTree = "<group>"; };
 		5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreConfig.swift; sourceTree = "<group>"; };
+		5AF0EE14311B6F43D687BECE /* CTSPriorityQueueDict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSPriorityQueueDict.swift; sourceTree = "<group>"; };
 		5AF0EE1566A1D149EA459871 /* ECSEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSEntity.swift; sourceTree = "<group>"; };
 		5AF0EE236076C857EAA18E72 /* Float2ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float2ExtTests.swift; sourceTree = "<group>"; };
 		5AF0EE29190E895016D01D73 /* AppCoreContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreContext.swift; sourceTree = "<group>"; };
@@ -402,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */,
+				5AF0EE14311B6F43D687BECE /* CTSPriorityQueueDict.swift */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				5AF0EF9EAFCD065F84886DB2 /* CTSQueueArrayTests.swift */,
+				5AF0E0BFF81B19BDDD873C73 /* CTSPriorityQueueDictTests.swift */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -994,6 +1001,7 @@
 				5AF0E07C3CE29B7080363E74 /* ECSWall.swift in Sources */,
 				5AF0E4A4656F31A6AFBE2580 /* CTSStack.swift in Sources */,
 				5AF0E1652063F9CDEEDD9275 /* CTSQueue.swift in Sources */,
+				5AF0E279EE4BB0452EDA90DF /* CTSPriorityQueueDict.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1068,6 +1076,7 @@
 				5AF0E61B0A7D001FB18A9851 /* ECSWall.swift in Sources */,
 				5AF0E577EEB519BE111217FA /* CTSStack.swift in Sources */,
 				5AF0E4FDA94B4DFD587C849A /* CTSQueue.swift in Sources */,
+				5AF0EBCEB930CD8B22E3ED79 /* CTSPriorityQueueDict.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,6 +1103,7 @@
 				5AF0E11A3AB00E8B5F24F9E0 /* ECSToggleButtonTests.swift in Sources */,
 				5AF0E34ED5F4B1E18583401C /* ECSCameraTests.swift in Sources */,
 				5AF0EF2E7D87148E032F4AB4 /* CTSQueueArrayTests.swift in Sources */,
+				5AF0EC4AD64C93DD9CC69BFC /* CTSPriorityQueueDictTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
