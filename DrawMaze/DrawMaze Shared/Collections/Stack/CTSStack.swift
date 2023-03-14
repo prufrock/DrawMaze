@@ -10,7 +10,7 @@ protocol CTSStack: CustomStringConvertible, ScopeFunction {
     func push(_ item: T)
     func pop() -> T
     func isEmpty() -> Bool
-    func toList() -> [T]
+    func toArray() -> [T]
 }
 
 class CTSStackArray<T>: CTSStack {
@@ -39,7 +39,7 @@ class CTSStackArray<T>: CTSStack {
         storage.isEmpty
     }
 
-    func toList() -> [T] {
+    func toArray() -> [T] {
         storage.reversed()
     }
 }

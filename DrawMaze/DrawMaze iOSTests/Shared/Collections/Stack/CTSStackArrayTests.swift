@@ -19,10 +19,10 @@ final class CTSStackArrayTests: XCTestCase {
         }
 
         // Each element is put on top of the stack, so they come out in reverse order.
-        XCTAssertEqual([4, 3, 2, 1], stack.toList())
+        XCTAssertEqual([4, 3, 2, 1], stack.toArray())
         // The last element added is returned (LIFO).
         XCTAssertEqual(4, stack.pop())
         // When an element is popped it's removed from the stack.
-        XCTAssertEqual([3, 2, 1], stack.toList())
+        XCTAssertEqual([3, 2, 1], stack.toArray())
     }
 }

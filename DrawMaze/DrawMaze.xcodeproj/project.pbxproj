@@ -14,6 +14,7 @@
 		5AF0E10DFDF0957A312D6CC7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF41E46C82A6B15E4808 /* Game.swift */; };
 		5AF0E11A3AB00E8B5F24F9E0 /* ECSToggleButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E6439762510C2F8AA5BA /* ECSToggleButtonTests.swift */; };
 		5AF0E13AC2AD29C013C3F3D3 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0B60A7B40DCB2A7519 /* Thing.swift */; };
+		5AF0E1652063F9CDEEDD9275 /* CTSQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */; };
 		5AF0E19B28668B98B58CDD33 /* ECSEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E544BC8F6CC0B7486C22 /* ECSEntityManager.swift */; };
 		5AF0E1A2D3D07111664FDF35 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
 		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
@@ -42,6 +43,7 @@
 		5AF0E459290428E7707CF6C3 /* Float2ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE236076C857EAA18E72 /* Float2ExtTests.swift */; };
 		5AF0E4A4656F31A6AFBE2580 /* CTSStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0ADA718CB97B0A573DF /* CTSStack.swift */; };
 		5AF0E4CB96EABCCE770E2636 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
+		5AF0E4FDA94B4DFD587C849A /* CTSQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */; };
 		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
 		5AF0E577EEB519BE111217FA /* CTSStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0ADA718CB97B0A573DF /* CTSStack.swift */; };
 		5AF0E5DB90AB58CEBAC28DE2 /* HLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */; };
@@ -96,6 +98,7 @@
 		5AF0EEDB0C6AEE0AF09C5492 /* AppCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E76918C2455530DD13D6 /* AppCoreTests.swift */; };
 		5AF0EEE23F56B420A9D9A890 /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EF2B32063C2D2E2C5B17 /* ECSComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE6FE4234EAE2551694 /* ECSComponent.swift */; };
+		5AF0EF2E7D87148E032F4AB4 /* CTSQueueArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF9EAFCD065F84886DB2 /* CTSQueueArrayTests.swift */; };
 		5AF0EF6A5D0C02944C4FEBEC /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		5AF0EFA74A5AA3108FEB9606 /* ScreenDimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */; };
 		5AF0EFD99C8AB4A331E2E9DF /* ECSGraphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF59246EFEC9843B845A /* ECSGraphics.swift */; };
@@ -211,6 +214,7 @@
 		5AF0EAB90CCB3D98C995C0EC /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		5AF0EB40ADC64FE5C373A1C1 /* Float3x3ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3x3ExtTests.swift; sourceTree = "<group>"; };
 		5AF0ED24D672D3503B229FBA /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
+		5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQueue.swift; sourceTree = "<group>"; };
 		5AF0EDE6FE4234EAE2551694 /* ECSComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSComponent.swift; sourceTree = "<group>"; };
 		5AF0EDE885A998F8DD7DE175 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AF0EE094A52004BDFC667E8 /* FloatExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatExtTests.swift; sourceTree = "<group>"; };
@@ -222,6 +226,7 @@
 		5AF0EF41E46C82A6B15E4808 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		5AF0EF441DB9F290A1F87F46 /* Float3ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3ExtTests.swift; sourceTree = "<group>"; };
 		5AF0EF59246EFEC9843B845A /* ECSGraphics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSGraphics.swift; sourceTree = "<group>"; };
+		5AF0EF9EAFCD065F84886DB2 /* CTSQueueArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQueueArrayTests.swift; sourceTree = "<group>"; };
 		5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreServiceFactory.swift; sourceTree = "<group>"; };
 		632C34B629078C280050F354 /* DrawMaze macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34B929078C280050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -321,7 +326,8 @@
 				5AF0E310A6EE901350A6AF38 /* RectTests.swift */,
 				5AF0E538AC74A600A37EFDF3 /* Ecs */,
 			);
-			path = Game;
+			name = Game;
+			path = "../../DrawMaze iOSTests/Shared/Game";
 			sourceTree = "<group>";
 		};
 		5AF0E0BA0DD979B2487CEDB3 /* QuadTree */ = {
@@ -386,8 +392,18 @@
 			children = (
 				5AF0E0BA0DD979B2487CEDB3 /* QuadTree */,
 				5AF0E8FCAA555CBED869F7DD /* Stack */,
+				5AF0EEA8322BDC2EA89178CE /* Queue */,
 			);
-			path = Collections;
+			name = Collections;
+			path = "../../DrawMaze iOSTests/Shared/Collections";
+			sourceTree = "<group>";
+		};
+		5AF0E39B3325825C830A22BF /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 		5AF0E538AC74A600A37EFDF3 /* Ecs */ = {
@@ -413,6 +429,7 @@
 				63757FE929BD887D0011E3A4 /* Stack */,
 				5AF0E885DFEBAC0CE919FA9E /* QuadTree */,
 				5AF0E62C41943DB46438FC4F /* Graphs */,
+				5AF0E39B3325825C830A22BF /* Queue */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -498,7 +515,8 @@
 				5AF0E864B3BE35989337BCD3 /* Float2x2ExtTests.swift */,
 				5AF0EE236076C857EAA18E72 /* Float2ExtTests.swift */,
 			);
-			path = Math;
+			name = Math;
+			path = "../../DrawMaze iOSTests/Shared/Math";
 			sourceTree = "<group>";
 		};
 		5AF0ECF135CDA2B545D70B66 /* AppCore */ = {
@@ -506,7 +524,8 @@
 			children = (
 				5AF0E76918C2455530DD13D6 /* AppCoreTests.swift */,
 			);
-			path = AppCore;
+			name = AppCore;
+			path = "../../DrawMaze iOSTests/Shared/AppCore";
 			sourceTree = "<group>";
 		};
 		5AF0ED1597364E4614883B91 /* Behavior */ = {
@@ -545,6 +564,14 @@
 				5AF0E6439762510C2F8AA5BA /* ECSToggleButtonTests.swift */,
 			);
 			path = Behavior;
+			sourceTree = "<group>";
+		};
+		5AF0EEA8322BDC2EA89178CE /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0EF9EAFCD065F84886DB2 /* CTSQueueArrayTests.swift */,
+			);
+			path = Queue;
 			sourceTree = "<group>";
 		};
 		5AF0EF95555E4C553B65E146 /* Render */ = {
@@ -966,6 +993,7 @@
 				5AF0E8CB6FBF29C68B3D6C34 /* ECSCamera.swift in Sources */,
 				5AF0E07C3CE29B7080363E74 /* ECSWall.swift in Sources */,
 				5AF0E4A4656F31A6AFBE2580 /* CTSStack.swift in Sources */,
+				5AF0E1652063F9CDEEDD9275 /* CTSQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,6 +1067,7 @@
 				5AF0E71CAFA82A46258A563E /* ECSCamera.swift in Sources */,
 				5AF0E61B0A7D001FB18A9851 /* ECSWall.swift in Sources */,
 				5AF0E577EEB519BE111217FA /* CTSStack.swift in Sources */,
+				5AF0E4FDA94B4DFD587C849A /* CTSQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,6 +1093,7 @@
 				5AF0EB12B4026954012A4392 /* ECSCollisionTests.swift in Sources */,
 				5AF0E11A3AB00E8B5F24F9E0 /* ECSToggleButtonTests.swift in Sources */,
 				5AF0E34ED5F4B1E18583401C /* ECSCameraTests.swift in Sources */,
+				5AF0EF2E7D87148E032F4AB4 /* CTSQueueArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
