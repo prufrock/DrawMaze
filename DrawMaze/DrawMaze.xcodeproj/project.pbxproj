@@ -17,6 +17,7 @@
 		5AF0E1652063F9CDEEDD9275 /* CTSQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */; };
 		5AF0E19B28668B98B58CDD33 /* ECSEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E544BC8F6CC0B7486C22 /* ECSEntityManager.swift */; };
 		5AF0E1A2D3D07111664FDF35 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
+		5AF0E1AC01B3A88CA00A4C92 /* CTSHeapArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EC98CE1B1B16A9FCB420 /* CTSHeapArrayTests.swift */; };
 		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		5AF0E2021FFF1A23F257CE8E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE885A998F8DD7DE175 /* Model.swift */; };
 		5AF0E22C4E5B10B86DE0EC3A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */; };
@@ -47,6 +48,7 @@
 		5AF0E4FDA94B4DFD587C849A /* CTSQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */; };
 		5AF0E521C9300F630D0B976B /* AppCoreServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */; };
 		5AF0E577EEB519BE111217FA /* CTSStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0ADA718CB97B0A573DF /* CTSStack.swift */; };
+		5AF0E5C812406CA1253F1D6C /* CTSHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E097230624FBC44D419B /* CTSHeap.swift */; };
 		5AF0E5DB90AB58CEBAC28DE2 /* HLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E57BBB8B5AD3AB92C644 /* HLP.swift */; };
 		5AF0E5FE5DB42AAAED80AFFC /* Float2x2Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E3C174CEC29B333EF111 /* Float2x2Exts.swift */; };
 		5AF0E61B0A7D001FB18A9851 /* ECSWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E09622A43295F1FD185B /* ECSWall.swift */; };
@@ -78,6 +80,7 @@
 		5AF0EA1EF4C4D808BD5D3042 /* CSTQuadTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EAAC950E185923A4C1F5 /* CSTQuadTreePoint.swift */; };
 		5AF0EA3963F245353C95396C /* Float4Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E07D7C69584B1216D62E /* Float4Exts.swift */; };
 		5AF0EAADB106BBE84CD82918 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E35C88DE2963764E3778 /* Color.swift */; };
+		5AF0EAC13A2C77BC8376E0C9 /* CTSHeap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E097230624FBC44D419B /* CTSHeap.swift */; };
 		5AF0EB11E60F21FE55B80ACB /* Float3x3Exts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E9963BD440E55A42FF49 /* Float3x3Exts.swift */; };
 		5AF0EB12B4026954012A4392 /* ECSCollisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E29A5F96971130B98DA2 /* ECSCollisionTests.swift */; };
 		5AF0EB5E9AA3A85E22845A07 /* RectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E310A6EE901350A6AF38 /* RectTests.swift */; };
@@ -178,6 +181,7 @@
 		5AF0E046F7689EDD6B40C698 /* ECSCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSCamera.swift; sourceTree = "<group>"; };
 		5AF0E07D7C69584B1216D62E /* Float4Exts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4Exts.swift; sourceTree = "<group>"; };
 		5AF0E09622A43295F1FD185B /* ECSWall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSWall.swift; sourceTree = "<group>"; };
+		5AF0E097230624FBC44D419B /* CTSHeap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CTSHeap.swift; path = Heap/CTSHeap.swift; sourceTree = "<group>"; };
 		5AF0E0ADA718CB97B0A573DF /* CTSStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSStack.swift; sourceTree = "<group>"; };
 		5AF0E0BFF81B19BDDD873C73 /* CTSPriorityQueueDictTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSPriorityQueueDictTests.swift; sourceTree = "<group>"; };
 		5AF0E167CDB6E86AB0342BDB /* Float4x4ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4x4ExtTests.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 		5AF0EAAC950E185923A4C1F5 /* CSTQuadTreePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSTQuadTreePoint.swift; sourceTree = "<group>"; };
 		5AF0EAB90CCB3D98C995C0EC /* Rect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		5AF0EB40ADC64FE5C373A1C1 /* Float3x3ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float3x3ExtTests.swift; sourceTree = "<group>"; };
+		5AF0EC98CE1B1B16A9FCB420 /* CTSHeapArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSHeapArrayTests.swift; sourceTree = "<group>"; };
 		5AF0ED24D672D3503B229FBA /* MapData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapData.swift; sourceTree = "<group>"; };
 		5AF0EDD338738FD19A4CD814 /* CTSQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQueue.swift; sourceTree = "<group>"; };
 		5AF0EDE6FE4234EAE2551694 /* ECSComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSComponent.swift; sourceTree = "<group>"; };
@@ -398,6 +403,7 @@
 				5AF0E0BA0DD979B2487CEDB3 /* QuadTree */,
 				5AF0E8FCAA555CBED869F7DD /* Stack */,
 				5AF0EEA8322BDC2EA89178CE /* Queue */,
+				5AF0ED4CAB1A041243764A2C /* Heap */,
 			);
 			name = Collections;
 			path = "../../DrawMaze iOSTests/Shared/Collections";
@@ -436,6 +442,7 @@
 				5AF0E885DFEBAC0CE919FA9E /* QuadTree */,
 				5AF0E62C41943DB46438FC4F /* Graphs */,
 				5AF0E39B3325825C830A22BF /* Queue */,
+				5AF0E097230624FBC44D419B /* CTSHeap.swift */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -542,6 +549,14 @@
 				5AF0E09622A43295F1FD185B /* ECSWall.swift */,
 			);
 			path = Behavior;
+			sourceTree = "<group>";
+		};
+		5AF0ED4CAB1A041243764A2C /* Heap */ = {
+			isa = PBXGroup;
+			children = (
+				5AF0EC98CE1B1B16A9FCB420 /* CTSHeapArrayTests.swift */,
+			);
+			path = Heap;
 			sourceTree = "<group>";
 		};
 		5AF0ED7D0B251973D3D670BA /* Shared */ = {
@@ -1002,6 +1017,7 @@
 				5AF0E4A4656F31A6AFBE2580 /* CTSStack.swift in Sources */,
 				5AF0E1652063F9CDEEDD9275 /* CTSQueue.swift in Sources */,
 				5AF0E279EE4BB0452EDA90DF /* CTSPriorityQueueDict.swift in Sources */,
+				5AF0EAC13A2C77BC8376E0C9 /* CTSHeap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,6 +1093,7 @@
 				5AF0E577EEB519BE111217FA /* CTSStack.swift in Sources */,
 				5AF0E4FDA94B4DFD587C849A /* CTSQueue.swift in Sources */,
 				5AF0EBCEB930CD8B22E3ED79 /* CTSPriorityQueueDict.swift in Sources */,
+				5AF0E5C812406CA1253F1D6C /* CTSHeap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,6 +1121,7 @@
 				5AF0E34ED5F4B1E18583401C /* ECSCameraTests.swift in Sources */,
 				5AF0EF2E7D87148E032F4AB4 /* CTSQueueArrayTests.swift in Sources */,
 				5AF0EC4AD64C93DD9CC69BFC /* CTSPriorityQueueDictTests.swift in Sources */,
+				5AF0E1AC01B3A88CA00A4C92 /* CTSHeapArrayTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
