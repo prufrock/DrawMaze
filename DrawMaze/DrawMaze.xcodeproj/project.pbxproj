@@ -113,6 +113,9 @@
 		5AF0EFFD83C29E9AE7FA126A /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */; };
 		5AF0EFFFA5EA59C4608AA8BD /* Float3ExtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF441DB9F290A1F87F46 /* Float3ExtTests.swift */; };
 		6328CB1729CA983400723539 /* CTSStackQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328CB1629CA983400723539 /* CTSStackQueueTests.swift */; };
+		6328CB1D29CAA5FC00723539 /* CTSRingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328CB1B29CAA0EC00723539 /* CTSRingBuffer.swift */; };
+		6328CB1E29CAA5FD00723539 /* CTSRingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328CB1B29CAA0EC00723539 /* CTSRingBuffer.swift */; };
+		6328CB2029CAAB1300723539 /* CTSRIngBufferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328CB1F29CAAB1300723539 /* CTSRIngBufferTests.swift */; };
 		632C34BA29078C280050F354 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34B929078C280050F354 /* AppDelegate.swift */; };
 		632C34BC29078C280050F354 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C34BB29078C280050F354 /* ViewController.swift */; };
 		632C34BE29078C290050F354 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 632C34BD29078C290050F354 /* Assets.xcassets */; };
@@ -243,6 +246,8 @@
 		5AF0EF9EAFCD065F84886DB2 /* CTSQueueArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQueueArrayTests.swift; sourceTree = "<group>"; };
 		5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreServiceFactory.swift; sourceTree = "<group>"; };
 		6328CB1629CA983400723539 /* CTSStackQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSStackQueueTests.swift; sourceTree = "<group>"; };
+		6328CB1B29CAA0EC00723539 /* CTSRingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTSRingBuffer.swift; sourceTree = "<group>"; };
+		6328CB1F29CAAB1300723539 /* CTSRIngBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTSRIngBufferTests.swift; sourceTree = "<group>"; };
 		632C34B629078C280050F354 /* DrawMaze macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DrawMaze macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		632C34B929078C280050F354 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		632C34BB29078C280050F354 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -405,6 +410,7 @@
 		5AF0E39B2CA3030167AAC82F /* Collections */ = {
 			isa = PBXGroup;
 			children = (
+				6328CB1A29CAA0D200723539 /* RingBuffer */,
 				5AF0E0BA0DD979B2487CEDB3 /* QuadTree */,
 				5AF0E8FCAA555CBED869F7DD /* Stack */,
 				5AF0EEA8322BDC2EA89178CE /* Queue */,
@@ -444,6 +450,7 @@
 		5AF0E60EAFBEEB461D38455A /* Collections */ = {
 			isa = PBXGroup;
 			children = (
+				6328CB1829CAA09000723539 /* RingBuffer */,
 				63757FE929BD887D0011E3A4 /* Stack */,
 				5AF0E885DFEBAC0CE919FA9E /* QuadTree */,
 				5AF0E62C41943DB46438FC4F /* Graphs */,
@@ -611,6 +618,22 @@
 				5AF0E174C54DBE4F8052AC03 /* ScreenDimensions.swift */,
 			);
 			path = Render;
+			sourceTree = "<group>";
+		};
+		6328CB1829CAA09000723539 /* RingBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				6328CB1B29CAA0EC00723539 /* CTSRingBuffer.swift */,
+			);
+			path = RingBuffer;
+			sourceTree = "<group>";
+		};
+		6328CB1A29CAA0D200723539 /* RingBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				6328CB1F29CAAB1300723539 /* CTSRIngBufferTests.swift */,
+			);
+			path = RingBuffer;
 			sourceTree = "<group>";
 		};
 		632C34AB29078BE50050F354 = {
@@ -984,6 +1007,7 @@
 				637607A8296536990078DF20 /* DoubleExts.swift in Sources */,
 				5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */,
 				5AF0E320D78052928C5E0C48 /* RenderService.swift in Sources */,
+				6328CB1D29CAA5FC00723539 /* CTSRingBuffer.swift in Sources */,
 				634DC4C12965323A004083ED /* Float3Exts.swift in Sources */,
 				634DC4BB296530A4004083ED /* FloatExts.swift in Sources */,
 				5AF0EE8FD851C3F7FC304E01 /* AppCoreServiceFactory.swift in Sources */,
@@ -1078,6 +1102,7 @@
 				5AF0E22C4E5B10B86DE0EC3A /* Tile.swift in Sources */,
 				5AF0E76B11DC4F071E6F1853 /* TileMap.swift in Sources */,
 				5AF0E6EE0F387AAFD9795719 /* World.swift in Sources */,
+				6328CB1E29CAA5FD00723539 /* CTSRingBuffer.swift in Sources */,
 				5AF0E7BA6C30A760EA6B1C93 /* FileService.swift in Sources */,
 				634673E4296D1EDE00A77CFB /* ScopeFunctions.swift in Sources */,
 				5AF0E41E83CC02786B007E55 /* Model.swift in Sources */,
@@ -1126,6 +1151,7 @@
 				5AF0EB5E9AA3A85E22845A07 /* RectTests.swift in Sources */,
 				5AF0E2565B90BD09487440FA /* ECSBigObjectEntityManagerTests.swift in Sources */,
 				5AF0EB12B4026954012A4392 /* ECSCollisionTests.swift in Sources */,
+				6328CB2029CAAB1300723539 /* CTSRIngBufferTests.swift in Sources */,
 				5AF0E11A3AB00E8B5F24F9E0 /* ECSToggleButtonTests.swift in Sources */,
 				6328CB1729CA983400723539 /* CTSStackQueueTests.swift in Sources */,
 				5AF0E34ED5F4B1E18583401C /* ECSCameraTests.swift in Sources */,
