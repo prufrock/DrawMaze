@@ -7,9 +7,10 @@ import Foundation
 protocol CTSStack: CustomStringConvertible, ScopeFunction {
     associatedtype T
     var count: Int { get }
+    var isEmpty: Bool { get }
     func push(_ item: T)
-    func pop() -> T
-    func isEmpty() -> Bool
+    func pop() -> T?
+    func peek() -> T?
     func toArray() -> [T]
 }
 
@@ -27,19 +28,29 @@ class CTSStackArray<T>: CTSStack {
         storage.count
     }
 
+    var isEmpty: Bool {
+        get {
+            storage.isEmpty
+        }
+    }
+
     func push(_ item: T) {
         storage.append(item)
     }
 
-    func pop() -> T {
-        storage.removeLast()
-    }
+    func pop() -> T? {
+        if (isEmpty) {
+            return nil
+        }
 
-    func isEmpty() -> Bool {
-        storage.isEmpty
+        return storage.removeLast()
     }
 
     func toArray() -> [T] {
         storage.reversed()
+    }
+
+    func peek() -> T? {
+        storage.last
     }
 }

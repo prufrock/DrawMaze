@@ -7,6 +7,8 @@ import Foundation
 protocol CTSQueue: CustomStringConvertible, ScopeFunction {
     associatedtype T
 
+    var isEmpty: Bool { get }
+
     var count: Int { get }
 
     /**
@@ -41,13 +43,17 @@ class CTSQueueArray<T>: CTSQueue {
         storage.count
     }
 
+    var isEmpty: Bool {
+        storage.isEmpty
+    }
+
     func enqueue(_ item: T) -> Bool {
         storage.append(item)
         return true
     }
 
     func dequeue() -> T? {
-        guard !isEmpty() else {
+        guard !isEmpty else {
             return nil
         }
 
@@ -56,10 +62,6 @@ class CTSQueueArray<T>: CTSQueue {
 
     func peek() -> T? {
         storage.first
-    }
-
-    func isEmpty() -> Bool {
-        storage.isEmpty
     }
 
     func toArray() -> [T] {
