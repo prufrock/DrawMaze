@@ -115,6 +115,15 @@ extension CTSGraph {
 
         return sorted
     }
+
+    func isDisconnected(source: CTSVertex<Element>) -> Bool {
+        var sourceVertices: Set<CTSVertex<Element>> = []
+        breadthFirstTraversal(source: source) { vertex in
+            sourceVertices.insert(vertex)
+        }
+
+        return sourceVertices.count != allVertices.count
+    }
 }
 
 enum EdgeType {

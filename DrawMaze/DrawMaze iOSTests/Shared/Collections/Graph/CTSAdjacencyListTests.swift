@@ -41,6 +41,8 @@ final class CTSAdjacencyListTests: XCTestCase {
         XCTAssertEqual(1166, graph.weight(from: detroit, to: austin))
         XCTAssertEqual(6764, graph.weight(from: washingtonDC, to: tokyo))
 
+        XCTAssertTrue(graph.isDisconnected(source: fargo))
+
         var total = 0
         var order: [String] = []
         graph.breadthFirstTraversal(source: fargo, visitor: { vertex in
@@ -84,5 +86,18 @@ final class CTSAdjacencyListTests: XCTestCase {
         sorted = graph.breadthFirstSort(source: washingtonDC)
         XCTAssertEqual(8, sorted.count)
         XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], sorted.map {$0.data})
+    }
+
+    func testIsDisconnected() {
+        let graph = CTSAdjacencyList<String>()
+
+        let fargo = graph.createVertex(data: "Fargo")
+        let bismark = graph.createVertex(data: "Bismark")
+
+        XCTAssertTrue(graph.isDisconnected(source: fargo))
+
+        graph.add(edgeType: EdgeType.undirected, from: fargo, to: bismark, weight: 190)
+
+        XCTAssertFalse(graph.isDisconnected(source: fargo))
     }
 }
