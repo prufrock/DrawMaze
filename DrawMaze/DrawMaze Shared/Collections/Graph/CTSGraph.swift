@@ -70,6 +70,42 @@ extension CTSGraph {
             }
         }
     }
+
+    func breadthFirstTraversalRecursive(source: CTSVertex<Element>, visitor: Visitor<Element>) {
+        let vertexQueue = CTSStackQueue<CTSVertex<Element>>()
+        var enqueued: Set<CTSVertex<Element>> = []
+
+        vertexQueue.enqueue(source)
+        enqueued.insert(source)
+
+        breadthFirstTraversalRecursive(vertexQueue: vertexQueue, enqueued: &enqueued, visitor: visitor)
+    }
+
+    private func breadthFirstTraversalRecursive(
+        vertexQueue: CTSStackQueue<CTSVertex<Element>>,
+        enqueued: inout Set<CTSVertex<Element>>,
+        visitor: Visitor<Element>) {
+
+        // avoid passing the current vertex as an argument and clear it from the queue before processing neighbors
+        guard let vertex = vertexQueue.dequeue() else {
+            return
+        }
+
+        // process the vertex
+        visitor(vertex)
+
+        // add all this node's unvisited neighbors
+        edges(vertex).forEach { edge in
+            if !enqueued.contains(edge.destination) {
+                vertexQueue.enqueue(edge.destination)
+                // Don't forget to add it to `enqueued` so it isn't visited again
+                enqueued.insert(edge.destination)
+            }
+        }
+
+        // go back around again
+        breadthFirstTraversalRecursive(vertexQueue: vertexQueue, enqueued: &enqueued, visitor: visitor)
+    }
 }
 
 enum EdgeType {

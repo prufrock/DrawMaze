@@ -52,7 +52,25 @@ final class CTSAdjacencyListTests: XCTestCase {
 
         total = 0
         order = []
+        graph.breadthFirstTraversalRecursive(source: fargo, visitor: { vertex in
+            order.append(vertex.data)
+            total += 1
+        })
+        XCTAssertEqual(2, total)
+        XCTAssertEqual(["Fargo", "Bismark"], order)
+
+        total = 0
+        order = []
         graph.breadthFirstTraversal(source: washingtonDC, visitor: { vertex in
+            order.append(vertex.data)
+            total += 1
+        })
+        XCTAssertEqual(8, total)
+        XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], order)
+
+        total = 0
+        order = []
+        graph.breadthFirstTraversalRecursive(source: washingtonDC, visitor: { vertex in
             order.append(vertex.data)
             total += 1
         })
