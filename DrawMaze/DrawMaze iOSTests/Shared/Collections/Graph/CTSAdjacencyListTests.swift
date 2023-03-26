@@ -59,6 +59,10 @@ final class CTSAdjacencyListTests: XCTestCase {
         XCTAssertEqual(2, total)
         XCTAssertEqual(["Fargo", "Bismark"], order)
 
+        var sorted = graph.breadthFirstSort(source: fargo)
+        XCTAssertEqual(2, sorted.count)
+        XCTAssertEqual(["Fargo", "Bismark"], sorted.map {$0.data})
+
         total = 0
         order = []
         graph.breadthFirstTraversal(source: washingtonDC, visitor: { vertex in
@@ -76,5 +80,9 @@ final class CTSAdjacencyListTests: XCTestCase {
         })
         XCTAssertEqual(8, total)
         XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], order)
+
+        sorted = graph.breadthFirstSort(source: washingtonDC)
+        XCTAssertEqual(8, sorted.count)
+        XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], sorted.map {$0.data})
     }
 }

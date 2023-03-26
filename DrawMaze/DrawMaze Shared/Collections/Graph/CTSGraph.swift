@@ -106,6 +106,15 @@ extension CTSGraph {
         // go back around again
         breadthFirstTraversalRecursive(vertexQueue: vertexQueue, enqueued: &enqueued, visitor: visitor)
     }
+
+    func breadthFirstSort(source: CTSVertex<Element>) -> [CTSVertex<Element>] {
+        var sorted: [CTSVertex<Element>] = []
+        breadthFirstTraversal(source: source) { vertex in
+            sorted.append(vertex)
+        }
+
+        return sorted
+    }
 }
 
 enum EdgeType {
