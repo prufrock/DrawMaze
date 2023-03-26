@@ -47,6 +47,7 @@ class CTSQueueArray<T>: CTSQueue {
         storage.isEmpty
     }
 
+    @discardableResult
     func enqueue(_ item: T) -> Bool {
         storage.append(item)
         return true
