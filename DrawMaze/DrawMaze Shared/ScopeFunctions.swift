@@ -11,6 +11,7 @@ import Foundation
 protocol ScopeFunction {}
 extension ScopeFunction {
     // apply the following assignments to the object
+    @discardableResult
     @inline(__always) func apply(block: (Self) -> ()) -> Self {
         block(self)
         return self

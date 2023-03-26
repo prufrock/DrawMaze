@@ -10,82 +10,78 @@ import XCTest
 
 final class CTSAdjacencyListTests: XCTestCase {
 
-    func testAirports() {
-        let graph = CTSAdjacencyList<String>()
+    func testWeight() {
+        Airports().apply { a in
+            XCTAssertNil(a.graph.weight(from: a.washingtonDC, to: a.hongKong))
+            XCTAssertEqual(1166, a.graph.weight(from: a.detroit, to: a.austin))
+            XCTAssertEqual(6764, a.graph.weight(from: a.washingtonDC, to: a.tokyo))
+        }
+    }
 
-        let fargo = graph.createVertex(data: "Fargo")
-        let bismark = graph.createVertex(data: "Bismark")
-        let singapore = graph.createVertex(data: "Singapore")
-        let tokyo = graph.createVertex(data: "Tokyo")
-        let hongKong = graph.createVertex(data: "Hong Kong")
-        let detroit = graph.createVertex(data: "Detroit")
-        let sanFrancisco = graph.createVertex(data: "San Francisco")
-        let washingtonDC = graph.createVertex(data: "Washington DC")
-        let austin = graph.createVertex(data: "Austin")
-        let seattle = graph.createVertex(data: "Seattle")
+    func testBreadthFirstTraversal() {
+        Airports().apply { a in
+            var total = 0
+            var order: [String] = []
+            a.graph.breadthFirstTraversal(source: a.fargo, visitor: { vertex in
+                order.append(vertex.data)
+                total += 1
+            })
+            XCTAssertEqual(2, total)
+            XCTAssertEqual(["Fargo", "Bismark"], order)
+        }
 
-        graph.add(edgeType: EdgeType.undirected, from: fargo, to: bismark, weight: 190)
-        graph.add(edgeType: EdgeType.undirected, from: singapore, to: tokyo, weight: 3302)
-        graph.add(edgeType: EdgeType.undirected, from: hongKong, to: tokyo, weight: 1806)
-        graph.add(edgeType: EdgeType.undirected, from: tokyo, to: detroit, weight: 6427)
-        graph.add(edgeType: EdgeType.undirected, from: tokyo, to: washingtonDC, weight: 6764)
-        graph.add(edgeType: EdgeType.undirected, from: hongKong, to: sanFrancisco, weight: 6893)
-        graph.add(edgeType: EdgeType.undirected, from: detroit, to: austin, weight: 1166)
-        graph.add(edgeType: EdgeType.undirected, from: austin, to: washingtonDC, weight: 1035)
-        graph.add(edgeType: EdgeType.undirected, from: sanFrancisco, to: washingtonDC, weight: 2435)
-        graph.add(edgeType: EdgeType.undirected, from: washingtonDC, to: seattle, weight: 2321)
-        graph.add(edgeType: EdgeType.undirected, from: sanFrancisco, to: seattle, weight: 678)
-        graph.add(edgeType: EdgeType.undirected, from: austin, to: sanFrancisco, weight: 1166)
+        Airports().apply { a in
+            var total = 0
+            var order: [String] = []
+            a.graph.breadthFirstTraversal(source: a.washingtonDC, visitor: { vertex in
+                order.append(vertex.data)
+                total += 1
+            })
+            XCTAssertEqual(8, total)
+            XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], order)
+        }
+    }
 
-        XCTAssertNil(graph.weight(from: washingtonDC, to: hongKong))
-        XCTAssertEqual(1166, graph.weight(from: detroit, to: austin))
-        XCTAssertEqual(6764, graph.weight(from: washingtonDC, to: tokyo))
+    func testbreadthFirstTraversalRecursive() {
+        Airports().apply { a in
+            var total = 0
+            var order: [String] = []
+            a.graph.breadthFirstTraversalRecursive(source: a.fargo, visitor: { vertex in
+                order.append(vertex.data)
+                total += 1
+            })
+            XCTAssertEqual(2, total)
+            XCTAssertEqual(["Fargo", "Bismark"], order)
+        }
 
-        XCTAssertTrue(graph.isDisconnected(source: fargo))
+        Airports().apply { a in
+            var total = 0
+            var order: [String] = []
+            a.graph.breadthFirstTraversalRecursive(source: a.washingtonDC, visitor: { vertex in
+                order.append(vertex.data)
+                total += 1
+            })
+            XCTAssertEqual(8, total)
+            XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], order)
+        }
+    }
 
-        var total = 0
-        var order: [String] = []
-        graph.breadthFirstTraversal(source: fargo, visitor: { vertex in
-            order.append(vertex.data)
-            total += 1
-        })
-        XCTAssertEqual(2, total)
-        XCTAssertEqual(["Fargo", "Bismark"], order)
+    func testBreadthFirstSort() {
+        Airports().apply { a in
+            let sorted = a.graph.breadthFirstSort(source: a.fargo)
+            XCTAssertEqual(2, sorted.count)
+            XCTAssertEqual(["Fargo", "Bismark"], sorted.map {
+                $0.data
+            })
+        }
 
-        total = 0
-        order = []
-        graph.breadthFirstTraversalRecursive(source: fargo, visitor: { vertex in
-            order.append(vertex.data)
-            total += 1
-        })
-        XCTAssertEqual(2, total)
-        XCTAssertEqual(["Fargo", "Bismark"], order)
-
-        var sorted = graph.breadthFirstSort(source: fargo)
-        XCTAssertEqual(2, sorted.count)
-        XCTAssertEqual(["Fargo", "Bismark"], sorted.map {$0.data})
-
-        total = 0
-        order = []
-        graph.breadthFirstTraversal(source: washingtonDC, visitor: { vertex in
-            order.append(vertex.data)
-            total += 1
-        })
-        XCTAssertEqual(8, total)
-        XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], order)
-
-        total = 0
-        order = []
-        graph.breadthFirstTraversalRecursive(source: washingtonDC, visitor: { vertex in
-            order.append(vertex.data)
-            total += 1
-        })
-        XCTAssertEqual(8, total)
-        XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], order)
-
-        sorted = graph.breadthFirstSort(source: washingtonDC)
-        XCTAssertEqual(8, sorted.count)
-        XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], sorted.map {$0.data})
+        Airports().apply { a in
+            let sorted = a.graph.breadthFirstSort(source: a.washingtonDC)
+            XCTAssertEqual(8, sorted.count)
+            XCTAssertEqual(["Washington DC", "Tokyo", "Austin", "San Francisco", "Seattle", "Singapore", "Hong Kong", "Detroit"], sorted.map {
+                $0.data
+            })
+        }
     }
 
     func testIsDisconnected() {
@@ -99,5 +95,48 @@ final class CTSAdjacencyListTests: XCTestCase {
         graph.add(edgeType: EdgeType.undirected, from: fargo, to: bismark, weight: 190)
 
         XCTAssertFalse(graph.isDisconnected(source: fargo))
+    }
+}
+
+class Airports: ScopeFunction {
+    var graph: CTSAdjacencyList<String>
+
+    var fargo: CTSVertex<String>
+    var bismark: CTSVertex<String>
+    var singapore: CTSVertex<String>
+    var tokyo: CTSVertex<String>
+    var hongKong: CTSVertex<String>
+    var detroit: CTSVertex<String>
+    var sanFrancisco: CTSVertex<String>
+    var washingtonDC: CTSVertex<String>
+    var austin: CTSVertex<String>
+    var seattle: CTSVertex<String>
+
+    init() {
+        graph = CTSAdjacencyList<String>()
+
+        fargo = graph.createVertex(data: "Fargo")
+        bismark = graph.createVertex(data: "Bismark")
+        singapore = graph.createVertex(data: "Singapore")
+        tokyo = graph.createVertex(data: "Tokyo")
+        hongKong = graph.createVertex(data: "Hong Kong")
+        detroit = graph.createVertex(data: "Detroit")
+        sanFrancisco = graph.createVertex(data: "San Francisco")
+        washingtonDC = graph.createVertex(data: "Washington DC")
+        austin = graph.createVertex(data: "Austin")
+        seattle = graph.createVertex(data: "Seattle")
+
+        graph.add(edgeType: EdgeType.undirected, from: fargo, to: bismark, weight: 190)
+        graph.add(edgeType: EdgeType.undirected, from: singapore, to: tokyo, weight: 3302)
+        graph.add(edgeType: EdgeType.undirected, from: hongKong, to: tokyo, weight: 1806)
+        graph.add(edgeType: EdgeType.undirected, from: tokyo, to: detroit, weight: 6427)
+        graph.add(edgeType: EdgeType.undirected, from: tokyo, to: washingtonDC, weight: 6764)
+        graph.add(edgeType: EdgeType.undirected, from: hongKong, to: sanFrancisco, weight: 6893)
+        graph.add(edgeType: EdgeType.undirected, from: detroit, to: austin, weight: 1166)
+        graph.add(edgeType: EdgeType.undirected, from: austin, to: washingtonDC, weight: 1035)
+        graph.add(edgeType: EdgeType.undirected, from: sanFrancisco, to: washingtonDC, weight: 2435)
+        graph.add(edgeType: EdgeType.undirected, from: washingtonDC, to: seattle, weight: 2321)
+        graph.add(edgeType: EdgeType.undirected, from: sanFrancisco, to: seattle, weight: 678)
+        graph.add(edgeType: EdgeType.undirected, from: austin, to: sanFrancisco, weight: 1166)
     }
 }

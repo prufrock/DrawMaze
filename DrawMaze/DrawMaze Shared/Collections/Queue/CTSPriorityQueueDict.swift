@@ -21,6 +21,7 @@ class CTSPriorityQueueDict<T>: ScopeFunction {
         storage.isEmpty
     }
 
+    @discardableResult
     func push(_ item: T, priority: Int = 1) -> Self {
         var list = storage[priority] ?? []
 
