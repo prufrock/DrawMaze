@@ -125,6 +125,62 @@ extension CTSGraph {
         return sourceVertices.count != allVertices.count
     }
 
+    /**
+     Search a graph depth first: start at a vertex and follow edges to the furthest connected vertex then work backward.
+     Time complexity: O(V+E)
+     Space complexity: O(V)
+     */
+    func depthFirstSearch(source: CTSVertex<Element>, visit: Visitor<Element>) {
+        // Store the vertices that need to be processed
+        let stack = CTSStackArray<CTSVertex<Element>>()
+        // Track the vertices already added to the stack to avoid adding them again
+        // Vertices are only added to this unlike the stack where they are removed as well.
+        var pushed: Set<CTSVertex<Element>> = []
+
+        // Get the party started with the source vertex.
+        stack.push(source)
+        pushed.insert(source)
+        // visit before adding neighbors, pre-order traversal?
+        visit(source)
+
+        while(true) {
+            // stop if there's nothing left to process.
+            if (stack.isEmpty) {
+                break
+            }
+
+            // grab the first vertex but don't pop until all of the neighbors have been processed.
+            // this is important as we climb down the tree
+            let vertex = stack.peek()!
+            let neighbors = edges(vertex)
+            var pushedDestination = false
+
+            // if it has no neighbors pop it
+            if neighbors.isEmpty {
+                stack.pop()
+                continue
+            }
+
+            // Visit each one and add each to the stack.
+            for neighbor in neighbors {
+                let destination = neighbor.destination
+                // only check a vertex if it hasn't been checked yet
+                if !pushed.contains(destination) {
+                    stack.push(destination)
+                    pushed.insert(destination)
+                    visit(destination)
+                    pushedDestination = true
+                    break
+                }
+            }
+            if pushedDestination {
+                continue
+            }
+            // Pop after all the neighbors have been processed.
+            stack.pop()
+        }
+    }
+
     func depthFirstSearchRecursive(source: CTSVertex<Element>, pushed: inout Set<CTSVertex<Element>>, visit: Visitor<Element>) {
         // since this is recursive simply calling the function pushes the vertex onto the call stack so a `stack` isn't needed.
         pushed.insert(source)
