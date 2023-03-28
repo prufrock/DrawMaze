@@ -124,6 +124,32 @@ extension CTSGraph {
 
         return sourceVertices.count != allVertices.count
     }
+
+    func depthFirstSearchRecursive(source: CTSVertex<Element>, pushed: inout Set<CTSVertex<Element>>, visit: Visitor<Element>) {
+        // since this is recursive simply calling the function pushes the vertex onto the call stack so a `stack` isn't needed.
+        pushed.insert(source)
+
+        // process the vertex
+        visit(source)
+
+        // Grab it's neighbors
+        let neighbors = edges(source)
+
+        // If no neighbors backtrack!
+        if (neighbors.isEmpty) {
+            return
+        }
+
+        // Search the neighbors unless they have already been visited
+        neighbors.forEach { edge in
+            if (!pushed.contains(edge.destination)) {
+                depthFirstSearchRecursive(source: edge.destination, pushed: &pushed, visit: visit)
+            }
+        }
+
+        // Backtrack after processing all the neighbors
+        return
+    }
 }
 
 enum EdgeType {

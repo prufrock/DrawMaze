@@ -84,6 +84,28 @@ final class CTSAdjacencyListTests: XCTestCase {
         }
     }
 
+    func testDepthFirstSearchRecursive() {
+        Airports().apply { a in
+            var sorted: [CTSVertex<String>] = []
+            var pushed: Set<CTSVertex<String>> = []
+            a.graph.depthFirstSearchRecursive(source: a.fargo, pushed: &pushed) { vertex in
+                sorted.append(vertex)
+            }
+            XCTAssertEqual(2, sorted.count)
+            XCTAssertEqual([a.fargo, a.bismark], sorted)
+        }
+
+        Airports().apply { a in
+            var sorted: [CTSVertex<String>] = []
+            var pushed: Set<CTSVertex<String>> = []
+            a.graph.depthFirstSearchRecursive(source: a.washingtonDC, pushed: &pushed) { vertex in
+                sorted.append(vertex)
+            }
+            XCTAssertEqual(8, sorted.count)
+            XCTAssertEqual([a.washingtonDC, a.tokyo, a.singapore, a.hongKong, a.sanFrancisco, a.seattle, a.austin, a.detroit], sorted)
+        }
+    }
+
     func testIsDisconnected() {
         let graph = CTSAdjacencyList<String>()
 
