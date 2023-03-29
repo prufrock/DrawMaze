@@ -4,9 +4,12 @@
 
 import Foundation
 
-class CTSVertex<T>: Hashable {
+class CTSVertex<T>: Hashable, CustomStringConvertible {
     var data: T
     var index: Int
+    var description: String {
+        "\(data)"
+    }
 
     init(index: Int, data: T) {
         self.data = data

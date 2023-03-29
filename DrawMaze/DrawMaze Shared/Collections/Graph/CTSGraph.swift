@@ -206,6 +206,41 @@ extension CTSGraph {
         // Backtrack after processing all the neighbors
         return
     }
+
+    func topSort() -> [CTSVertex<Element>] {
+        var ordered: [CTSVertex<Element>] = []
+        var pushed: Set<CTSVertex<Element>> = []
+
+        allVertices.forEach { source in
+            if (!pushed.contains(source)) {
+                depthFirstSearchRecursiveVisitBackTrack(source: source, pushed: &pushed, visit: { vertex in
+                    ordered.append(vertex)
+                })
+            }
+        }
+
+        return ordered.reversed()
+    }
+
+    private func depthFirstSearchRecursiveVisitBackTrack(source: CTSVertex<Element>, pushed: inout Set<CTSVertex<Element>>, visit: Visitor<Element>) {
+        // since this is recursive simply calling the function pushes the vertex onto the call stack so a `stack` isn't needed.
+        pushed.insert(source)
+
+
+        // Grab it's neighbors
+        let neighbors = edges(source)
+
+        // Search the neighbors unless they have already been visited
+        neighbors.forEach { edge in
+            if (!pushed.contains(edge.destination)) {
+                depthFirstSearchRecursiveVisitBackTrack(source: edge.destination, pushed: &pushed, visit: visit)
+            }
+        }
+
+        // Backtrack after processing all the neighbors
+        visit(source)
+        return
+    }
 }
 
 enum EdgeType {

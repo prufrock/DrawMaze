@@ -126,6 +126,23 @@ final class CTSAdjacencyListTests: XCTestCase {
         }
     }
 
+    func testTopSort() {
+        let graph = CTSAdjacencyList<String>()
+
+        let eatPasta = graph.createVertex(data: "eat pasta")
+        let makePasta = graph.createVertex(data: "make pasta")
+        let cookPasta = graph.createVertex(data: "cook pasta")
+
+        // makePasta "comes before" cookPasta, and cookPasta "comes before" eatPasta
+        graph.addDirectedEdge(from: makePasta, to: cookPasta, weight: nil)
+        graph.addDirectedEdge(from: cookPasta, to: eatPasta, weight: nil)
+
+        let sorted = graph.topSort()
+
+        XCTAssertEqual(3, sorted.count)
+        XCTAssertEqual([makePasta, cookPasta, eatPasta], sorted)
+    }
+
     func testIsDisconnected() {
         let graph = CTSAdjacencyList<String>()
 
