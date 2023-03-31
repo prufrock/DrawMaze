@@ -36,12 +36,30 @@ public struct ECSCamera: ECSComponent {
 
         rotation2d = input.externalInput.rotation * rotation2d
         let velocity: F2 = rotation2d * input.externalInput.speed * speed
-        if (entityID == "floating-camera") {
-            print("rotation2d \(rotation2d)")
-            print("input speed \(input.externalInput.speed)")
-            print("speed \(speed)")
-            print("velocity \(velocity)")
-        }
+
         position3d = position3d + F3(velocity.x, velocity.y, 0.0) * input.externalInput.timeStep
+        if var collision = entity.collision, entityID == "floating-camera" {
+            collision.position = F2(position3d.x, position3d.y)
+
+            world.entityManager.collides(with: collision.rect, prefix: "wall").filter { $0.entityID != entityID }.forEach {
+                print("thump! collided with \($0.entityID)")
+                var limit = 10
+
+                while (limit > 0) {
+                    let intersection = collision.rect.intersection(with: $0.rect)
+                    if let intersection = intersection {
+                        collision.position -= intersection
+                    }
+                    limit -= 1
+                }
+                entity.collision = collision
+                position3d = F3(collision.position.x, collision.position.y, position3d.z)
+            }
+        }
+
+        if var graphics = entity.graphics, let collision = entity.collision {
+            graphics.uprightToWorld = Float4x4.translate(F2(position3d.x, position3d.y)) * Float4x4.scale(x: collision.radius, y: collision.radius, z: 1.0)
+            entity.graphics = graphics
+        }
     }
 }

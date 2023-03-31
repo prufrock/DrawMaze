@@ -42,7 +42,7 @@ protocol ECSEntityManager {
     //MARK: Collision Table
 
     @discardableResult
-    func collides(with rect: Rect) -> [ECSCollision]
+    func collides(with rect: Rect, prefix: String) -> [ECSCollision]
 
     func pickCollision(at location: ECSCollision) -> ECSEntity?
 }

@@ -20,6 +20,7 @@
 		5AF0E19B28668B98B58CDD33 /* ECSEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E544BC8F6CC0B7486C22 /* ECSEntityManager.swift */; };
 		5AF0E1A2D3D07111664FDF35 /* ECSScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E46B819C3A24C6F905A3 /* ECSScene.swift */; };
 		5AF0E1AC01B3A88CA00A4C92 /* CTSHeapArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EC98CE1B1B16A9FCB420 /* CTSHeapArrayTests.swift */; };
+		5AF0E1E45796293B41E431EB /* ECSPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFEFB43CBA1D81861B9E /* ECSPlayer.swift */; };
 		5AF0E1F660939DC77B535E2F /* AppCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF0712B515A5BDD0ED65 /* AppCore.swift */; };
 		5AF0E2021FFF1A23F257CE8E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EDE885A998F8DD7DE175 /* Model.swift */; };
 		5AF0E22C4E5B10B86DE0EC3A /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */; };
@@ -103,6 +104,7 @@
 		5AF0ED006E8E93F6C94590B6 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7C2A61D7A72D0C55A87 /* World.swift */; };
 		5AF0ED29ABF963DFF8266ADF /* CollectionExts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0C9242F4023EF58485 /* CollectionExts.swift */; };
 		5AF0ED71090F95BE7BDBD0CE /* RNDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1BDB22191FE42E34E80 /* RNDRRenderer.swift */; };
+		5AF0ED7B7D68C88D46B0A742 /* ECSPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EFEFB43CBA1D81861B9E /* ECSPlayer.swift */; };
 		5AF0ED84FD978ECF2C48F98B /* CTSQuadTreePointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E6CBA471EA1F61D09213 /* CTSQuadTreePointTests.swift */; };
 		5AF0ED88557F5AA357AA23D5 /* AppCoreConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EE0AD9A16979E3E6B597 /* AppCoreConfig.swift */; };
 		5AF0EDBF21EFB29EBF2C1E4C /* GameInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E6F379DD8B32094FD88E /* GameInput.swift */; };
@@ -259,6 +261,7 @@
 		5AF0EF9EAFCD065F84886DB2 /* CTSQueueArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQueueArrayTests.swift; sourceTree = "<group>"; };
 		5AF0EFC27060A6F4AB5A1776 /* CTSGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSGraph.swift; sourceTree = "<group>"; };
 		5AF0EFE18A1FB571B27B9EE4 /* AppCoreServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreServiceFactory.swift; sourceTree = "<group>"; };
+		5AF0EFEFB43CBA1D81861B9E /* ECSPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSPlayer.swift; sourceTree = "<group>"; };
 		6328CB1629CA983400723539 /* CTSStackQueueTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSStackQueueTests.swift; sourceTree = "<group>"; };
 		6328CB1B29CAA0EC00723539 /* CTSRingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTSRingBuffer.swift; sourceTree = "<group>"; };
 		6328CB1F29CAAB1300723539 /* CTSRIngBufferTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTSRIngBufferTests.swift; sourceTree = "<group>"; };
@@ -494,6 +497,7 @@
 				5AF0ED1597364E4614883B91 /* Behavior */,
 				5AF0EDA682969D65D236C03B /* Physics */,
 				5AF0E046F7689EDD6B40C698 /* ECSCamera.swift */,
+				5AF0EFEFB43CBA1D81861B9E /* ECSPlayer.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1081,6 +1085,7 @@
 				5AF0EAE280D1C5A7EB04A5FE /* CTSGraph.swift in Sources */,
 				5AF0EFC8A92E9D0735946F1D /* CTSVertex.swift in Sources */,
 				5AF0E116B7DD04EFF0139F19 /* CTSEdge.swift in Sources */,
+				5AF0ED7B7D68C88D46B0A742 /* ECSPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1163,6 +1168,7 @@
 				5AF0E1600CD2C67029F76146 /* CTSGraph.swift in Sources */,
 				5AF0E48FF23CE6AD4A0A274C /* CTSVertex.swift in Sources */,
 				5AF0EA3BF61908304369F652 /* CTSEdge.swift in Sources */,
+				5AF0E1E45796293B41E431EB /* ECSPlayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

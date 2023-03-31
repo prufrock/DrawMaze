@@ -24,6 +24,15 @@ public struct TileMap {
     }
 
     subscript(x: Int, y: Int) -> Tile {
-        get { tiles[y * width + x ] }
+        get { tiles[y * width + x] }
+    }
+
+    func getOrNil(x: Int, y: Int) -> Tile? {
+        let index = y * width + x
+        if x >= width || y >= height || index < 0 {
+            return nil
+        } else {
+            return tiles[index]
+        }
     }
 }

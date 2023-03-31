@@ -11,7 +11,8 @@ import simd
 struct World {
     private let config: AppCoreConfig.Game.World
 
-    private var entityManager: ECSEntityManager
+    //TODO: don't commit this...
+    public var entityManager: ECSEntityManager
 
     public var map: TileMap
 
@@ -81,7 +82,7 @@ struct World {
             let x = i % gridWidth
             let y = (i / gridHeight)
             entityManager.createMapButton(
-                id: "btn-map" + String(i),
+                id: "btn-map" + String(x) + "," + String(y),
                 position: Float2(x.f + radius,  y.f + radius + horizontalStart.f),
                 buttonState: mapData.tiles[x + y * mapData.width] == .floor ? .NotToggled : .Toggled,
                 toggledAction: { gameInput, ecsEntity, world in
@@ -111,8 +112,7 @@ struct World {
             position3d: F3(0.0, 0.0, 1.5),
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
-                    * ( Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left
-                        * Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z)
+                    * ( Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z)
                         * Float4x4.translate(x: 0, y: 0, z: -1.0)
                         * Float4x4.rotateX(.pi/2)
                         * component.rotation3d).inverse // flip all of these things around because the camera stays put while the world moves
@@ -123,7 +123,7 @@ struct World {
             id: "overhead-camera",
             initialAspectRatio: 1.0,
             speed: 0.0,
-            position3d: F3(0.0, 0.0, -10.5),
+            position3d: F3(5.0, 1.0, -10.5),
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
                     * Float4x4.scale(x: 1.0, y: -1.0, z: 1.0) // flip on the y-axis so the origin is the upper-left

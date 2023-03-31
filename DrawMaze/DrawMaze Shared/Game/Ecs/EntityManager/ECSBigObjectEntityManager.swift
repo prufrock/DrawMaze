@@ -136,6 +136,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
         var entity = createProp(id: id, position: position, radius: radius, camera: camera)
 
         entity.wall = ECSWall(entityID: id)
+        entity.collision = ECSCollision(entityID: id, radius: radius, position: position)
 
         update(entity)
 
@@ -144,7 +145,20 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
     mutating func createCamera(id: String, initialAspectRatio: Float, speed: Float = 0, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
         let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, worldToView: baseWorldToView)
-        let entity = ECSEntity(id: id, camera: camera)
+        var entity = ECSEntity(id: id, camera: camera)
+
+        if (id == "floating-camera") {
+            var collision = ECSCollision(entityID: id, radius: 0.1, position: F2(position3d.x, position3d.y))
+            entity.collision = collision
+
+            let graphics = ECSGraphics(
+                entityID: id,
+                color: Float4(0.0, 0.7, 1.0, 1.0),
+                uprightToWorld: Float4x4.translate(F2(position3d.x, position3d.y)) * Float4x4.scale(x: 0.5, y: 0.5, z: 1.0),
+                camera: .world
+            )
+            entity.graphics = graphics
+        }
 
         update(entity)
 
@@ -168,8 +182,8 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
     // MARK: Collision Table
 
-    public func collides(with rect: Rect) -> [ECSCollision] {
-        collisions.filter { rect.intersection(with: $0.rect) != nil }
+    public func collides(with rect: Rect, prefix: String = "") -> [ECSCollision] {
+        collisions.filter { $0.entityID.starts(with: prefix) && rect.intersection(with: $0.rect) != nil }
     }
 
     public func pickCollision(at location: ECSCollision) -> ECSEntity? {
