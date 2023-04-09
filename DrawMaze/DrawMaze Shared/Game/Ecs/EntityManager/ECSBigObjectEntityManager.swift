@@ -146,7 +146,9 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     mutating func createCamera(id: String, initialAspectRatio: Float, speed: Float = 0, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
         let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, worldToView: baseWorldToView)
         var entity = ECSEntity(id: id, camera: camera)
+        entity.input = ECSInput(entityID: id)
 
+        //TODO: remove this check
         if (id == "floating-camera") {
             var collision = ECSCollision(entityID: id, radius: 0.1, position: F2(position3d.x, position3d.y))
             entity.collision = collision

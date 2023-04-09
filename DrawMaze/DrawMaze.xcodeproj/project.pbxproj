@@ -11,6 +11,7 @@
 		5AF0E03A62BE8C96B68A21E9 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EAB90CCB3D98C995C0EC /* Rect.swift */; };
 		5AF0E05ECF38AD89B02B5103 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA0B60A7B40DCB2A7519 /* Thing.swift */; };
 		5AF0E07C3CE29B7080363E74 /* ECSWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E09622A43295F1FD185B /* ECSWall.swift */; };
+		5AF0E0A08D47246538C97F4A /* ECSInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E76AF7B6C1E8543C7D13 /* ECSInput.swift */; };
 		5AF0E10DFDF0957A312D6CC7 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EF41E46C82A6B15E4808 /* Game.swift */; };
 		5AF0E116B7DD04EFF0139F19 /* CTSEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EA2CDBB1C03E9AA44148 /* CTSEdge.swift */; };
 		5AF0E11A3AB00E8B5F24F9E0 /* ECSToggleButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E6439762510C2F8AA5BA /* ECSToggleButtonTests.swift */; };
@@ -71,6 +72,7 @@
 		5AF0E71CAFA82A46258A563E /* ECSCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E046F7689EDD6B40C698 /* ECSCamera.swift */; };
 		5AF0E71D763BB4D89C0B808A /* CSTQuadTreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0EAAC950E185923A4C1F5 /* CSTQuadTreePoint.swift */; };
 		5AF0E76B11DC4F071E6F1853 /* TileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E7E3DDF775F0B00720E8 /* TileMap.swift */; };
+		5AF0E76BDFC6E2641F1C6FD6 /* ECSInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E76AF7B6C1E8543C7D13 /* ECSInput.swift */; };
 		5AF0E7BA6C30A760EA6B1C93 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E8AC85199D1D06D70D61 /* FileService.swift */; };
 		5AF0E7DC4FB39F532F4462E6 /* RenderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E0148075573804D82175 /* RenderService.swift */; };
 		5AF0E87157F98C14E974BF62 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF0E1A5497D0AA1CB81D18D /* Input.swift */; };
@@ -222,6 +224,7 @@
 		5AF0E7095F556BE81E3CF5C9 /* CTSQuadTreeRectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQuadTreeRectTests.swift; sourceTree = "<group>"; };
 		5AF0E7454A43ABC3D0F242E4 /* Float4ExtTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Float4ExtTests.swift; sourceTree = "<group>"; };
 		5AF0E76918C2455530DD13D6 /* AppCoreTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoreTests.swift; sourceTree = "<group>"; };
+		5AF0E76AF7B6C1E8543C7D13 /* ECSInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECSInput.swift; sourceTree = "<group>"; };
 		5AF0E7A69CB3F21C7DFBB5B1 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		5AF0E7C2A61D7A72D0C55A87 /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		5AF0E7D0B7A5A6714D67584A /* CTSQuadTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTSQuadTree.swift; sourceTree = "<group>"; };
@@ -498,6 +501,7 @@
 				5AF0EDA682969D65D236C03B /* Physics */,
 				5AF0E046F7689EDD6B40C698 /* ECSCamera.swift */,
 				5AF0EFEFB43CBA1D81861B9E /* ECSPlayer.swift */,
+				5AF0E76AF7B6C1E8543C7D13 /* ECSInput.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1086,6 +1090,7 @@
 				5AF0EFC8A92E9D0735946F1D /* CTSVertex.swift in Sources */,
 				5AF0E116B7DD04EFF0139F19 /* CTSEdge.swift in Sources */,
 				5AF0ED7B7D68C88D46B0A742 /* ECSPlayer.swift in Sources */,
+				5AF0E76BDFC6E2641F1C6FD6 /* ECSInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,6 +1174,7 @@
 				5AF0E48FF23CE6AD4A0A274C /* CTSVertex.swift in Sources */,
 				5AF0EA3BF61908304369F652 /* CTSEdge.swift in Sources */,
 				5AF0E1E45796293B41E431EB /* ECSPlayer.swift in Sources */,
+				5AF0E0A08D47246538C97F4A /* ECSInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -5,6 +5,9 @@
 import Foundation
 
 struct ECSGraphics: ECSComponent {
+    mutating func update(input: GameInput, entity: inout ECSEntity, world: inout World) {
+    }
+    
     var entityID: String
     var color: Float4 = Float4(Color.orange)
     var uprightToWorld: Float4x4 = Float4x4.identity()

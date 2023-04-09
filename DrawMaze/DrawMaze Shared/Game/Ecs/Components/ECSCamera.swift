@@ -31,11 +31,7 @@ public struct ECSCamera: ECSComponent {
     }
 
     mutating func update(input: GameInput, entity: inout ECSEntity, world: inout World) {
-        aspect = input.externalInput.aspect
-        rotation3d *= input.externalInput.rotation3d
-
-        rotation2d = input.externalInput.rotation * rotation2d
-        let velocity: F2 = rotation2d * input.externalInput.speed * speed
+        let velocity: F2 = rotation2d * speed
 
         position3d = position3d + F3(velocity.x, velocity.y, 0.0) * input.externalInput.timeStep
         if var collision = entity.collision, entityID == "floating-camera" {
@@ -60,6 +56,18 @@ public struct ECSCamera: ECSComponent {
         if var graphics = entity.graphics, let collision = entity.collision {
             graphics.uprightToWorld = Float4x4.translate(F2(position3d.x, position3d.y)) * Float4x4.scale(x: collision.radius, y: collision.radius, z: 1.0)
             entity.graphics = graphics
+        }
+    }
+
+    mutating func receive(message: ECSMessage) {
+        switch message {
+        case .UpdateAspectRatio(let aspect):
+            self.aspect = aspect
+        case .UpdateSpeed(let speed):
+            self.speed = speed
+        case .UpdateRotation(let rotation2d, let rotation3d):
+            self.rotation2d = rotation2d * self.rotation2d
+            self.rotation3d *= rotation3d
         }
     }
 }

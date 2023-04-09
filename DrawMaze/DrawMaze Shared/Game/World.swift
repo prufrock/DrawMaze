@@ -16,9 +16,6 @@ struct World {
 
     public var map: TileMap
 
-    // TODO cheating for a little bit
-    public var rotation3d = Float4x4.rotateY(.pi/2)
-
     var scene: ECSSceneGraph {
         get {
             entityManager.scene

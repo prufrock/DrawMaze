@@ -5,6 +5,9 @@
 import Foundation
 
 struct ECSCollision: ECSComponent {
+    mutating func update(input: GameInput, entity: inout ECSEntity, world: inout World) {
+    }
+
     var entityID: String
     var radius: Float = 0.5
     var position: F2 = F2(0.0, 0.0)
