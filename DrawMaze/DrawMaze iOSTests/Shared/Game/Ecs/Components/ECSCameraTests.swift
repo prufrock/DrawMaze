@@ -31,8 +31,8 @@ final class ECSCameraTests: XCTestCase {
         // Change the aspect ratio from input
         var world = HLP.world
         var input = HLP.input
-        input.aspect = 0.5
         var gameInput = GameInput(externalInput: input)
+        camera.receive(message: .UpdateAspectRatio(0.5))
         camera.update(input: gameInput, entity: &entity, world: &world)
 
         let resultTwo = camera.projection() * F4(1.0)
