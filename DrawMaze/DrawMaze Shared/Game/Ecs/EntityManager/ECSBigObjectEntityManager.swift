@@ -150,7 +150,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
 
         //TODO: remove this check
         if (id == "floating-camera") {
-            var collision = ECSCollision(entityID: id, radius: 0.1, position: F2(position3d.x, position3d.y))
+            var collision = ECSCollision(entityID: id, radius: 0.1, position: F2(position3d.x, position3d.y), collisionResponse: true)
             entity.collision = collision
 
             let graphics = ECSGraphics(

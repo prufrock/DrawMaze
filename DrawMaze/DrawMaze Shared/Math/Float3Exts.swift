@@ -20,6 +20,10 @@ public extension Float3 {
         (x * x + y * y + z * z).squareRoot()
     }
 
+    var xy: F2 {
+        F2(x: x, y: y)
+    }
+
     init(_ value: Float2) {
         self.init(value.x, value.y, 0.0)
     }

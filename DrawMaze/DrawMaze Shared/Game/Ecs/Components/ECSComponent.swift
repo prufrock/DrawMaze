@@ -19,6 +19,10 @@ extension ECSComponent {
 
 enum ECSMessage {
     case UpdateAspectRatio(Float)
-    case UpdateSpeed(Float)
+    // being explicit about dimensions to make clear which dimensions are changing
+    case UpdatePositionXy(Float2)
+    case UpdatePositionXyz(Float3)
+
     case UpdateRotation(Float2x2, Float4x4)
+    case UpdateSpeed(Float)
 }

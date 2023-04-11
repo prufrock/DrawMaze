@@ -29,6 +29,11 @@ struct ECSEntity {
             self.input = inputComponent
         }
 
+        if var component = collision {
+            component.update(input: input, entity: &self, world: &world)
+            collision = component
+        }
+
         if var button = toggleButton {
             button.update(input: input, entity: &self, world: &world)
             toggleButton = button
@@ -49,10 +54,21 @@ struct ECSEntity {
             self.camera = camera
         }
 
+        if var component = graphics {
+            component.update(input: input, entity: &self, world: &world)
+            graphics = component
+        }
+
         return self
     }
 
     mutating func receive(message: ECSMessage) {
+
+        if var collision = collision {
+            collision.receive(message: message)
+            self.collision = collision
+        }
+
         if var button = toggleButton {
             button.receive(message: message)
             toggleButton = button
@@ -71,6 +87,11 @@ struct ECSEntity {
         if var camera = camera {
             camera.receive(message: message)
             self.camera = camera
+        }
+
+        if var component = graphics {
+            component.receive(message: message)
+            graphics = component
         }
     }
 }
