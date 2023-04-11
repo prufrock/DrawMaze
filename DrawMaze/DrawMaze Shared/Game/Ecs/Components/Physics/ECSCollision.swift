@@ -20,18 +20,18 @@ struct ECSCollision: ECSComponent {
     mutating func update(input: GameInput, entity: inout ECSEntity, world: inout World) {
         if collisionResponse {
             world.entityManager.collides(with: rect, prefix: "wall").filter { $0.entityID != entityID }.forEach {
-                        print("thump! collided with \($0.entityID)")
-                        var limit = 10
+                print("thump! collided with \($0.entityID)")
+                var limit = 10
 
-                        while (limit > 0) {
-                            let intersection = rect.intersection(with: $0.rect)
-                            if let intersection = intersection {
-                                position -= intersection
-                            }
-                            limit -= 1
-                        }
-                        position = F2(position.x, position.y)
+                while (limit > 0) {
+                    let intersection = rect.intersection(with: $0.rect)
+                    if let intersection = intersection {
+                        position -= intersection
                     }
+                    limit -= 1
+                }
+                position = F2(position.x, position.y)
+            }
             entity.receive(message: .UpdatePositionXy(position))
         }
     }

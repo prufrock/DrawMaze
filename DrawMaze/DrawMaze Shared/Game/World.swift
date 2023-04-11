@@ -102,11 +102,12 @@ struct World {
      */
     private mutating func reset() {
 
-        floatingCamera = entityManager.createCamera(
+        floatingCamera = entityManager.createPlayer(
             id: "floating-camera",
             initialAspectRatio: 1.0,
             speed: 1.0,
             position3d: F3(0.0, 0.0, 1.5),
+            radius: 0.25,
             baseWorldToView: { component in
                 Float4x4.perspectiveProjection(fov: component.fov, aspect: component.aspect, nearPlane: component.nearPlane, farPlane: component.farPlane)
                     * ( Float4x4.translate(x: component.position3d.x, y: component.position3d.y, z: component.position3d.z)

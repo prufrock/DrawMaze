@@ -31,6 +31,9 @@ protocol ECSEntityManager {
     @discardableResult
     mutating func createCamera(id: String, initialAspectRatio: Float, speed: Float, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity
 
+    @discardableResult
+    mutating func createPlayer(id: String, initialAspectRatio: Float, speed: Float, position3d: F3, radius: Float, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity
+
     //MARK: Entity Table
 
     func find(_ entityId: String) -> ECSEntity?
