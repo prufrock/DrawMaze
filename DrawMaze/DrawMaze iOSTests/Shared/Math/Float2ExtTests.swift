@@ -14,7 +14,7 @@ final class Float2ExtTests: XCTestCase {
         let worldToView: (ECSCamera) -> Float4x4 = { component in
             Float4x4.perspectiveProjection(fov: .pi/2, aspect: component.aspect, nearPlane: 0.1, farPlane: 20.0)
         }
-        return ECSCamera(entityID: "camera-1", aspect: 1.0, position3d: F3(0.0, 0.0, 0.0), worldToView: worldToView)
+        return ECSCamera(entityID: "camera-1", aspect: 1.0, position3d: F3(0.0, 0.0, 0.0), stationary: true, worldToView: worldToView)
     }()
 
     func testLength() throws {
