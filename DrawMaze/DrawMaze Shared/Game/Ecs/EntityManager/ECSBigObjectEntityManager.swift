@@ -144,7 +144,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     }
 
     mutating func createCamera(id: String, initialAspectRatio: Float, speed: Float = 0, position3d: F3, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
-        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, worldToView: baseWorldToView)
+        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, stationary: true, worldToView: baseWorldToView)
         var entity = ECSEntity(id: id, camera: camera)
         //TODO: not all cameras should move
         entity.input = ECSInput(entityID: id)
@@ -155,7 +155,7 @@ struct ECSBigObjectEntityManager: ECSEntityManager {
     }
 
     mutating func createPlayer(id: String, initialAspectRatio: Float, speed: Float = 0, position3d: F3, radius: Float, baseWorldToView: @escaping (ECSCamera) -> Float4x4) -> ECSEntity {
-        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, worldToView: baseWorldToView)
+        let camera = ECSCamera(entityID: id, aspect: initialAspectRatio, speed: speed, position3d: position3d, stationary: false, worldToView: baseWorldToView)
         var entity = ECSEntity(id: id, camera: camera)
         entity.input = ECSInput(entityID: id)
 

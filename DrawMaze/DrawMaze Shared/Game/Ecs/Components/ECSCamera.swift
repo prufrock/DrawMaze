@@ -15,15 +15,23 @@ public struct ECSCamera: ECSComponent {
     var rotation2d = Float2(0.0,-1.0)
     var rotation3d = Float4x4.identity()
     var speed: Float = 0
+    var stationary = true
 
-    private let worldToView: (Self) -> Float4x4
+    var worldToView: (Self) -> Float4x4
 
-    init(entityID: String, aspect: Float, speed: Float = 0, position3d: Float3, worldToView: @escaping (Self) -> Float4x4) {
+    init(entityID: String,
+         aspect: Float,
+         speed: Float = 0,
+         position3d: Float3,
+         stationary: Bool,
+         worldToView: @escaping (Self) -> Float4x4
+    ) {
         self.entityID = entityID
         self.aspect = aspect
-        self.worldToView = worldToView
-        self.position3d = position3d
         self.speed = speed
+        self.position3d = position3d
+        self.stationary = stationary
+        self.worldToView = worldToView
     }
 
     func projection() -> Float4x4 {
@@ -31,10 +39,12 @@ public struct ECSCamera: ECSComponent {
     }
 
     mutating func update(input: GameInput, entity: inout ECSEntity, world: inout World) {
-        let velocity: F2 = rotation2d * speed
+        if (!stationary) {
+            let velocity: F2 = rotation2d * speed
 
-        position3d = position3d + F3(velocity.x, velocity.y, 0.0) * input.externalInput.timeStep
-        entity.receive(message: .UpdatePositionXyz(position3d))
+            position3d = position3d + F3(velocity.x, velocity.y, 0.0) * input.externalInput.timeStep
+            entity.receive(message: .UpdatePositionXyz(position3d))
+        }
     }
 
     mutating func receive(message: ECSMessage) {
